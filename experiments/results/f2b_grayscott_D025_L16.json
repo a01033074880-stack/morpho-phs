@@ -1,0 +1,52 @@
+{
+ "mitosis (spots)": {
+  "16": {
+   "alive_fraction": 1.0,
+   "wavelength_cells_median": 7.577708763999663,
+   "settle_steps_median": 100.0,
+   "settle_seconds_median_at_750Hz": 0.13333333333333333,
+   "settle_seconds_max_at_750Hz": 2.6666666666666665,
+   "late_relative_variability_median": 0.0
+  }
+ },
+ "coral (labyrinth)": {
+  "16": {
+   "alive_fraction": 0.875,
+   "wavelength_cells_median": 8.0,
+   "settle_steps_median": 500.0,
+   "settle_seconds_median_at_750Hz": 0.6666666666666666,
+   "settle_seconds_max_at_750Hz": 1.0666666666666667,
+   "late_relative_variability_median": 0.0
+  }
+ },
+ "solitons": {
+  "16": {
+   "alive_fraction": 1.0,
+   "wavelength_cells_median": 7.155417527999327,
+   "settle_steps_median": 250.0,
+   "settle_seconds_median_at_750Hz": 0.3333333333333333,
+   "settle_seconds_max_at_750Hz": 0.4,
+   "late_relative_variability_median": 0.0
+  }
+ },
+ "waves/chaos": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  }
+ },
+ "worms": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  }
+ }
+}

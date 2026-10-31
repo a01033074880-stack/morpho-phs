@@ -1,0 +1,30 @@
+none_s0 {"mode":"none","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002676e+06,"E_cap":2.000e+06,"enpu_scaled":0,"ticks":22500,"finite":true}
+none_s1 {"mode":"none","seed":1,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002676e+06,"E_cap":2.000e+06,"enpu_scaled":0,"ticks":22500,"finite":true}
+none_s2 {"mode":"none","seed":2,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002675e+06,"E_cap":2.000e+06,"enpu_scaled":0,"ticks":22500,"finite":true}
+oneway_s0 {"mode":"oneway","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002737e+06,"E_cap":2.000e+06,"enpu_scaled":10450,"ticks":22500,"finite":true}
+oneway_s1 {"mode":"oneway","seed":1,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002773e+06,"E_cap":2.000e+06,"enpu_scaled":10499,"ticks":22500,"finite":true}
+oneway_s2 {"mode":"oneway","seed":2,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.002915e+06,"E_cap":2.000e+06,"enpu_scaled":10538,"ticks":22500,"finite":true}
+closed_s0 {"mode":"closed","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.005546e+06,"E_cap":2.000e+06,"enpu_scaled":10499,"ticks":22500,"finite":true}
+closed_s1 {"mode":"closed","seed":1,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.004558e+06,"E_cap":2.000e+06,"enpu_scaled":10485,"ticks":22500,"finite":true}
+closed_s2 {"mode":"closed","seed":2,"secs":30.0,"kappa":0.300,"tau_s":0.04167,"Emax":2.004488e+06,"E_cap":2.000e+06,"enpu_scaled":10479,"ticks":22500,"finite":true}
+closed_s0_k0.10 {"mode":"closed","seed":0,"secs":30.0,"kappa":0.100,"tau_s":0.04167,"Emax":2.005029e+06,"E_cap":2.000e+06,"enpu_scaled":9887,"ticks":22500,"finite":true}
+closed_s0_k1.00 {"mode":"closed","seed":0,"secs":30.0,"kappa":1.000,"tau_s":0.04167,"Emax":2.006319e+06,"E_cap":2.000e+06,"enpu_scaled":10861,"ticks":22500,"finite":true}
+oneway_s0_tau0.0210 {"mode":"oneway","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.02100,"Emax":2.002618e+06,"E_cap":2.000e+06,"enpu_scaled":10597,"ticks":22500,"finite":true}
+oneway_s0_tau0.0833 {"mode":"oneway","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.08330,"Emax":2.002723e+06,"E_cap":2.000e+06,"enpu_scaled":10518,"ticks":22500,"finite":true}
+oneway_s0_tau0.1667 {"mode":"oneway","seed":0,"secs":30.0,"kappa":0.300,"tau_s":0.16670,"Emax":2.003204e+06,"E_cap":2.000e+06,"enpu_scaled":10858,"ticks":22500,"finite":true}
+none_s0 flat 0.0 dfaC 0.901 dfaR 0.202 lle 22.3
+none_s1 flat 0.0 dfaC 1.143 dfaR 0.557 lle 4.1
+none_s2 flat 0.0 dfaC 0.909 dfaR 0.576 lle 2.2
+oneway_s0 flat 0.0 dfaC 0.601 dfaR 0.647 lle 756.9
+oneway_s1 flat 0.0 dfaC 0.646 dfaR 0.703 lle 773.2
+oneway_s2 flat 0.0 dfaC 0.64 dfaR 0.66 lle 777.4
+closed_s0 flat 0.0 dfaC 0.652 dfaR 0.769 lle 550.2
+closed_s1 flat 0.0 dfaC 0.646 dfaR 0.741 lle 582.7
+closed_s2 flat 0.0 dfaC 0.666 dfaR 0.723 lle 462.8
+closed_s0_k0.10 flat 0.0 dfaC 0.659 dfaR 0.714 lle 458.5
+closed_s0_k1.00 flat 0.0 dfaC 0.992 dfaR 1.0 lle 104.3
+oneway_s0_tau0.0210 flat 0.0 dfaC 0.628 dfaR 0.673 lle 743.6
+oneway_s0_tau0.0833 flat 0.0 dfaC 0.599 dfaR 0.648 lle 720.7
+oneway_s0_tau0.1667 flat 0.0 dfaC 0.662 dfaR 0.822 lle 694.6
+{'sine_440Hz': 3.6687570298551595, 'white_noise': 40.93534960146306, 'logistic_r4 (true lambda = ln2 per sample = 33271/s)': 719.7521531157402} 33280.5232128992 {'beta0': 0.5282721514001993, 'beta1': 1.0115791128205684, 'beta2': 1.4909576220358054}
+saved 11.957058429718018

@@ -1,0 +1,9 @@
+inst min     960x600 @1x  hero render 455x274 px  paint median 1452 us  p95 1807 us  (rebuilds 16, last 2353 us)
+inst min     960x600 @2x  hero render 911x547 px  paint median 2526 us  p95 3506 us  (rebuilds 16, last 6941 us)
+inst default 1152x720 @1x  hero render 546x328 px  paint median 1293 us  p95 2048 us  (rebuilds 0, last 3958 us)
+inst default 1152x720 @2x  hero render 1092x656 px  paint median 3236 us  p95 4085 us  (rebuilds 22, last 9575 us)
+inst max     1728x1080 @1x  hero render 819x492 px  paint median 2154 us  p95 2491 us  (rebuilds 0, last 5764 us)
+inst max     1728x1080 @2x  hero render 1638x984 px  paint median 6617 us  p95 8315 us  (rebuilds 50, last 21826 us)
+inst eco default @2x paint median 3412 us p95 5021 us fps 12
+inst browser: 32 factory presets, filter cat='Plucks' tag='bright'
+inst publish_hz hidden=0 closed=0

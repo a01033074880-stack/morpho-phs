@@ -1,0 +1,11 @@
+MORPHO-PHS morpho_cli bench  host=grok-bot-vm-509861073  cpu=Intel(R) Xeon(R) Processor  logical_cores=8  fs=48000  mode=0  potential=0  interp=0
+topology: source=sysfs logical=8 physical=8 perf_physical=8 hybrid=0  auto_threads(L32)=6
+tag=baseline  pin=none  mmcss=0  pool=caller  load_threads=0  barrier_spin_us=50  idle_spin_us=200  adaptive_spin=1  paced=1
+time=2026-10-30T21:28:50.564+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+baseline        128  32    3      10.243   1311.1   2127.2     2560.3    2703.9   2666.7    0.798     1/1500     FAIL*  pin=none mmcss=0 pool=caller+2
+baseline        128  32    4       9.196   1177.1   2040.2    12114.7   18105.8   2666.7    0.765     6/1500     FAIL*  pin=none mmcss=0 pool=caller+3
+baseline        128  32    5       7.670    981.8  10483.6    16257.5   20021.8   2666.7    3.931    47/1500     FAIL*  pin=none mmcss=0 pool=caller+4
+baseline        128  32    6     114.605  14669.4  21064.9    29334.4   29351.7   2666.7    7.899  1426/1500     FAIL*  pin=none mmcss=0 pool=caller+5
+baseline        128  32    8     130.078  16650.0  33340.9    74831.4   93026.8   2666.7   12.503  1500/1500     FAIL*  pin=none mmcss=0 pool=caller+7
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

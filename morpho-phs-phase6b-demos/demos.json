@@ -1,0 +1,515 @@
+[
+ {
+  "name": "Gyro Bell",
+  "category": "Gyro Bells",
+  "file": "001_gyro_bell",
+  "seconds": 9.05,
+  "lufs_i": -18.083923777757576,
+  "true_peak_dbtp": -2.866003247903057,
+  "peak_limited": false
+ },
+ {
+  "name": "Counter-Spin Bell",
+  "category": "Gyro Bells",
+  "file": "002_counter_spin_bell",
+  "seconds": 9.3,
+  "lufs_i": -18.066654482192504,
+  "true_peak_dbtp": -4.2653832282322774,
+  "peak_limited": false
+ },
+ {
+  "name": "Glass Gong",
+  "category": "Gyro Bells",
+  "file": "003_glass_gong",
+  "seconds": 10.8,
+  "lufs_i": -18.004205976481465,
+  "true_peak_dbtp": -2.797871873456131,
+  "peak_limited": false
+ },
+ {
+  "name": "Toy Carillon",
+  "category": "Gyro Bells",
+  "file": "004_toy_carillon",
+  "seconds": 8.5,
+  "lufs_i": -17.995251745505612,
+  "true_peak_dbtp": -2.327337037041758,
+  "peak_limited": false
+ },
+ {
+  "name": "Cathedral Gyro 32",
+  "category": "Gyro Bells",
+  "file": "005_cathedral_gyro_32",
+  "seconds": 13.2,
+  "lufs_i": -18.06848129062985,
+  "true_peak_dbtp": -3.7568435053615024,
+  "peak_limited": false
+ },
+ {
+  "name": "Honeycomb Harp",
+  "category": "Plucks",
+  "file": "006_honeycomb_harp",
+  "seconds": 8.5,
+  "lufs_i": -18.003007669404393,
+  "true_peak_dbtp": -1.9826089793093122,
+  "peak_limited": false
+ },
+ {
+  "name": "Snowflake Koto",
+  "category": "Plucks",
+  "file": "007_snowflake_koto",
+  "seconds": 8.5,
+  "lufs_i": -19.717499488156946,
+  "true_peak_dbtp": -1.2007206214470942,
+  "peak_limited": false
+ },
+ {
+  "name": "Felt Lattice",
+  "category": "Plucks",
+  "file": "008_felt_lattice",
+  "seconds": 8.5,
+  "lufs_i": -20.444359776870442,
+  "true_peak_dbtp": -1.251113424472863,
+  "peak_limited": true
+ },
+ {
+  "name": "Bent Tine",
+  "category": "Plucks",
+  "file": "009_bent_tine",
+  "seconds": 8.5,
+  "lufs_i": -19.171268165231346,
+  "true_peak_dbtp": -1.2006901804592387,
+  "peak_limited": false
+ },
+ {
+  "name": "Defect Kalimba",
+  "category": "Percussive Lattice",
+  "file": "010_defect_kalimba",
+  "seconds": 10.2,
+  "lufs_i": -20.41681075615765,
+  "true_peak_dbtp": -1.280491021642024,
+  "peak_limited": true
+ },
+ {
+  "name": "Low Mallets",
+  "category": "Percussive Lattice",
+  "file": "011_low_mallets",
+  "seconds": 8.5,
+  "lufs_i": -23.65673403481461,
+  "true_peak_dbtp": -1.303032895935149,
+  "peak_limited": true
+ },
+ {
+  "name": "Shard Clave",
+  "category": "Percussive Lattice",
+  "file": "012_shard_clave",
+  "seconds": 8.5,
+  "lufs_i": -25.860550623717266,
+  "true_peak_dbtp": -1.138509177615783,
+  "peak_limited": true
+ },
+ {
+  "name": "Ring Cavity Tom",
+  "category": "Percussive Lattice",
+  "file": "013_ring_cavity_tom",
+  "seconds": 8.5,
+  "lufs_i": -20.67260482969005,
+  "true_peak_dbtp": -1.303599299799907,
+  "peak_limited": true
+ },
+ {
+  "name": "Chiral Cello",
+  "category": "Chiral Strings",
+  "file": "014_chiral_cello",
+  "seconds": 9.5,
+  "lufs_i": -18.004697043717105,
+  "true_peak_dbtp": -6.514625737710257,
+  "peak_limited": false
+ },
+ {
+  "name": "Rusty Bow",
+  "category": "Chiral Strings",
+  "file": "015_rusty_bow",
+  "seconds": 9.05,
+  "lufs_i": -19.312631807609705,
+  "true_peak_dbtp": -1.1960784700649247,
+  "peak_limited": false
+ },
+ {
+  "name": "Viola Gyre",
+  "category": "Chiral Strings",
+  "file": "016_viola_gyre",
+  "seconds": 9.75,
+  "lufs_i": -17.998034632823263,
+  "true_peak_dbtp": -5.739817690785015,
+  "peak_limited": false
+ },
+ {
+  "name": "Glass Harmonica",
+  "category": "Chiral Strings",
+  "file": "017_glass_harmonica",
+  "seconds": 10.5,
+  "lufs_i": -18.000912343512585,
+  "true_peak_dbtp": -5.440978759189152,
+  "peak_limited": false
+ },
+ {
+  "name": "Sul Ponticello",
+  "category": "Chiral Strings",
+  "file": "018_sul_ponticello",
+  "seconds": 8.85,
+  "lufs_i": -18.00206740456339,
+  "true_peak_dbtp": -5.7858642936954165,
+  "peak_limited": false
+ },
+ {
+  "name": "Rim Rider",
+  "category": "Edge / Topological",
+  "file": "019_rim_rider",
+  "seconds": 12.6,
+  "lufs_i": -17.997141545784444,
+  "true_peak_dbtp": -3.105663109213822,
+  "peak_limited": false
+ },
+ {
+  "name": "Mirror Rim",
+  "category": "Edge / Topological",
+  "file": "020_mirror_rim",
+  "seconds": 12.5,
+  "lufs_i": -18.000755315614096,
+  "true_peak_dbtp": -2.5657071013016,
+  "peak_limited": false
+ },
+ {
+  "name": "Edge Chime",
+  "category": "Edge / Topological",
+  "file": "021_edge_chime",
+  "seconds": 12.15,
+  "lufs_i": -19.12671514893308,
+  "true_peak_dbtp": -1.2049593605453506,
+  "peak_limited": false
+ },
+ {
+  "name": "Ember Field",
+  "category": "Excitable Textures",
+  "file": "022_ember_field",
+  "seconds": 11.3,
+  "lufs_i": -18.00127419740151,
+  "true_peak_dbtp": -3.096398695791523,
+  "peak_limited": false
+ },
+ {
+  "name": "Static Bloom",
+  "category": "Excitable Textures",
+  "file": "023_static_bloom",
+  "seconds": 9.35,
+  "lufs_i": -17.997726512371003,
+  "true_peak_dbtp": -5.805694317995455,
+  "peak_limited": false
+ },
+ {
+  "name": "Slow Tide",
+  "category": "Excitable Textures",
+  "file": "024_slow_tide",
+  "seconds": 14.6,
+  "lufs_i": -17.995033847493836,
+  "true_peak_dbtp": -2.581425466693731,
+  "peak_limited": false
+ },
+ {
+  "name": "Nerve Net",
+  "category": "Excitable Textures",
+  "file": "025_nerve_net",
+  "seconds": 11.6,
+  "lufs_i": -17.999390826762255,
+  "true_peak_dbtp": -5.517297849067896,
+  "peak_limited": false
+ },
+ {
+  "name": "Spiral Drone",
+  "category": "Drones",
+  "file": "026_spiral_drone",
+  "seconds": 11.25,
+  "lufs_i": -18.000628074082595,
+  "true_peak_dbtp": -3.2162881638698977,
+  "peak_limited": false
+ },
+ {
+  "name": "Low Orbit",
+  "category": "Drones",
+  "file": "027_low_orbit",
+  "seconds": 14.2,
+  "lufs_i": -18.004519441404454,
+  "true_peak_dbtp": -4.259192256023141,
+  "peak_limited": false
+ },
+ {
+  "name": "Halo Choir",
+  "category": "Drones",
+  "file": "028_halo_choir",
+  "seconds": 11.9,
+  "lufs_i": -18.003483593570504,
+  "true_peak_dbtp": -3.9105839898580452,
+  "peak_limited": false
+ },
+ {
+  "name": "Big Spiral 32",
+  "category": "Drones",
+  "file": "029_big_spiral_32",
+  "seconds": 11.15,
+  "lufs_i": -17.995299351048292,
+  "true_peak_dbtp": -3.315643941941512,
+  "peak_limited": false
+ },
+ {
+  "name": "Morphogen Tapestry",
+  "category": "Morph Evolutions",
+  "file": "030_morphogen_tapestry",
+  "seconds": 10.95,
+  "lufs_i": -17.966963041290846,
+  "true_peak_dbtp": -6.486007049629721,
+  "peak_limited": false
+ },
+ {
+  "name": "Turing Bells",
+  "category": "Morph Evolutions",
+  "file": "031_turing_bells",
+  "seconds": 10.25,
+  "lufs_i": -18.003323496692854,
+  "true_peak_dbtp": -3.182307007582267,
+  "peak_limited": false
+ },
+ {
+  "name": "Breathing Glass",
+  "category": "Morph Evolutions",
+  "file": "032_breathing_glass",
+  "seconds": 10.0,
+  "lufs_i": -17.9951272276416,
+  "true_peak_dbtp": -1.9221635294086326,
+  "peak_limited": false
+ },
+ {
+  "name": "Edge Shimmer",
+  "category": "Edge Dispersers",
+  "file": "101_edge_shimmer",
+  "seconds": 8.55,
+  "lufs_i": -21.770454380410108,
+  "true_peak_dbtp": -1.2048138256622523,
+  "peak_limited": false
+ },
+ {
+  "name": "Low Edge Rumble",
+  "category": "Edge Dispersers",
+  "file": "102_low_edge_rumble",
+  "seconds": 8.6,
+  "lufs_i": -20.004036436659852,
+  "true_peak_dbtp": -1.4939201137454106,
+  "peak_limited": false
+ },
+ {
+  "name": "Glass Corridor",
+  "category": "Edge Dispersers",
+  "file": "103_glass_corridor",
+  "seconds": 8.55,
+  "lufs_i": -21.059030762935397,
+  "true_peak_dbtp": -1.2018134279911612,
+  "peak_limited": false
+ },
+ {
+  "name": "Grit Edge",
+  "category": "Edge Dispersers",
+  "file": "104_grit_edge",
+  "seconds": 8.55,
+  "lufs_i": -19.997911650527048,
+  "true_peak_dbtp": -1.5490705946142056,
+  "peak_limited": false
+ },
+ {
+  "name": "Pinhole Edge",
+  "category": "Edge Dispersers",
+  "file": "105_pinhole_edge",
+  "seconds": 8.55,
+  "lufs_i": -19.997961061800773,
+  "true_peak_dbtp": -1.642486847145218,
+  "peak_limited": false
+ },
+ {
+  "name": "Tiny Edge 8",
+  "category": "Edge Dispersers",
+  "file": "106_tiny_edge_8",
+  "seconds": 8.55,
+  "lufs_i": -20.73983148058247,
+  "true_peak_dbtp": -1.2001025952170294,
+  "peak_limited": false
+ },
+ {
+  "name": "Long Edge 32",
+  "category": "Edge Dispersers",
+  "file": "107_long_edge_32",
+  "seconds": 8.55,
+  "lufs_i": -19.9950226780252,
+  "true_peak_dbtp": -2.287744301693406,
+  "peak_limited": false
+ },
+ {
+  "name": "Freeze Halo",
+  "category": "Defect Freezers",
+  "file": "108_freeze_halo",
+  "seconds": 12.7,
+  "lufs_i": -20.004468136364334,
+  "true_peak_dbtp": -7.283409199615608,
+  "peak_limited": false
+ },
+ {
+  "name": "Crystal Cage",
+  "category": "Defect Freezers",
+  "file": "109_crystal_cage",
+  "seconds": 9.1,
+  "lufs_i": -19.999831855347054,
+  "true_peak_dbtp": -5.9667276160939515,
+  "peak_limited": false
+ },
+ {
+  "name": "Soft Hold",
+  "category": "Defect Freezers",
+  "file": "110_soft_hold",
+  "seconds": 10.2,
+  "lufs_i": -19.99717275158516,
+  "true_peak_dbtp": -6.380022286605351,
+  "peak_limited": false
+ },
+ {
+  "name": "Shattered Ice",
+  "category": "Defect Freezers",
+  "file": "111_shattered_ice",
+  "seconds": 10.35,
+  "lufs_i": -19.971244140762064,
+  "true_peak_dbtp": -5.991730837259528,
+  "peak_limited": false
+ },
+ {
+  "name": "Spiral Lock",
+  "category": "Defect Freezers",
+  "file": "112_spiral_lock",
+  "seconds": 11.2,
+  "lufs_i": -20.000942772919732,
+  "true_peak_dbtp": -4.567094198136675,
+  "peak_limited": false
+ },
+ {
+  "name": "Glacier 32",
+  "category": "Defect Freezers",
+  "file": "113_glacier_32",
+  "seconds": 13.35,
+  "lufs_i": -20.002616893541873,
+  "true_peak_dbtp": -6.715384615407296,
+  "peak_limited": false
+ },
+ {
+  "name": "Bulk Smear",
+  "category": "Lattice Spaces",
+  "file": "114_bulk_smear",
+  "seconds": 8.55,
+  "lufs_i": -20.00105568688791,
+  "true_peak_dbtp": -1.4778513396373643,
+  "peak_limited": false
+ },
+ {
+  "name": "Honeycomb Room",
+  "category": "Lattice Spaces",
+  "file": "115_honeycomb_room",
+  "seconds": 8.7,
+  "lufs_i": -19.99865032128103,
+  "true_peak_dbtp": -6.405043557029262,
+  "peak_limited": false
+ },
+ {
+  "name": "Gyro Chamber",
+  "category": "Lattice Spaces",
+  "file": "116_gyro_chamber",
+  "seconds": 9.2,
+  "lufs_i": -20.002173491856986,
+  "true_peak_dbtp": -6.790704887279966,
+  "peak_limited": false
+ },
+ {
+  "name": "Dark Plate",
+  "category": "Lattice Spaces",
+  "file": "117_dark_plate",
+  "seconds": 9.7,
+  "lufs_i": -20.00338963246369,
+  "true_peak_dbtp": -7.802303212734049,
+  "peak_limited": false
+ },
+ {
+  "name": "Ember Echo",
+  "category": "Excitable FX",
+  "file": "118_ember_echo",
+  "seconds": 11.75,
+  "lufs_i": -19.947768804536093,
+  "true_peak_dbtp": -7.847700266755884,
+  "peak_limited": false
+ },
+ {
+  "name": "Static Gate",
+  "category": "Excitable FX",
+  "file": "119_static_gate",
+  "seconds": 9.4,
+  "lufs_i": -19.994641712690196,
+  "true_peak_dbtp": -8.353403639848944,
+  "peak_limited": false
+ },
+ {
+  "name": "Living Edge",
+  "category": "Excitable FX",
+  "file": "120_living_edge",
+  "seconds": 8.55,
+  "lufs_i": -20.001114560986483,
+  "true_peak_dbtp": -2.0236507266850694,
+  "peak_limited": false
+ },
+ {
+  "name": "Spark Chamber",
+  "category": "Excitable FX",
+  "file": "121_spark_chamber",
+  "seconds": 10.25,
+  "lufs_i": -19.997014269266064,
+  "true_peak_dbtp": -8.508187243078352,
+  "peak_limited": false
+ },
+ {
+  "name": "Breathing Edge",
+  "category": "Morph Evolutions",
+  "file": "122_breathing_edge",
+  "seconds": 8.55,
+  "lufs_i": -20.0032409783668,
+  "true_peak_dbtp": -1.6289503422614282,
+  "peak_limited": false
+ },
+ {
+  "name": "Tidal Freeze",
+  "category": "Morph Evolutions",
+  "file": "123_tidal_freeze",
+  "seconds": 11.0,
+  "lufs_i": -19.95028433340943,
+  "true_peak_dbtp": -8.004318714659847,
+  "peak_limited": false
+ },
+ {
+  "name": "Turing Smear",
+  "category": "Morph Evolutions",
+  "file": "124_turing_smear",
+  "seconds": 9.0,
+  "lufs_i": -19.99735651398879,
+  "true_peak_dbtp": -5.103466099769543,
+  "peak_limited": false
+ },
+ {
+  "name": "Chiral Drift",
+  "category": "Morph Evolutions",
+  "file": "125_chiral_drift",
+  "seconds": 8.6,
+  "lufs_i": -19.99687346506348,
+  "true_peak_dbtp": -2.439208005975617,
+  "peak_limited": false
+ }
+]

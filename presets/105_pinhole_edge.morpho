@@ -1,0 +1,145 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Pinhole Edge",
+  "category": "Edge Dispersers",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Defects pinch the rim: the edge wave scatters at the pinholes into comb-like echoes.",
+  "description_zh": "缺陷夹窄了边缘：边缘波在针孔处散射成梳状回声。",
+  "tags": [
+    "comb",
+    "defects",
+    "edge"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "FX Edge Disperser",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1599.9826,
+    "chirality": 0.75,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.65,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.4959,
+    "freeze": 0.0,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": 2.21,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.8,
+    "macro1": 0.5931,
+    "macro2": 0.875,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.2,
+    "macro6": 0.25,
+    "macro7": 0.5,
+    "macro8": 0.8,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Defects"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 640.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.25,
+        "hi": 0.8
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.3,
+        0.05
+      ],
+      [
+        0.5,
+        0.05
+      ],
+      [
+        0.7,
+        0.05
+      ]
+    ],
+    "morphogen": []
+  }
+}

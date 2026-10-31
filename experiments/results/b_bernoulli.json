@@ -1,0 +1,29 @@
+{
+ "sympy_residual": "0",
+ "sympy_initial": "p0",
+ "sympy_limit_mu0": "m**(3/2)*p0/sqrt(2*eta*p0**2*t + m**3)",
+ "literal_nan_at_mu0": true,
+ "literal_max_relerr_finite": 0.002808556006578987,
+ "stable_max_relerr": 1.551993139919381e-16,
+ "stable_huge_dt": [
+  2236.06797749979,
+  2236.06797749979,
+  2236.06797749979,
+  2236.06797749979,
+  2236.06797749979
+ ],
+ "literal_huge_dt": [
+  NaN,
+  NaN,
+  NaN,
+  NaN,
+  NaN
+ ],
+ "pstar": 2236.06797749979,
+ "random_monotone_bounded_pass": 1000000,
+ "random_total": 1000000,
+ "random_literal_nonfinite": 9172,
+ "limit_cycle_v_amp_sim": 2309.406738075122,
+ "proposal_radius_sqrt(mu/eta)": 2000.0,
+ "rayleigh_averaging_sqrt(4mu/3eta)": 2309.4010767585028
+}

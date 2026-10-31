@@ -1,0 +1,5 @@
+free_passive | RK4 {"divergence_rate": 0.339, "n": 1000, "max_energy_ratio": 1.0, "final_energy_ratio_median": 0.3473049828484868, "wall_s": 34.45, "us_per_step_per_trial": 16.821425640955567, "passivity_violation_rate": 0.0, "max_single_step_rel_increase": 0.0}
+passive | RK4 {"divergence_rate": 0.339, "n": 1000, "max_energy_ratio": 224.48345566313787, "final_energy_ratio_median": 0.5384331480247172, "wall_s": 40.67, "us_per_step_per_trial": 19.856265746057034}
+active | RK4 {"divergence_rate": 0.339, "n": 1000, "max_energy_ratio": 1085.4203771080165, "final_energy_ratio_median": 3.13782567020058, "wall_s": 36.89, "us_per_step_per_trial": 18.01380724646151}
+pump | RK4 {"divergence_rate": 0.0, "n": 64, "max_energy_ratio": 2.8793824967058126, "final_energy_ratio_median": 1.133475750317999, "wall_s": 2.52, "us_per_step_per_trial": 19.24896969285328}
+pump_lossless | RK4 {"divergence_rate": 0.0, "n": 64, "max_energy_ratio": 31.699224559673674, "final_energy_ratio_median": 14.15087952519111, "wall_s": 2.52, "us_per_step_per_trial": 19.259274267824367}

@@ -1,0 +1,31 @@
+[snap] init
+[snap] prepared
+  program 0: Edge Dispersers / Edge Shimmer
+  program 1: Edge Dispersers / Low Edge Rumble
+  program 2: Edge Dispersers / Glass Corridor
+  program 3: Edge Dispersers / Grit Edge
+  program 4: Edge Dispersers / Pinhole Edge
+  program 5: Edge Dispersers / Tiny Edge 8
+  program 6: Edge Dispersers / Long Edge 32
+  program 7: Defect Freezers / Freeze Halo
+  program 8: Defect Freezers / Crystal Cage
+  program 9: Defect Freezers / Soft Hold
+  program 10: Defect Freezers / Shattered Ice
+  program 11: Defect Freezers / Spiral Lock
+  program 12: Defect Freezers / Glacier 32
+  program 13: Lattice Spaces / Bulk Smear
+  program 14: Lattice Spaces / Honeycomb Room
+  program 15: Lattice Spaces / Gyro Chamber
+  program 16: Lattice Spaces / Dark Plate
+  program 17: Excitable FX / Ember Echo
+  program 18: Excitable FX / Static Gate
+  program 19: Excitable FX / Living Edge
+  program 20: Excitable FX / Spark Chamber
+  program 21: Morph Evolutions / Breathing Edge
+  program 22: Morph Evolutions / Tidal Freeze
+  program 23: Morph Evolutions / Turing Smear
+  program 24: Morph Evolutions / Chiral Drift
+  current: Edge Dispersers / Edge Shimmer
+[snap] audio ok
+[snap] editor
+[snap] shown

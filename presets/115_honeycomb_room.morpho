@@ -1,0 +1,132 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Honeycomb Room",
+  "category": "Lattice Spaces",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Medium decay, wide pickups: the flake as a small warm wooden room.",
+  "description_zh": "中等衰减、宽拾音：把雪花当作一间温暖的小木屋。",
+  "tags": [
+    "room",
+    "space",
+    "warm"
+  ],
+  "cpu_class": "standard",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 949.9642,
+    "chirality": 0.35,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.62,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.4959,
+    "freeze": 0.0,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": -2.66,
+    "spread": 0.4,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5693,
+    "macro2": 0.675,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.2,
+    "macro6": 0.25,
+    "macro7": 0.875,
+    "macro8": 0.6,
+    "edge_width": 1.75,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Defects"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 380.0,
+        "hi": 1900.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.22,
+        "hi": 0.77
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

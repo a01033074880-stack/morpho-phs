@@ -1,0 +1,58 @@
+name,file,mode,L,threads,potential,cfg,box_us,box_p99_over_budget,box_overruns,box_blocks,ratio,tail,i9_median_us,i9_p99_over_budget,i9_median_load,cpu_class,source
+Gyro Bell,001_gyro_bell.morpho,2,16,1,1,L16_1T,2.858,0.21,1.0,3750.0,1.106,1.85,3.16,0.28,0.152,standard,re-run 10 s
+Counter-Spin Bell,002_counter_spin_bell.morpho,2,16,1,1,L16_1T,2.556,0.177,0.0,1500.0,1.106,1.85,2.83,0.251,0.136,standard,bank run 4 s
+Glass Gong,003_glass_gong.morpho,2,16,1,1,L16_1T,2.518,0.18,1.0,1500.0,1.106,1.85,2.79,0.247,0.134,standard,bank run 4 s
+Toy Carillon,004_toy_carillon.morpho,2,8,1,0,L16_1T,0.464,0.037,0.0,1500.0,1.106,1.85,0.51,0.046,0.025,eco,bank run 4 s
+Cathedral Gyro 32,005_cathedral_gyro_32.morpho,2,32,3,1,L32_hq_3T,5.878,0.446,5.0,3750.0,0.913,3.32,5.37,0.856,0.258,high,re-run 10 s
+Honeycomb Harp,006_honeycomb_harp.morpho,2,16,1,0,L16_1T,1.481,0.139,0.0,1500.0,1.106,1.85,1.64,0.145,0.079,eco,bank run 4 s
+Snowflake Koto,007_snowflake_koto.morpho,2,16,1,0,L16_1T,1.46,0.121,0.0,1500.0,1.106,1.85,1.61,0.143,0.078,eco,bank run 4 s
+Felt Lattice,008_felt_lattice.morpho,2,16,1,0,L16_1T,1.516,0.134,3.0,1500.0,1.106,1.85,1.68,0.149,0.081,eco,bank run 4 s
+Bent Tine,009_bent_tine.morpho,2,16,1,1,L16_1T,2.517,0.171,0.0,1500.0,1.106,1.85,2.78,0.247,0.134,standard,bank run 4 s
+Defect Kalimba,010_defect_kalimba.morpho,2,16,1,0,L16_1T,1.511,0.169,1.0,1500.0,1.106,1.85,1.67,0.148,0.08,eco,bank run 4 s
+Low Mallets,011_low_mallets.morpho,2,16,1,0,L16_1T,1.537,0.137,0.0,1500.0,1.106,1.85,1.7,0.151,0.082,eco,bank run 4 s
+Shard Clave,012_shard_clave.morpho,2,16,1,0,L16_1T,1.478,0.103,0.0,1500.0,1.106,1.85,1.63,0.145,0.078,eco,bank run 4 s
+Ring Cavity Tom,013_ring_cavity_tom.morpho,2,16,1,0,L16_1T,1.459,0.092,0.0,1500.0,1.106,1.85,1.61,0.143,0.077,eco,bank run 4 s
+Chiral Cello,014_chiral_cello.morpho,2,16,1,0,L16_1T,1.567,0.16,1.0,1500.0,1.106,1.85,1.73,0.154,0.083,eco,bank run 4 s
+Rusty Bow,015_rusty_bow.morpho,2,16,1,0,L16_1T,1.571,0.137,0.0,1500.0,1.106,1.85,1.74,0.154,0.083,eco,bank run 4 s
+Viola Gyre,016_viola_gyre.morpho,2,16,1,0,L16_1T,1.482,0.106,0.0,1500.0,1.106,1.85,1.64,0.145,0.079,eco,bank run 4 s
+Glass Harmonica,017_glass_harmonica.morpho,2,16,1,1,L16_1T,2.553,0.179,1.0,1500.0,1.106,1.85,2.82,0.25,0.136,standard,bank run 4 s
+Sul Ponticello,018_sul_ponticello.morpho,2,16,1,0,L16_1T,1.515,0.141,0.0,1500.0,1.106,1.85,1.68,0.149,0.08,eco,bank run 4 s
+Rim Rider,019_rim_rider.morpho,2,16,1,0,L16_1T,1.57,0.115,0.0,1500.0,1.106,1.85,1.74,0.154,0.083,eco,bank run 4 s
+Mirror Rim,020_mirror_rim.morpho,2,16,1,0,L16_1T,1.582,0.121,0.0,1500.0,1.106,1.85,1.75,0.155,0.084,eco,bank run 4 s
+Edge Chime,021_edge_chime.morpho,2,16,1,0,L16_1T,1.476,0.124,0.0,1500.0,1.106,1.85,1.63,0.145,0.078,eco,bank run 4 s
+Ember Field,022_ember_field.morpho,2,16,1,0,L16_1T,1.514,0.113,0.0,1500.0,1.106,1.85,1.67,0.149,0.08,eco,bank run 4 s
+Static Bloom,023_static_bloom.morpho,2,16,1,0,L16_1T,1.587,0.115,0.0,1500.0,1.106,1.85,1.76,0.156,0.084,eco,bank run 4 s
+Slow Tide,024_slow_tide.morpho,2,16,1,0,L16_1T,1.569,0.119,0.0,1500.0,1.106,1.85,1.74,0.154,0.083,eco,bank run 4 s
+Nerve Net,025_nerve_net.morpho,2,16,1,1,L16_1T,2.673,0.192,0.0,1500.0,1.106,1.85,2.96,0.262,0.142,standard,bank run 4 s
+Spiral Drone,026_spiral_drone.morpho,2,16,1,0,L16_1T,1.566,0.114,0.0,1500.0,1.106,1.85,1.73,0.154,0.083,eco,bank run 4 s
+Low Orbit,027_low_orbit.morpho,2,16,1,0,L16_1T,1.558,0.139,0.0,1500.0,1.106,1.85,1.72,0.153,0.083,eco,bank run 4 s
+Halo Choir,028_halo_choir.morpho,2,16,1,1,L16_1T,2.74,0.172,0.0,1500.0,1.106,1.85,3.03,0.269,0.145,standard,bank run 4 s
+Big Spiral 32,029_big_spiral_32.morpho,2,32,3,1,L32_hq_3T,6.096,0.466,12.0,3750.0,0.913,3.32,5.57,0.888,0.267,high,re-run 10 s
+Morphogen Tapestry,030_morphogen_tapestry.morpho,2,16,1,0,L16_1T,1.644,0.135,0.0,1500.0,1.106,1.85,1.82,0.161,0.087,eco,bank run 4 s
+Turing Bells,031_turing_bells.morpho,2,16,1,0,L16_1T,1.684,0.125,1.0,1500.0,1.106,1.85,1.86,0.165,0.089,eco,bank run 4 s
+Breathing Glass,032_breathing_glass.morpho,2,16,1,0,L16_1T,1.6,0.118,0.0,1500.0,1.106,1.85,1.77,0.157,0.085,eco,bank run 4 s
+Edge Shimmer,101_edge_shimmer.morpho,0,16,1,0,L16_1T,1.712,0.142,0.0,1500.0,1.106,1.85,1.89,0.168,0.091,eco,bank run 4 s
+Low Edge Rumble,102_low_edge_rumble.morpho,0,16,1,0,L16_1T,1.662,0.151,0.0,1500.0,1.106,1.85,1.84,0.163,0.088,eco,bank run 4 s
+Glass Corridor,103_glass_corridor.morpho,0,16,1,1,L16_1T,2.655,0.182,0.0,1500.0,1.106,1.85,2.94,0.26,0.141,standard,bank run 4 s
+Grit Edge,104_grit_edge.morpho,0,16,1,0,L16_1T,1.577,0.115,0.0,1500.0,1.106,1.85,1.74,0.155,0.084,eco,bank run 4 s
+Pinhole Edge,105_pinhole_edge.morpho,0,16,1,0,L16_1T,1.595,0.133,0.0,1500.0,1.106,1.85,1.76,0.156,0.085,eco,bank run 4 s
+Tiny Edge 8,106_tiny_edge_8.morpho,0,8,1,0,L16_1T,0.468,0.04,0.0,1500.0,1.106,1.85,0.52,0.046,0.025,eco,bank run 4 s
+Long Edge 32,107_long_edge_32.morpho,0,32,2,0,L32_q_2T,4.3,0.295,3.0,3750.0,0.89,1.83,3.83,0.337,0.184,standard,re-run 10 s
+Freeze Halo,108_freeze_halo.morpho,1,16,1,0,L16_1T,1.797,0.219,0.0,1500.0,1.106,1.85,1.99,0.176,0.095,eco,bank run 4 s
+Crystal Cage,109_crystal_cage.morpho,1,16,1,0,L16_1T,1.853,0.125,0.0,1500.0,1.106,1.85,2.05,0.182,0.098,eco,bank run 4 s
+Soft Hold,110_soft_hold.morpho,1,16,1,0,L16_1T,1.929,0.156,0.0,1500.0,1.106,1.85,2.13,0.189,0.102,eco,bank run 4 s
+Shattered Ice,111_shattered_ice.morpho,1,16,1,1,L16_1T,2.991,0.225,1.0,1500.0,1.106,1.85,3.31,0.293,0.159,standard,bank run 4 s
+Spiral Lock,112_spiral_lock.morpho,1,16,1,0,L16_1T,1.684,0.175,2.0,1500.0,1.106,1.85,1.86,0.165,0.089,eco,bank run 4 s
+Glacier 32,113_glacier_32.morpho,1,32,2,0,L32_q_2T,4.001,0.285,3.0,3750.0,0.89,1.83,3.56,0.313,0.171,standard,re-run 10 s
+Bulk Smear,114_bulk_smear.morpho,1,16,1,0,L16_1T,1.679,0.118,0.0,1500.0,1.106,1.85,1.86,0.165,0.089,eco,bank run 4 s
+Honeycomb Room,115_honeycomb_room.morpho,1,16,1,0,L16_1T,1.632,0.111,0.0,1500.0,1.106,1.85,1.81,0.16,0.087,eco,bank run 4 s
+Gyro Chamber,116_gyro_chamber.morpho,1,16,1,0,L16_1T,1.622,0.123,1.0,1500.0,1.106,1.85,1.79,0.159,0.086,eco,bank run 4 s
+Dark Plate,117_dark_plate.morpho,1,16,1,0,L16_1T,1.641,0.123,0.0,1500.0,1.106,1.85,1.82,0.161,0.087,eco,bank run 4 s
+Ember Echo,118_ember_echo.morpho,1,16,1,0,L16_1T,1.714,0.143,0.0,1500.0,1.106,1.85,1.9,0.168,0.091,eco,bank run 4 s
+Static Gate,119_static_gate.morpho,1,16,1,0,L16_1T,1.538,0.103,0.0,1500.0,1.106,1.85,1.7,0.151,0.082,eco,bank run 4 s
+Living Edge,120_living_edge.morpho,0,16,1,0,L16_1T,1.6,0.118,0.0,1500.0,1.106,1.85,1.77,0.157,0.085,eco,bank run 4 s
+Spark Chamber,121_spark_chamber.morpho,1,16,1,1,L16_1T,2.687,0.182,0.0,1500.0,1.106,1.85,2.97,0.264,0.143,standard,bank run 4 s
+Breathing Edge,122_breathing_edge.morpho,0,16,1,0,L16_1T,1.661,0.128,0.0,1500.0,1.106,1.85,1.84,0.163,0.088,eco,bank run 4 s
+Tidal Freeze,123_tidal_freeze.morpho,1,16,1,0,L16_1T,1.505,0.103,0.0,1500.0,1.106,1.85,1.67,0.148,0.08,eco,bank run 4 s
+Turing Smear,124_turing_smear.morpho,1,16,1,0,L16_1T,1.773,0.142,0.0,1500.0,1.106,1.85,1.96,0.174,0.094,eco,bank run 4 s
+Chiral Drift,125_chiral_drift.morpho,0,16,1,0,L16_1T,1.797,0.13,0.0,1500.0,1.106,1.85,1.99,0.176,0.095,eco,bank run 4 s

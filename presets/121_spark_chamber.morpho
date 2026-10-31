@@ -1,0 +1,133 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Spark Chamber",
+  "category": "Excitable FX",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "HQ bulk with a twitchy medium: sparks fly off transients in the high band.",
+  "description_zh": "HQ 体态配敏感介质：瞬态在高频带上迸出火花。",
+  "tags": [
+    "bright",
+    "excitable",
+    "hq",
+    "morphogen"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "HQ (fast log-cosh)",
+    "interp": "1 sample",
+    "tone": 2299.9792,
+    "chirality": 0.7,
+    "nonlinear": 0.25,
+    "hq": 0.5,
+    "decay": 0.65,
+    "life": 0.1501,
+    "morph": 0.85,
+    "tau": 0.0508,
+    "freeze": 0.0,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": -13.87,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.7752,
+    "macro2": 0.85,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.85,
+    "macro6": 0.25,
+    "macro7": 0.5,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Gap"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 920.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.25,
+        "hi": 0.8
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "hq",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

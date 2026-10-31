@@ -1,0 +1,59 @@
+fx_edge_disperser                  L8  peak   -1.8 dBFS  rms  -22.8 dBFS  rt 0.089  resets 0  finite
+fx_edge_disperser_chir_neg         L8  peak   -1.9 dBFS  rms  -22.8 dBFS  rt 0.077  resets 0  finite
+fx_edge_disperser_chir_zero        L8  peak   -2.5 dBFS  rms  -22.7 dBFS  rt 0.075  resets 0  finite
+fx_defect_freezer                  L8  peak   -0.1 dBFS  rms  -19.1 dBFS  rt 0.075  resets 0  finite
+fx_defect_freezer_frozen           L8  peak   -2.1 dBFS  rms  -18.0 dBFS  rt 0.075  resets 0  finite
+instrument_bow_mpe                 L8  peak   -4.0 dBFS  rms  -21.4 dBFS  rt 0.073  resets 0  finite
+instrument_pluck_mpe               L8  peak   -5.2 dBFS  rms  -22.0 dBFS  rt 0.072  resets 0  finite
+instrument_life_spiral             L8  peak   -4.3 dBFS  rms  -20.5 dBFS  rt 0.075  resets 0  finite
+fx_edge_disperser                  L16 peak   -2.5 dBFS  rms  -22.8 dBFS  rt 0.282  resets 0  finite
+fx_edge_disperser_chir_neg         L16 peak   -2.5 dBFS  rms  -22.8 dBFS  rt 0.328  resets 0  finite
+fx_edge_disperser_chir_zero        L16 peak   -2.5 dBFS  rms  -23.0 dBFS  rt 0.362  resets 0  finite
+fx_defect_freezer                  L16 peak   -0.5 dBFS  rms  -20.0 dBFS  rt 0.311  resets 0  finite
+fx_defect_freezer_frozen           L16 peak   -1.6 dBFS  rms  -16.5 dBFS  rt 0.323  resets 0  finite
+instrument_bow_mpe                 L16 peak   -6.0 dBFS  rms  -26.2 dBFS  rt 0.318  resets 0  finite
+instrument_pluck_mpe               L16 peak   -4.7 dBFS  rms  -28.4 dBFS  rt 0.313  resets 0  finite
+instrument_life_spiral             L16 peak   -6.5 dBFS  rms  -21.9 dBFS  rt 0.369  resets 0  finite
+fx_edge_disperser                  L32 peak   -0.2 dBFS  rms  -22.6 dBFS  rt 0.449  resets 0  finite
+fx_edge_disperser_chir_neg         L32 peak   -0.2 dBFS  rms  -22.6 dBFS  rt 0.480  resets 0  finite
+fx_edge_disperser_chir_zero        L32 peak   -2.5 dBFS  rms  -23.0 dBFS  rt 0.502  resets 0  finite
+fx_defect_freezer                  L32 peak   -0.4 dBFS  rms  -20.3 dBFS  rt 0.465  resets 0  finite
+fx_defect_freezer_frozen           L32 peak   -0.5 dBFS  rms  -15.9 dBFS  rt 0.406  resets 0  finite
+instrument_bow_mpe                 L32 peak  -10.7 dBFS  rms  -31.8 dBFS  rt 0.429  resets 0  finite
+instrument_pluck_mpe               L32 peak  -17.2 dBFS  rms  -37.4 dBFS  rt 0.437  resets 0  finite
+instrument_life_spiral             L32 peak   -6.4 dBFS  rms  -22.4 dBFS  rt 0.438  resets 0  finite
+fx_edge_disperser                  L16 peak   -2.5 dBFS  rms  -22.8 dBFS  rt 0.339  resets 0  finite
+fx_edge_disperser_chir_neg         L16 peak   -2.5 dBFS  rms  -22.8 dBFS  rt 0.337  resets 0  finite
+fx_edge_disperser_chir_zero        L16 peak   -2.5 dBFS  rms  -23.0 dBFS  rt 0.339  resets 0  finite
+fx_defect_freezer                  L16 peak   -0.6 dBFS  rms  -21.2 dBFS  rt 0.339  resets 0  finite
+fx_defect_freezer_frozen           L16 peak   -2.8 dBFS  rms  -20.7 dBFS  rt 0.461  resets 0  finite
+instrument_bow_mpe                 L16 peak   -0.4 dBFS  rms  -24.0 dBFS  rt 0.349  resets 0  finite
+instrument_pluck_mpe               L16 peak  -12.4 dBFS  rms  -33.2 dBFS  rt 0.354  resets 0  finite
+instrument_life_spiral             L16 peak   -7.2 dBFS  rms  -21.8 dBFS  rt 0.366  resets 0  finite
+Edge Shimmer                   FX Edge      L16 peak   -2.7  rms  -24.3 dBFS  rt 0.321  resets 0 
+Reverse Edge                   FX Edge      L16 peak   -2.7  rms  -24.3 dBFS  rt 0.289  resets 0 
+Low Edge Rumble                FX Edge      L16 peak   -6.1  rms  -25.2 dBFS  rt 0.286  resets 0 
+Glass Corridor                 FX Edge      L16 peak   -4.0  rms  -23.8 dBFS  rt 0.359  resets 0 
+Breathing Edge                 FX Edge      L16 peak   -3.9  rms  -24.3 dBFS  rt 0.297  resets 0 
+Grit Edge                      FX Edge      L16 peak   -3.9  rms  -23.0 dBFS  rt 0.298  resets 0 
+Wide Pickups                   FX Edge      L16 peak   -5.3  rms  -24.6 dBFS  rt 0.293  resets 0 
+Pinhole Edge                   FX Edge      L16 peak   -4.7  rms  -24.2 dBFS  rt 0.276  resets 0 
+Freeze Halo                    FX Freezer   L16 peak   -9.2  rms  -25.1 dBFS  rt 0.293  resets 0 
+Crystal Cage                   FX Freezer   L16 peak   -0.0  rms   -8.7 dBFS  rt 0.288  resets 0 
+Soft Hold                      FX Freezer   L16 peak   -5.4  rms  -19.7 dBFS  rt 0.290  resets 0 
+Shattered Ice                  FX Freezer   L16 peak   -6.8  rms  -22.5 dBFS  rt 0.345  resets 0 
+Bulk Smear                     FX Freezer   L16 peak   -4.3  rms  -23.8 dBFS  rt 0.288  resets 0 
+Chiral Cello                   Inst Bowed   L16 peak   -0.0  rms  -16.5 dBFS  rt 0.303  resets 0 
+Glass Harmonica                Inst Bowed   L16 peak    0.0  rms  -12.9 dBFS  rt 0.356  resets 0 
+Twisted Choir                  Inst Bowed   L16 peak    0.0  rms  -11.1 dBFS  rt 0.298  resets 0 
+Rusty Bow                      Inst Bowed   L16 peak   -0.0  rms  -20.6 dBFS  rt 0.308  resets 0 
+Honeycomb Harp                 Inst Plucked L16 peak   -6.1  rms  -24.8 dBFS  rt 0.323  resets 0 
+Defect Kalimba                 Inst Plucked L16 peak  -18.0  rms  -39.6 dBFS  rt 0.302  resets 0 
+Metal Lattice                  Inst Plucked L16 peak  -14.6  rms  -34.7 dBFS  rt 0.356  resets 0 
+Low Mallets                    Inst Plucked L16 peak  -10.6  rms  -43.6 dBFS  rt 0.293  resets 0 
+Spiral Drone                   Inst Living  L16 peak   -5.6  rms  -19.6 dBFS  rt 0.301  resets 0 
+Ember Field                    Inst Living  L16 peak   -7.0  rms  -21.0 dBFS  rt 0.309  resets 0 
+Restless Swarm                 Inst Living  L16 peak   -2.9  rms  -17.5 dBFS  rt 0.353  resets 0 
+Big Edge 32                    Showcase 32x32 L32 peak   -3.0  rms  -24.0 dBFS  rt 0.407  resets 0 
+Big Spiral 32                  Showcase 32x32 L32 peak   -5.0  rms  -21.2 dBFS  rt 0.527  resets 0 
+Tiny Edge 8                    Showcase 8x8 L8  peak   -3.2  rms  -24.2 dBFS  rt 0.076  resets 0 

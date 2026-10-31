@@ -1,0 +1,406 @@
+{
+ "params": {
+  "a": 0.75,
+  "b": 0.03,
+  "eps": 0.02,
+  "D": 0.5
+ },
+ "tau_s": 0.08333333333333333,
+ "control_rate_Hz": 750.0,
+ "dt_ctrl": 0.016,
+ "citation": "D. Barkley, Physica D 49 (1991) 61-70, doi:10.1016/0167-2789(91)90194-E",
+ "D1_spiral_survival": {
+  "8": {
+   "N_sites": 128,
+   "n": 20,
+   "spiral_survival_frac": 0.95,
+   "period_model_median": 5.711999999999989,
+   "period_s_median": 0.4759999999999991,
+   "period_rel_err_vs_ref": [
+    0.01999999999999913,
+    0.020114942528732138,
+    0.020114942528735913
+   ],
+   "ref_agreement": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "charges_end_hist": [
+    1,
+    19
+   ],
+   "u_range": [
+    0.0,
+    1.0
+   ]
+  },
+  "12": {
+   "N_sites": 288,
+   "n": 20,
+   "spiral_survival_frac": 1.0,
+   "period_model_median": 5.711999999999989,
+   "period_s_median": 0.4759999999999991,
+   "period_rel_err_vs_ref": [
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913
+   ],
+   "ref_agreement": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "charges_end_hist": [
+    0,
+    20
+   ],
+   "u_range": [
+    0.0,
+    1.0
+   ]
+  },
+  "16": {
+   "N_sites": 512,
+   "n": 20,
+   "spiral_survival_frac": 1.0,
+   "period_model_median": 5.711999999999989,
+   "period_s_median": 0.4759999999999991,
+   "period_rel_err_vs_ref": [
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913
+   ],
+   "ref_agreement": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "charges_end_hist": [
+    0,
+    20
+   ],
+   "u_range": [
+    0.0,
+    1.0
+   ]
+  },
+  "24": {
+   "N_sites": 1152,
+   "n": 20,
+   "spiral_survival_frac": 1.0,
+   "period_model_median": 5.711999999999989,
+   "period_s_median": 0.4759999999999991,
+   "period_rel_err_vs_ref": [
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913
+   ],
+   "ref_agreement": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "charges_end_hist": [
+    0,
+    20
+   ],
+   "u_range": [
+    0.0,
+    1.0
+   ]
+  },
+  "32": {
+   "N_sites": 2048,
+   "n": 20,
+   "spiral_survival_frac": 1.0,
+   "period_model_median": 5.711999999999989,
+   "period_s_median": 0.4759999999999991,
+   "period_rel_err_vs_ref": [
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913,
+    0.01999999999999913
+   ],
+   "ref_agreement": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "charges_end_hist": [
+    0,
+    20
+   ],
+   "u_range": [
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "D2_dt_sweep_L16": {
+  "0.004": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 5.616,
+   "umin": 0.0,
+   "umax": 0.9999883300140937
+  },
+  "0.016": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 5.711999999999993,
+   "umin": 0.0,
+   "umax": 1.0
+  },
+  "0.024": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 5.760000000000019,
+   "umin": -0.0031826158223812046,
+   "umax": 1.0
+  },
+  "0.032": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 5.824000000000012,
+   "umin": -0.037827987202421864,
+   "umax": 1.0115949785313467
+  },
+  "0.048": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 5.9999999999999964,
+   "umin": -0.16167740981048895,
+   "umax": 1.0705411027030354
+  },
+  "0.064": {
+   "alive": true,
+   "charges_end": 1,
+   "period": 4.671999999999997,
+   "umin": -0.3028150046480175,
+   "umax": 1.5916069361448228
+  }
+ },
+ "D3_pacing_L16": {
+  "dist_far": 13.576941236277534,
+  "travel_time_model": 11.424,
+  "travel_time_s": 0.952,
+  "wave_speed_sites_per_s": 14.26149289524951,
+  "refractory_note": "ratio<1 => stimuli fall in refractory tail (period-doubling / Wenckebach-like block)",
+  "rows": {
+   "2": {
+    "stimuli": 69,
+    "far_responses": 23,
+    "ratio": 0.3333333333333333,
+    "period_s": 0.16666666666666666
+   },
+   "3": {
+    "stimuli": 46,
+    "far_responses": 23,
+    "ratio": 0.5,
+    "period_s": 0.25
+   },
+   "4": {
+    "stimuli": 35,
+    "far_responses": 18,
+    "ratio": 0.5142857142857142,
+    "period_s": 0.3333333333333333
+   },
+   "5": {
+    "stimuli": 28,
+    "far_responses": 28,
+    "ratio": 1.0,
+    "period_s": 0.41666666666666663
+   },
+   "6": {
+    "stimuli": 23,
+    "far_responses": 23,
+    "ratio": 1.0,
+    "period_s": 0.5
+   },
+   "8": {
+    "stimuli": 18,
+    "far_responses": 18,
+    "ratio": 1.0,
+    "period_s": 0.6666666666666666
+   },
+   "10": {
+    "stimuli": 14,
+    "far_responses": 14,
+    "ratio": 1.0,
+    "period_s": 0.8333333333333333
+   },
+   "14": {
+    "stimuli": 10,
+    "far_responses": 10,
+    "ratio": 1.0,
+    "period_s": 1.1666666666666665
+   }
+  }
+ },
+ "D4_audio_trigger": {
+  "loop_s": 8.0,
+  "true_onsets": 24,
+  "kicks": 16,
+  "snares": 8,
+  "note": "launched = counterfactual test: with vs without that stimulus, >=10 extra sites excited (u diff>0.5) within 2 model units; failures = stimulus in refractory tail; S substeps per 750 Hz tick => medium time scale tau=TAU/S",
+  "by_substeps": {
+   "1": {
+    "tau_s": 0.08333333333333333,
+    "substeps": 1,
+    "refractory_period_s_approx": 0.41666666666666663,
+    "triggers": 29,
+    "triggers_A": 20,
+    "triggers_B": 9,
+    "triggers_matched_to_true_onsets": 24,
+    "extra_triggers": 5,
+    "detected_onsets": 24,
+    "detection_latency_ms_median": 1.3333333333331865,
+    "launched_waves": {
+     "A": 16,
+     "B": 5
+    },
+    "launch_rate": 0.7241379310344828,
+    "counterfactual_extra_excited_sites": [
+     41,
+     41,
+     9,
+     39,
+     4,
+     39,
+     41,
+     10,
+     39,
+     28,
+     39,
+     4,
+     39,
+     5,
+     10,
+     39,
+     25,
+     39,
+     4,
+     39,
+     5,
+     10,
+     39,
+     25,
+     39,
+     4,
+     39,
+     5,
+     10
+    ],
+    "far_site_activations": 11
+   },
+   "2": {
+    "tau_s": 0.041666666666666664,
+    "substeps": 2,
+    "refractory_period_s_approx": 0.20833333333333331,
+    "triggers": 29,
+    "triggers_A": 20,
+    "triggers_B": 9,
+    "triggers_matched_to_true_onsets": 24,
+    "extra_triggers": 5,
+    "detected_onsets": 24,
+    "detection_latency_ms_median": 1.3333333333331865,
+    "launched_waves": {
+     "A": 16,
+     "B": 4
+    },
+    "launch_rate": 0.6896551724137931,
+    "counterfactual_extra_excited_sites": [
+     41,
+     41,
+     4,
+     41,
+     35,
+     39,
+     4,
+     4,
+     41,
+     42,
+     41,
+     35,
+     39,
+     4,
+     4,
+     41,
+     42,
+     41,
+     35,
+     39,
+     4,
+     4,
+     41,
+     42,
+     41,
+     35,
+     39,
+     4,
+     4
+    ],
+    "far_site_activations": 16
+   },
+   "4": {
+    "tau_s": 0.020833333333333332,
+    "substeps": 4,
+    "refractory_period_s_approx": 0.10416666666666666,
+    "triggers": 29,
+    "triggers_A": 20,
+    "triggers_B": 9,
+    "triggers_matched_to_true_onsets": 24,
+    "extra_triggers": 5,
+    "detected_onsets": 24,
+    "detection_latency_ms_median": 1.3333333333331865,
+    "launched_waves": {
+     "A": 20,
+     "B": 8
+    },
+    "launch_rate": 0.9655172413793104,
+    "counterfactual_extra_excited_sites": [
+     47,
+     4,
+     42,
+     44,
+     47,
+     47,
+     42,
+     35,
+     47,
+     42,
+     44,
+     47,
+     47,
+     42,
+     35,
+     47,
+     42,
+     44,
+     47,
+     47,
+     42,
+     35,
+     47,
+     42,
+     44,
+     47,
+     47,
+     42,
+     35
+    ],
+    "far_site_activations": 20
+   }
+  }
+ },
+ "wall_s": 77.80017137527466
+}

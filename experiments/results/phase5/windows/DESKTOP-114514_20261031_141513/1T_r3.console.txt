@@ -1,0 +1,8 @@
+MORPHO-PHS morpho_cli bench  host=desktop-114514  cpu=13th Gen Intel(R) Core(TM) i9-13900H  logical_cores=20  fs=48000  mode=0  potential=0  interp=0
+topology: source=GetLogicalProcessorInformationEx logical=20 physical=14 perf_physical=6 hybrid=1  auto_threads(L32)=2
+tag=1T  pin=cpuset  mmcss=1  pool=caller  load_threads=0  barrier_spin_us=50  idle_spin_us=3500  adaptive_spin=0  caller_spin=0  paced=1
+variant=1T#r3  kernel=stencil  ersav=0  inblock_os_wait=0  ecoqos_off=1  caller_cpuset=0/0  caller_mmcss=0/0
+time=2026-10-31T15:35:27.358+08:00  seconds/config=10
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+1T              128  32    1       5.135    657.3   1334.9     2528.9    2621.3   2666.7    0.501     0/3750     PASS*   4.87    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=stencil barrier=spin
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)

@@ -1,0 +1,20 @@
+SIMD: AVX2 intrinsics
+[PASS] S1 stencil kernel bit-identical to CSR gather: f32 56/56, f64 56/56 configs (lattices 32x32,16x16,8x8,5x7,3x11; quartic/HQ/HQ-fast/none; E-RSAV off/on; T=1,3; defects, ENPU-C, per-sample ramp, gate)
+[PASS] S1b long run (48000 samples = 1 s, 32x32, ENPU-C + ramps + defects): stencil T=3 vs CSR T=1: quartic=bit-exact f32-quartic=bit-exact HQ=bit-exact f32-HQ=bit-exact
+[PASS] S2 energy identity |E_tracked - E(q,psi)| / |E| < 1e-9 over 12032 samples (ports, gate, ENPU-C): quartic=3.8e-15 quartic+ersav=4.4e-15 HQ=4.8e-15 HQ+ersav=4.6e-15 HQ-fast=5.2e-15 HQ-fast+ersav=4.5e-15
+[PASS] S3 passivity (16x16, strong initial state, mu<=0, 20000 samples): quartic: max rise 0.0e+00, E_end/E0 0.001 quartic+ersav: max rise 0.0e+00, E_end/E0 0.001 HQ: max rise 0.0e+00, E_end/E0 0.003 HQ+ersav: max rise 0.0e+00, E_end/E0 0.001
+[PASS] S4 pure-spin per-sample barrier (51200 samples, T=3, pin=cpuset): caller#1: in-block OS waits 0, idle OS waits 6 [pin=cpuset mmcss=0 pool=caller+2 cpus=[1,2,3,4,5,6,7] pinned=2/2 topo=sysfs P=8/8 hybrid=0 kernel=stencil barrier=spin ecoqos_off=0/2] dedicated#1: in-block OS waits 0, idle OS waits 9 [pin=cpuset mmcss=0 pool=dedicated3 cpus=[1,2,3,4,5,6,7] pinned=3/3 topo=sysfs P=8/8 hybrid=0 kernel=stencil barrier=spin ecoqos_off=0/3]
+[PASS] S5 clean P-cores i9-13900H = {2,4,6,8,10} (no core 0, no SMT sibling), default L32 threads = 2; this box (sysfs): 7 clean P-cores, first id 1
+[PASS] S5c Auto threads i9: L32 FX 2 / Instrument 3 / HQ-fast 3 / HQ-exact->fast 3 / Inst+HQ 3; L16 1, L16 HQ-exact 2, L8 HQ-exact 1; 1 P-core machine L32 1; HQ-exact limited to L<=16 (L32 -> HQ-fast, bench override keeps exact): yes
+[PASS] S6 zero heap allocations: 128000 samples, T=3, cpuset, E-RSAV, caller computes (0 allocs)
+[PASS] S6 zero heap allocations: 128000 samples, T=3, cpuset, E-RSAV, dedicated pool (0 allocs)
+[PASS] S7 E-RSAV diagnostic (16x16 quartic, strong drive): mean SAV inconsistency 1.980e+00 (plain) vs 2.930e+00 (E-RSAV)
+[PASS] S9 vectorised energy()/reset_psi() == scalar CSR versions bit for bit: 360/360 checks (f32/f64, 32x32, 5x7, 3x11, potential switches)
+   [info] 32x32 f32 kernel=csr: energy() 16.66 us, set_potential (scale+reset_psi+2x energy) 48.95 us
+   [info] 32x32 f32 kernel=stencil: energy() 5.92 us, set_potential (scale+reset_psi+2x energy) 21.44 us
+[PASS] S8 oversubscribed pure-spin (8 busy threads + 8 compute threads on 8 CPUs): 100 blocks, mean 1.74 ms, max 29.53 ms per block, 172 rescue yields (only after a single wait > 1 ms)
+ALL PASSED: 0 failure(s)
+
+real	0m38.995s
+user	1m5.935s
+sys	0m0.116s

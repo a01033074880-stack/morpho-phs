@@ -1,0 +1,152 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Low Mallets",
+  "category": "Percussive Lattice",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Low tone, scattered defects: woody marimba-ish mallets.",
+  "description_zh": "低音调、散布缺陷：带木质感的马林巴式槌击。",
+  "tags": [
+    "defects",
+    "low",
+    "percussion",
+    "wood"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 380.0,
+    "chirality": 0.3,
+    "nonlinear": 0.1,
+    "hq": 0.3,
+    "decay": 0.64,
+    "life": 0.0,
+    "morph": 0.05,
+    "tau": 0.9979,
+    "freeze": 0.0,
+    "wet": 0.9,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": 9.71,
+    "spread": 0.25,
+    "exciter": "Pluck",
+    "defect_depth": 0.8,
+    "macro1": 0.5,
+    "macro2": 0.3,
+    "macro3": 0.7,
+    "macro4": 0.1667,
+    "macro5": 0.05,
+    "macro6": 0.0,
+    "macro7": 0.5,
+    "macro8": 0.8,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Chirality",
+      "Sustain",
+      "Grit",
+      "Morphogen",
+      "Life",
+      "Width",
+      "Defects"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 190.0,
+        "hi": 760.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "decay",
+        "lo": 0.29,
+        "hi": 0.79
+      },
+      {
+        "macro": 4,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.6
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.2,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.27
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.2,
+        "hi": 1.8
+      },
+      {
+        "macro": 8,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.5738,
+        0.3474
+      ],
+      [
+        0.3721,
+        0.6459
+      ],
+      [
+        0.8745,
+        0.1981
+      ],
+      [
+        0.863,
+        0.8573
+      ],
+      [
+        0.3052,
+        0.3731
+      ],
+      [
+        0.3801,
+        0.7083
+      ]
+    ],
+    "morphogen": []
+  }
+}

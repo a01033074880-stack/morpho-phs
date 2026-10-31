@@ -1,0 +1,30 @@
+MORPHO-PHS morpho_cli bench  host=desktop-114514  cpu=13th Gen Intel(R) Core(TM) i9-13900H  logical_cores=20  fs=48000  mode=0  potential=0  interp=0
+topology: source=GetLogicalProcessorInformationEx logical=20 physical=14 perf_physical=6 hybrid=1  auto_threads(L32)=5
+tag=p3spin  pin=none  mmcss=0  pool=caller  load_threads=0  barrier_spin_us=1e+06  idle_spin_us=1e+06  adaptive_spin=1  caller_spin=0  paced=1
+time=2026-10-31T11:17:29.661+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+p3spin           64  16    3       3.233    206.9    551.4      825.4     923.7   1333.3    0.414     0/3000     PASS   pin=none mmcss=0 pool=caller+2
+p3spin           64  16    4       3.064    196.1    658.2     1263.1    2362.6   1333.3    0.494     2/3000     NEAR   pin=none mmcss=0 pool=caller+3
+p3spin           64  16    5       3.909    250.2   1246.8     2634.1    3328.2   1333.3    0.935    25/3000     FAIL   pin=none mmcss=0 pool=caller+4
+p3spin           64  16    6       3.794    242.8   1158.6     2035.8    3304.9   1333.3    0.869    17/3000     FAIL   pin=none mmcss=0 pool=caller+5
+p3spin           64  32    3       9.673    619.1   1302.5     1684.1    1866.3   1333.3    0.977    26/3000     FAIL   pin=none mmcss=0 pool=caller+2
+p3spin           64  32    4       8.072    516.6   1150.7     1504.8    1646.9   1333.3    0.863     9/3000     FAIL   pin=none mmcss=0 pool=caller+3
+p3spin           64  32    5       9.006    576.4   1583.7     2356.6    3011.6   1333.3    1.188    57/3000     FAIL   pin=none mmcss=0 pool=caller+4
+p3spin           64  32    6      11.658    746.1   1411.0     1954.1    2666.4   1333.3    1.058    45/3000     FAIL   pin=none mmcss=0 pool=caller+5
+p3spin          128  16    3       3.429    438.9   1086.6     1569.0    1794.6   2666.7    0.407     0/1500     PASS   pin=none mmcss=0 pool=caller+2
+p3spin          128  16    4       3.123    399.8   1562.1     2617.5    3108.7   2666.7    0.586     1/1500     NEAR   pin=none mmcss=0 pool=caller+3
+p3spin          128  16    5       4.102    525.0   3189.0     3749.9    4449.8   2666.7    1.196    36/1500     FAIL   pin=none mmcss=0 pool=caller+4
+p3spin          128  16    6       3.857    493.7   2644.2     3798.1    3833.4   2666.7    0.992    14/1500     FAIL   pin=none mmcss=0 pool=caller+5
+p3spin          128  32    3      10.227   1309.0   2013.4     2376.0    2665.6   2666.7    0.755     0/1500     FAIL*  pin=none mmcss=0 pool=caller+2
+p3spin          128  32    4       9.684   1239.5   2432.5     2817.7    3824.9   2666.7    0.912     4/1500     FAIL*  pin=none mmcss=0 pool=caller+3
+p3spin          128  32    5      12.720   1628.1   3719.9     5272.4    5296.8   2666.7    1.395    78/1500     FAIL*  pin=none mmcss=0 pool=caller+4
+p3spin          128  32    6      14.111   1806.2   2788.1     3036.5    4057.6   2666.7    1.046    27/1500     FAIL*  pin=none mmcss=0 pool=caller+5
+p3spin          512  16    3       3.639   1863.2   3319.7     3992.2    3992.2  10666.7    0.311     0/375      PASS   pin=none mmcss=0 pool=caller+2
+p3spin          512  16    4       3.495   1789.2   5310.6    10171.2   10171.2  10666.7    0.498     0/375      PASS   pin=none mmcss=0 pool=caller+3
+p3spin          512  16    5       4.329   2216.6  12684.9    13513.1   13513.1  10666.7    1.189    10/375      FAIL   pin=none mmcss=0 pool=caller+4
+p3spin          512  16    6       6.012   3078.2  12272.1    15824.3   15824.3  10666.7    1.151    14/375      FAIL   pin=none mmcss=0 pool=caller+5
+p3spin          512  32    3      10.786   5522.5   8740.7     9413.8    9413.8  10666.7    0.819     0/375      FAIL   pin=none mmcss=0 pool=caller+2
+p3spin          512  32    4       9.850   5043.1  10877.1    15302.4   15302.4  10666.7    1.020     5/375      FAIL   pin=none mmcss=0 pool=caller+3
+p3spin          512  32    5      11.935   6110.5  19576.7    23628.4   23628.4  10666.7    1.835    37/375      FAIL   pin=none mmcss=0 pool=caller+4
+p3spin          512  32    6      13.239   6778.3  19136.4    21859.9   21859.9  10666.7    1.794    27/375      FAIL   pin=none mmcss=0 pool=caller+5
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

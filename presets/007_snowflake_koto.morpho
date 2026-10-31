@@ -1,0 +1,126 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Snowflake Koto",
+  "category": "Plucks",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Narrow pickups near the centre: nasal, koto-like attack with a quick bloom.",
+  "description_zh": "拾音点贴近中心：鼻音般、类似古筝的起音，随后快速绽开。",
+  "tags": [
+    "bright",
+    "narrow",
+    "pluck"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 2100.1058,
+    "chirality": 0.3,
+    "nonlinear": 0.3,
+    "hq": 0.3,
+    "decay": 0.7,
+    "life": 0.0,
+    "morph": 0.1,
+    "tau": 0.8298,
+    "freeze": 0.0,
+    "wet": 0.9,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": 7.28,
+    "spread": 0.1,
+    "exciter": "Pluck",
+    "defect_depth": 0.6,
+    "macro1": 0.6603,
+    "macro2": 0.3,
+    "macro3": 0.7,
+    "macro4": 0.3529,
+    "macro5": 0.1,
+    "macro6": 0.0,
+    "macro7": 0.125,
+    "macro8": 0.0,
+    "edge_width": 0.4,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Chirality",
+      "Sustain",
+      "Grit",
+      "Morphogen",
+      "Life",
+      "Width",
+      "Crosstalk"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 1050.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "decay",
+        "lo": 0.35,
+        "hi": 0.85
+      },
+      {
+        "macro": 4,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.85
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.2,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.178
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.2,
+        "hi": 1.8
+      },
+      {
+        "macro": 8,
+        "param": "edge_crosstalk",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

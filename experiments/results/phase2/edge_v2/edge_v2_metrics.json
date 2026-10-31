@@ -1,0 +1,127 @@
+{
+ "gaps_Hz": [
+  [
+   448.29593242249774,
+   1103.8348415311004
+  ],
+  [
+   1500.0000000000016,
+   2229.085664923761
+  ],
+  [
+   2400.000000000001,
+   2794.4643059043437
+  ]
+ ],
+ "filter": "parallel Chebyshev-II band-pass, order 12 (6 biquads) per gap, 80 dB stopband starting at the gap edges",
+ "renders": {
+  "s+1_a1_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s+1_a1_d8.f32",
+   "sign": 1,
+   "absorber": "frame",
+   "d": 8.0,
+   "E_final": 3.672455e-06,
+   "E0_plus_work": 35.94283,
+   "passive_ok": true
+  },
+  "s+0_a1_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s+0_a1_d8.f32",
+   "sign": 0,
+   "absorber": "frame",
+   "d": 8.0,
+   "E_final": 3.039385e-06,
+   "E0_plus_work": 26.70525,
+   "passive_ok": true
+  },
+  "s-1_a1_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s-1_a1_d8.f32",
+   "sign": -1,
+   "absorber": "frame",
+   "d": 8.0,
+   "E_final": 3.48458e-06,
+   "E0_plus_work": 35.94283,
+   "passive_ok": true
+  },
+  "s+1_a0_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s+1_a0_d8.f32",
+   "sign": 1,
+   "absorber": "sponge",
+   "d": 8.0,
+   "E_final": 9.987044e-05,
+   "E0_plus_work": 36.60481,
+   "passive_ok": true
+  },
+  "s+0_a0_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s+0_a0_d8.f32",
+   "sign": 0,
+   "absorber": "sponge",
+   "d": 8.0,
+   "E_final": 3.049048e-06,
+   "E0_plus_work": 26.67548,
+   "passive_ok": true
+  },
+  "s-1_a0_d8": {
+   "file": "experiments/results/phase2/edge_v2/raw_s-1_a0_d8.f32",
+   "sign": -1,
+   "absorber": "sponge",
+   "d": 8.0,
+   "E_final": 9.579641e-05,
+   "E0_plus_work": 36.60481,
+   "passive_ok": true
+  }
+ },
+ "metrics": {
+  "s+1_a1_d8": {
+   "absorber": "frame",
+   "raw_R_over_L_dB": 9.172245882531941,
+   "ingap_R_over_L_dB": 74.69330652812997,
+   "residual_outgap_R_over_L_dB": 9.587945252759898,
+   "ingap_energy_fraction": 0.06900259353994792
+  },
+  "s+0_a1_d8": {
+   "absorber": "frame",
+   "raw_R_over_L_dB": -0.12846793890372166,
+   "ingap_R_over_L_dB": 0.07482211109334598,
+   "residual_outgap_R_over_L_dB": -0.02948676851955382,
+   "ingap_energy_fraction": 0.3038426467623457
+  },
+  "s-1_a1_d8": {
+   "absorber": "frame",
+   "raw_R_over_L_dB": -10.045491426838414,
+   "ingap_R_over_L_dB": -75.46291747583258,
+   "residual_outgap_R_over_L_dB": -10.448119026501196,
+   "ingap_energy_fraction": 0.0680721687699172
+  },
+  "s+1_a0_d8": {
+   "absorber": "sponge",
+   "raw_R_over_L_dB": 6.05154296006016,
+   "ingap_R_over_L_dB": 71.40359864647269,
+   "residual_outgap_R_over_L_dB": 6.412235517015948,
+   "ingap_energy_fraction": 0.05348744595308494
+  },
+  "s+0_a0_d8": {
+   "absorber": "sponge",
+   "raw_R_over_L_dB": 0.08099020753224183,
+   "ingap_R_over_L_dB": 0.10909619303560189,
+   "residual_outgap_R_over_L_dB": 0.10242374789958411,
+   "ingap_energy_fraction": 0.28070617793107916
+  },
+  "s-1_a0_d8": {
+   "absorber": "sponge",
+   "raw_R_over_L_dB": -6.071804950301534,
+   "ingap_R_over_L_dB": -71.47143378923948,
+   "residual_outgap_R_over_L_dB": -6.434412035180928,
+   "ingap_energy_fraction": 0.05383390846646935
+  },
+  "11_bandsplit_OmegaPlus": {
+   "R_over_L_dB": -0.17319778462411953
+  }
+ },
+ "files": {
+  "08_edge_v2_frame_ingap_OmegaPlus.wav": "s+1_a1_d8 in-gap bank",
+  "09_edge_v2_frame_ingap_OmegaMinus.wav": "s-1_a1_d8 in-gap bank",
+  "10_edge_v2_frame_ingap_Omega0_reference.wav": "s+0_a1_d8 in-gap bank",
+  "11_edge_v2_bandsplit_OmegaPlus.wav": "in-gap part stereo (directional) + out-of-gap residual mono",
+  "12_edge_v2_frame_raw_OmegaPlus.wav": "frame absorber only, no filter"
+ }
+}

@@ -1,0 +1,27 @@
+Edge Shimmer                   FX Edge      L16 peak   -2.7  rms  -24.3 dBFS  rt 0.327  resets 0 
+Reverse Edge                   FX Edge      L16 peak   -2.7  rms  -24.3 dBFS  rt 0.301  resets 0 
+Low Edge Rumble                FX Edge      L16 peak   -6.1  rms  -25.2 dBFS  rt 0.289  resets 0 
+Glass Corridor                 FX Edge      L16 peak   -4.0  rms  -23.8 dBFS  rt 0.337  resets 0 
+Breathing Edge                 FX Edge      L16 peak   -3.9  rms  -24.3 dBFS  rt 0.285  resets 0 
+Grit Edge                      FX Edge      L16 peak   -3.9  rms  -23.0 dBFS  rt 0.289  resets 0 
+Wide Pickups                   FX Edge      L16 peak   -5.3  rms  -24.6 dBFS  rt 0.303  resets 0 
+Pinhole Edge                   FX Edge      L16 peak   -4.7  rms  -24.2 dBFS  rt 0.291  resets 0 
+Freeze Halo                    FX Freezer   L16 peak   -5.2  rms  -21.1 dBFS  rt 0.287  resets 0 
+Crystal Cage                   FX Freezer   L16 peak   -8.0  rms  -20.6 dBFS  rt 0.286  resets 0 
+Soft Hold                      FX Freezer   L16 peak   -5.4  rms  -19.7 dBFS  rt 0.291  resets 0 
+Shattered Ice                  FX Freezer   L16 peak   -6.8  rms  -22.5 dBFS  rt 0.390  resets 0 
+Bulk Smear                     FX Freezer   L16 peak   -4.3  rms  -23.8 dBFS  rt 0.307  resets 0 
+Chiral Cello                   Inst Bowed   L16 peak   -1.5  rms  -22.3 dBFS  rt 0.296  resets 0 
+Glass Harmonica                Inst Bowed   L16 peak   -1.8  rms  -19.8 dBFS  rt 0.347  resets 0 
+Twisted Choir                  Inst Bowed   L16 peak   -2.8  rms  -19.9 dBFS  rt 0.292  resets 0 
+Rusty Bow                      Inst Bowed   L16 peak   -2.9  rms  -24.6 dBFS  rt 0.290  resets 0 
+Honeycomb Harp                 Inst Plucked L16 peak   -6.1  rms  -24.8 dBFS  rt 0.289  resets 0 
+Defect Kalimba                 Inst Plucked L16 peak   -5.0  rms  -26.6 dBFS  rt 0.287  resets 0 
+Metal Lattice                  Inst Plucked L16 peak   -3.6  rms  -23.7 dBFS  rt 0.349  resets 0 
+Low Mallets                    Inst Plucked L16 peak   -2.6  rms  -35.6 dBFS  rt 0.300  resets 0 
+Spiral Drone                   Inst Living  L16 peak   -5.6  rms  -19.6 dBFS  rt 0.308  resets 0 
+Ember Field                    Inst Living  L16 peak   -7.0  rms  -21.0 dBFS  rt 0.286  resets 0 
+Restless Swarm                 Inst Living  L16 peak   -2.9  rms  -17.5 dBFS  rt 0.353  resets 0 
+Big Edge 32                    Showcase 32x32 L32 peak   -3.0  rms  -24.0 dBFS  rt 0.447  resets 0 
+Big Spiral 32                  Showcase 32x32 L32 peak   -5.0  rms  -21.2 dBFS  rt 0.529  resets 0 
+Tiny Edge 8                    Showcase 8x8 L8  peak   -3.2  rms  -24.2 dBFS  rt 0.075  resets 0 

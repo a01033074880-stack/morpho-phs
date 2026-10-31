@@ -1,0 +1,6 @@
+{
+ "IMDG_power_balance_maxrel": 5.237067198984478e-13,
+ "IMDG_newton_iters_mean": 3.986666666666667,
+ "SSDG_linear_lossless_rel_drift_2000": 1.0653700144303002e-12,
+ "ESAV_linear_lossless_rel_drift_2000": 5.10702591327572e-14
+}

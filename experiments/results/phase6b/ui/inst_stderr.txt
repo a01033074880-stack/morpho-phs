@@ -1,0 +1,38 @@
+[snap] init
+[snap] prepared
+  program 0: Gyro Bells / Gyro Bell
+  program 1: Gyro Bells / Counter-Spin Bell
+  program 2: Gyro Bells / Glass Gong
+  program 3: Gyro Bells / Toy Carillon
+  program 4: Gyro Bells / Cathedral Gyro 32
+  program 5: Plucks / Honeycomb Harp
+  program 6: Plucks / Snowflake Koto
+  program 7: Plucks / Felt Lattice
+  program 8: Plucks / Bent Tine
+  program 9: Percussive Lattice / Defect Kalimba
+  program 10: Percussive Lattice / Low Mallets
+  program 11: Percussive Lattice / Shard Clave
+  program 12: Percussive Lattice / Ring Cavity Tom
+  program 13: Chiral Strings / Chiral Cello
+  program 14: Chiral Strings / Rusty Bow
+  program 15: Chiral Strings / Viola Gyre
+  program 16: Chiral Strings / Glass Harmonica
+  program 17: Chiral Strings / Sul Ponticello
+  program 18: Edge / Topological / Rim Rider
+  program 19: Edge / Topological / Mirror Rim
+  program 20: Edge / Topological / Edge Chime
+  program 21: Excitable Textures / Ember Field
+  program 22: Excitable Textures / Static Bloom
+  program 23: Excitable Textures / Slow Tide
+  program 24: Excitable Textures / Nerve Net
+  program 25: Drones / Spiral Drone
+  program 26: Drones / Low Orbit
+  program 27: Drones / Halo Choir
+  program 28: Drones / Big Spiral 32
+  program 29: Morph Evolutions / Morphogen Tapestry
+  program 30: Morph Evolutions / Turing Bells
+  program 31: Morph Evolutions / Breathing Glass
+  current: Gyro Bells / Gyro Bell
+[snap] audio ok
+[snap] editor
+[snap] shown

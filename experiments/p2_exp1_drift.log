@@ -1,0 +1,56 @@
+48000 ESAV 4.561268916796808e-13 2.5247521398909893 False 2.5
+saved drift
+48000 RK4 1.625461306601717 1.625461306601717 False 4.7
+saved drift
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro.py:28: RuntimeWarning: overflow encountered in power
+  return a * q ** 3 + b * np.tanh(q)
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro_schemes.py:50: RuntimeWarning: invalid value encountered in add
+  return (-(self.lat.K @ q) - dU(q, P.dof("alpha"), P.dof("beta")) + Gv(P, v) - self.damp(v) + f) / P.dof("m")
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro_schemes.py:47: RuntimeWarning: invalid value encountered in multiply
+  return np.repeat(-self.P.mu + self.P.eta * site_v2(v), 2, axis=0) * v
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro.py:24: RuntimeWarning: overflow encountered in power
+  return 0.25 * a * q ** 4 + b * logcosh(q)
+48000 Verlet 7.626107127607612 7.626107127607612 True 0.0
+saved drift
+48000 IMDG 9.678183319714262e-11 9.678183319714262e-11 False 50.8
+saved drift
+48000 SSDG 0.0033486396112249136 0.0033486396112249136 False 5.1
+saved drift
+24000 ESAV 2.7579765543423135e-13 2.507212548673781 False 1.2
+saved drift
+24000 RK4 9.393328433304685 9.393328433304685 False 2.3
+saved drift
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro_schemes.py:30: RuntimeWarning: overflow encountered in square
+  return v[0::2] ** 2 + v[1::2] ** 2
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro_schemes.py:35: RuntimeWarning: overflow encountered in multiply
+  return 0.5 * np.sum(m * v * v, 0) + 0.5 * np.sum(q * (lat.K @ q), 0) + np.sum(U(q, a, b), 0)
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro.py:24: RuntimeWarning: overflow encountered in multiply
+  return 0.25 * a * q ** 4 + b * logcosh(q)
+24000 Verlet 3.4354522988019083 3.4354522988019083 True 0.0
+saved drift
+24000 IMDG 1.282555530515853e-13 1.282555530515853e-13 False 31.8
+saved drift
+24000 SSDG 0.018898453083980405 0.018898453083980405 False 3.8
+saved drift
+16000 ESAV 1.2150526078571589e-13 2.317673707398805 False 1.0
+saved drift
+16000 RK4 13.144128716539413 13.144128716539413 False 1.8
+saved drift
+/workspace/morpho-phs-workspace/python/scripts/phase2/../../diffphs/gyro.py:28: RuntimeWarning: overflow encountered in multiply
+  return a * q ** 3 + b * np.tanh(q)
+16000 Verlet 114.67970461019279 114.67970461019279 True 0.0
+saved drift
+16000 IMDG 1.3491809151590815e-10 1.3491809151590815e-10 False 27.2
+saved drift
+16000 SSDG 1.0014728379080704 1.0014728379080704 False 1.9
+saved drift
+12500 ESAV 1.456134474495488e-13 3.521065972793413 False 0.7
+saved drift
+12500 RK4 14.590028560097641 14.590028560097641 False 1.5
+saved drift
+12500 Verlet 1527.6389760573147 1527.6389760573147 True 0.0
+saved drift
+12500 IMDG 3.6740876475678685e-13 3.6740876475678685e-13 False 23.2
+saved drift
+12500 SSDG 154.60191510616545 154.60191510616545 True 0.0
+saved drift

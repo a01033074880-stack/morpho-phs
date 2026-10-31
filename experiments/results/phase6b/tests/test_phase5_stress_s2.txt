@@ -1,0 +1,10 @@
+stress: 30 s per part, seed 2, 8 CPUs, watchdog 10 s, race hooks off
+[PASS] P1 dedicated pool, tiny blocks: 2001411 blocks over 101 pool configs (T=2..4, idle_spin 0..20 us), 804799 OS waits exercised, no hang
+[PASS] P2 caller-computes pool, tiny blocks: 1945814 blocks over 98 pool configs (T=2..4, idle_spin 0..20 us), 213661 OS waits exercised, no hang
+[PASS] P3 reconfigure storm: 23989 start/stop cycles in 30.0 s (need >= 100 and every cycle < 2 s) (T=1..6, caller/dedicated/auto, pin none/cpuset, idle 0..50 us or 3.5 ms), 131672 blocks, no hang; cycle cost mean 1.25 / median 0.62 / p95 4.50 / max 61.38 ms; stop+restart (init) median 0.16 / p95 0.54 / max 4.01 ms
+[PASS] P4 plugin-like 32x32 b128, 159 pool switches T=2..4 caller/dedicated, 7950 blocks, sleeps up to 5 ms, no hang
+ALL PASSED: 0 failure(s)
+
+real	1m15.253s
+user	3m25.865s
+sys	0m10.578s

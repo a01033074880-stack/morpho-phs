@@ -1,0 +1,11 @@
+MORPHO-PHS morpho_cli bench  host=grok-bot-vm-509861073  cpu=Intel(R) Xeon(R) Processor  logical_cores=8  fs=48000  mode=0  potential=0  interp=0
+topology: source=sysfs logical=8 physical=8 perf_physical=8 hybrid=0  auto_threads(L32)=6
+tag=pin_cb  pin=pcores  mmcss=1  pool=dedicated  load_threads=0  barrier_spin_us=50  idle_spin_us=200  adaptive_spin=1  caller_spin=0  paced=1
+time=2026-10-30T21:37:58.990+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+pin_cb          128  32    3      10.570   1353.0   2543.2     4884.3    9332.3   2666.7    0.954    11/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated3 cpus=[7,6,5] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pin_cb          128  32    4       8.874   1135.9   1968.5     8156.1    9667.2   2666.7    0.738     9/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated4 cpus=[7,6,5,4] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pin_cb          128  32    5       9.706   1242.3   1720.7     2837.0    4651.7   2666.7    0.645     3/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated5 cpus=[7,6,5,4,3] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pin_cb          128  32    6       7.642    978.2   2123.3     3239.6    3696.7   2666.7    0.796     7/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated6 cpus=[7,6,5,4,3,2] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pin_cb          128  32    7       7.037    900.7   2944.7     4843.7    5261.4   2666.7    1.104    15/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated7 cpus=[7,6,5,4,3,2,1] pinned=7/7 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/7
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

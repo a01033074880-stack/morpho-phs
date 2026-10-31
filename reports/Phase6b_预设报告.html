@@ -1,0 +1,1742 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:"Noto Sans CJK SC","Noto Sans SC","WenQuanYi Micro Hei",sans-serif;font-size:10.5pt;line-height:1.5;margin:0 6mm}
+table{border-collapse:collapse;margin:8px 0;font-size:9pt}td,th{border:1px solid #999;padding:3px 6px;vertical-align:top}th{background:#eee}
+img{max-width:100%;page-break-inside:avoid}h1{font-size:18pt}h2{font-size:14pt;border-bottom:1px solid #ccc;margin-top:18px}code{background:#f4f4f4;font-size:9pt}
+@page{size:A4;margin:14mm}</style></head><body><!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<h1>MORPHO-PHS Phase 6b 报告：原创出厂预设库与预设浏览器</h1>
+<p>日期：2026-10-31（Asia/Shanghai）· 版本 0.6.0 · 授权 AGPL-3.0-only</p>
+<h2>0. 摘要</h2>
+<ul>
+<li><strong>审计</strong>：旧 27 个预设用新 QA 门限复测，24 个不通过；保留 3、重做 22、退役 2（<code>docs/phase6/preset_audit.md</code>）。</li>
+<li><strong>新库 57 个</strong>：乐器 32（8 个类别），FX 25（5 个类别），其中 32 个是全新设计。每个预设都有中英文描述、标签、作者、8 个命名且有目标的宏，以及实测 CPU 等级。</li>
+<li><strong>CPU</strong>（i9 p99 / 预算，<strong>估算</strong>）：eco 43、standard 12、high 2（两个 32×32 HQ fast）。</li>
+<li><strong>声音 QA</strong>：57/57 通过。乐器 −18 LUFS-I，FX −20 LUFS-I；真峰值 ≤ −1.1 dBTP；限幅器 0 次；无 NaN 或 DC；无失控；余音最长 6.1 s，都会结束。</li>
+<li><strong>演示</strong>：每个预设有 WAV（16 bit / 48 kHz）、OGG 和 MP3。</li>
+<li><strong>浏览器</strong>：类别与标签筛选、收藏、前后切换、Init、详情卡，风格与 6a「体暗边明」一致。</li>
+<li><strong>回归</strong>：见 §9。</li>
+</ul>
+<p><strong>工作环境</strong>：所有工作都在 box 上完成，用户的 PC 离线，未被触碰。本阶段没有做网络检索；6a 时的检索也是在 box 的网络上进行的。本项目与 AETHER 及其它 bot 完全隔离。专家给出的数字只当作假设，CPU 等级是从 box 实测换算到 i9 的估算，需要在 i9 上复测。</p>
+<h2>1. 旧预设审计</h2>
+<p>详细的逐个决定见 <code>docs/phase6/preset_audit.md</code>，证据在 <code>/workspace/p6b/old27/analysis.json</code>（box）。系统性问题：</p>
+<ol>
+<li>边缘色散 FX 偏轻约 6–8 LU。Edge 模式的湿声只有能隙内的窄带，峰值由干声决定。</li>
+<li>超临界 Life 与螺旋波预设永不结束。</li>
+<li>冻结器默认冻结太深。</li>
+<li>6 个预设触发限幅器，Glass Harmonica 能量失控。</li>
+<li>宏只分配了 3–5 个。</li>
+</ol>
+<p>退役的 2 个：Reverse Edge 等于 Edge Shimmer 的 Chirality 宏；Wide Pickups 与 Edge Shimmer 只差 spread。<code>validate --factory 1</code> 下 27/27 不满足出厂规则（<code>experiments/results/phase6b/validate/validate_factory_retired27.txt</code>）。</p>
+<h2>2. 声音设计方法（不套用模板）</h2>
+<p>每个类别对应 Morphohedra 的一种物理现象。参数先从物理推出，再用测量来校准；没有借用任何商业预设或通用合成器模板。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>物理来源</th>
+<th>设计要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gyro Bells</td>
+<td>陀螺手性劈裂简并模态</td>
+<td>手性越大，拍频越快；32×32 时模态云更密</td>
+</tr>
+<tr>
+<td>Plucks / Percussive Lattice</td>
+<td>拨奏激励 + 缺陷局域模</td>
+<td>拾音点位置决定鼻音感；缺陷行产生类似拇指琴的局域音高</td>
+</tr>
+<tr>
+<td>Chiral Strings</td>
+<td>弓擦（锯齿）激励 + 手性</td>
+<td>HQ 势的在位能隙抬高音色；Life 宏推入有界自持</td>
+</tr>
+<tr>
+<td>Edge / Topological</td>
+<td>能隙内的单向边缘态</td>
+<td>边缘通道宽度与串扰作为宏</td>
+</tr>
+<tr>
+<td>Excitable Textures / Drones</td>
+<td>Barkley 可激介质（形态场）</td>
+<td>亚临界 Life（Hopf 阈值的 0.5–0.75 倍）；螺旋波种子 ⇒ Life = 0</td>
+</tr>
+<tr>
+<td>Morph Evolutions</td>
+<td>形态场慢速调制</td>
+<td>慢 tau，带形态素刺激点</td>
+</tr>
+<tr>
+<td>Edge Dispersers（FX）</td>
+<td>输入经能隙内边缘通道色散</td>
+<td>湿声在前（wet 0.8 / dry ≈0.43）</td>
+</tr>
+<tr>
+<td>Defect Freezers（FX）</td>
+<td>缺陷 + Freeze（无损）</td>
+<td>默认部分冻结，余音有限；Freeze 宏到 1 才无限保持</td>
+</tr>
+<tr>
+<td>Lattice Spaces / Excitable FX</td>
+<td>体模态混响 / 介质触发</td>
+<td>用作空间与瞬态效果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>生成器规则</strong>（<code>scripts/presets/bank6b.py</code> 断言，<code>validate --factory 1</code> 复查）：</p>
+<ul>
+<li>8 个宏全部命名；每个参数只属于一个宏；宏位置由设计值反推（宏目标会覆盖参数）。</li>
+<li>宏不指向结构性参数或增益。</li>
+<li>32×32 只用 Quartic 或 HQ fast，线程 Auto。</li>
+<li>Life 宏的上端约为 Hopf 阈值 life* = −mu0/(120−mu0) 的 1.35 倍。越过阈值后晶格进入有界自持（能量门限制在 E_cap），这是“活体”音色的设计。</li>
+</ul>
+<p><strong>增益拟合</strong>：每个预设渲染标准演示后，按目标响度迭代输出增益（fit1–fit5）。最后一轮 iter0 改了 1 个、iter1 改了 0 个，0 个失败。Halo Choir 的 life_frac 从 0.65 降到 0.5，因为原设定在约 5.6 s 后出现宽带噪声底。</p>
+<h2>3. 库概览与预设列表</h2>
+<p>完整列表（中英文、宏名与来源）在 <code>presets/PRESET_LIST.md</code>，由 <code>scripts/presets/docs6b.py</code> 自动生成。</p>
+<ul>
+<li>乐器 32：Gyro Bells 5、Plucks 4、Percussive Lattice 4、Chiral Strings 5、Edge / Topological 3、Excitable Textures 4、Drones 4、Morph Evolutions 3。晶格 16×16 29 个、32×32 2 个、8×8 1 个；Quartic 23 个、HQ fast 9 个。</li>
+<li>FX 25：Edge Dispersers 7、Defect Freezers 6、Lattice Spaces 4、Excitable FX 4、Morph Evolutions 4。晶格 16×16 22 个、32×32 2 个、8×8 1 个；Quartic 22 个、HQ fast 3 个。</li>
+<li>文件名 <code>NNN_slug.morpho</code> 决定库顺序：乐器 001–032，FX 101–125。</li>
+</ul>
+<h3>3.1 乐器</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>名称</th>
+<th>标签</th>
+<th>说明</th>
+<th>8 个宏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td><strong>Gyro Bell</strong></td>
+<td>bell, bright, chiral, pluck</td>
+<td>强陀螺耦合的拨奏晶格：简并模态被劈裂，像敲击的钟一样缓慢拍频。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>002</td>
+<td><strong>Counter-Spin Bell</strong></td>
+<td>bell, chiral, dark, pluck</td>
+<td>手性反向：同一口钟，泛音沿雪花反方向拍动。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>003</td>
+<td><strong>Glass Gong</strong></td>
+<td>bell, chiral, hq, long, pluck</td>
+<td>宽的在位能隙拉伸泛音列；长而闪烁的锣尾。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>004</td>
+<td><strong>Toy Carillon</strong></td>
+<td>bell, chiral, eco, pluck, small</td>
+<td>8x8 小雪花：模态少，清晰的非谐和钟声；库里最省 CPU 的钟。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>005</td>
+<td><strong>Cathedral Gyro 32</strong></td>
+<td>bell, chiral, large, pluck, showcase</td>
+<td>32x32 大雪花：稠密的模态云，劈裂泛音形成缓慢的合唱。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>006</td>
+<td><strong>Honeycomb Harp</strong></td>
+<td>pluck, warm</td>
+<td>蜂窝上的柔和拨奏；轻微手性让余音略带旋动。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>007</td>
+<td><strong>Snowflake Koto</strong></td>
+<td>bright, narrow, pluck</td>
+<td>拾音点贴近中心：鼻音般、类似古筝的起音，随后快速绽开。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>008</td>
+<td><strong>Felt Lattice</strong></td>
+<td>dark, pluck, soft</td>
+<td>低音调、短衰减：像包了毛毡的闷音拨奏。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>009</td>
+<td><strong>Bent Tine</strong></td>
+<td>hq, metallic, pluck</td>
+<td>HQ 能隙加非线性：像音叉齿的拨奏，振幅衰减时音高随之弯曲。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>010</td>
+<td><strong>Defect Kalimba</strong></td>
+<td>defects, percussion, tuned</td>
+<td>一排重缺陷把模态困在小腔里：短促、有音高、像拇指琴的敲击。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>011</td>
+<td><strong>Low Mallets</strong></td>
+<td>defects, low, percussion, wood</td>
+<td>低音调、散布缺陷：带木质感的马林巴式槌击。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>012</td>
+<td><strong>Shard Clave</strong></td>
+<td>bright, defects, percussion, short</td>
+<td>密集随机缺陷与快速阻尼：干脆、玻璃质、带音高的咔哒声。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>013</td>
+<td><strong>Ring Cavity Tom</strong></td>
+<td>defects, drum, low, percussion</td>
+<td>缺陷围成的圆环像鼓皮腔体；腔内的声部低沉轰鸣。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>014</td>
+<td><strong>Chiral Cello</strong></td>
+<td>bowed, low, warm</td>
+<td>弓擦锯齿波穿过低调手性雪花：木质、略带扭转感的大提琴腔体。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>015</td>
+<td><strong>Rusty Bow</strong></td>
+<td>bowed, dark, grit</td>
+<td>高四次非线性：弓在刮擦，泛音拥挤并发出低吼。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>016</td>
+<td><strong>Viola Gyre</strong></td>
+<td>bowed, chiral, mid</td>
+<td>中音区；强手性把弓擦音拉成旋转的合唱感。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>017</td>
+<td><strong>Glass Harmonica</strong></td>
+<td>bowed, bright, glass, hq</td>
+<td>HQ 能隙加高音调：湿指摩擦玻璃般纯净，略带不稳定。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>018</td>
+<td><strong>Sul Ponticello</strong></td>
+<td>bowed, bright, thin</td>
+<td>拾音点外移至边缘：贴近琴码的纤细玻璃质弓音。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>019</td>
+<td><strong>Rim Rider</strong></td>
+<td>bowed, chiral, edge, wide</td>
+<td>最大手性：弓擦能量沿雪花边缘传播，边缘拾音点听到它绕圈。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>020</td>
+<td><strong>Mirror Rim</strong></td>
+<td>bowed, chiral, edge</td>
+<td>同一条边缘反向旋转，串扰把两个拾音点折叠在一起。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>021</td>
+<td><strong>Edge Chime</strong></td>
+<td>bell, chiral, edge, pluck, topological</td>
+<td>满手性拨奏：钟声泛音在衰减时仍沿边缘行进。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>022</td>
+<td><strong>Ember Field</strong></td>
+<td>excitable, morphogen, pluck, warm</td>
+<td>拨奏激发形态场波，像余烬被短暂扇旺，随后冷却。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>023</td>
+<td><strong>Static Bloom</strong></td>
+<td>bright, excitable, grainy, morphogen</td>
+<td>快速 Barkley 介质（短 tau）：每个音符后都绽开噼啪作响的颗粒。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>024</td>
+<td><strong>Slow Tide</strong></td>
+<td>bowed, excitable, morphogen, pad, slow</td>
+<td>慢速介质（长 tau）配合弓擦：音色像潮汐一样涨落。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>025</td>
+<td><strong>Nerve Net</strong></td>
+<td>excitable, hq, morphogen, pluck, restless</td>
+<td>HQ 势加敏感介质：拨奏在雪花上激发神经脉冲般的连发。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>026</td>
+<td><strong>Spiral Drone</strong></td>
+<td>drone, long, low, pad, spiral</td>
+<td>介质中植入的螺旋波缓慢旋转，扫动弓擦长音的音色。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>027</td>
+<td><strong>Low Orbit</strong></td>
+<td>dark, drone, long, pad, sub</td>
+<td>极低音调、接近临界的 Life：释放后仍久久不散的厚重低频长音。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>028</td>
+<td><strong>Halo Choir</strong></td>
+<td>bright, choir, drone, hq, long, pad</td>
+<td>HQ 能隙、宽拾音、慢形态场：空灵、带元音感的合唱铺底。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>029</td>
+<td><strong>Big Spiral 32</strong></td>
+<td>drone, large, long, pad, showcase, spiral</td>
+<td>32x32 雪花加螺旋种子：缓慢旋转的稠密长音。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Gap</td>
+</tr>
+<tr>
+<td>030</td>
+<td><strong>Morphogen Tapestry</strong></td>
+<td>bowed, evolving, morphogen, slow</td>
+<td>两个形态场源相撞；弓擦音慢慢重新编织泛音。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>031</td>
+<td><strong>Turing Bells</strong></td>
+<td>bell, evolving, excitable, morphogen</td>
+<td>在植入螺旋的介质上拨奏的钟：每一次敲击落在不同的纹理上。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+<tr>
+<td>032</td>
+<td><strong>Breathing Glass</strong></td>
+<td>bowed, bright, evolving, excitable, glass, morphogen</td>
+<td>弓擦高音玻璃，其明亮度随介质慢波呼吸。</td>
+<td>Brightness · Chirality · Sustain · Grit · Morphogen · Life · Width · Defects</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 FX</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>名称</th>
+<th>标签</th>
+<th>说明</th>
+<th>8 个宏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td><strong>Edge Shimmer</strong></td>
+<td>bright, dispersion, edge</td>
+<td>能隙内频带沿单向手性边缘传播：在干声旁形成明亮、色散的鸣响。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>102</td>
+<td><strong>Low Edge Rumble</strong></td>
+<td>dark, edge, low</td>
+<td>边缘调低：在底鼓与贝斯下方缓慢色散的暗沉低鸣。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>103</td>
+<td><strong>Glass Corridor</strong></td>
+<td>edge, glass, hq</td>
+<td>HQ 能隙抬高边缘频带：长而透明的玻璃走廊，尾音高而纯。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Gap</td>
+</tr>
+<tr>
+<td>104</td>
+<td><strong>Grit Edge</strong></td>
+<td>drive, edge, grit</td>
+<td>边缘上的四次非线性：瞬态返回时带着颗粒感与音高涂抹。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>105</td>
+<td><strong>Pinhole Edge</strong></td>
+<td>comb, defects, edge</td>
+<td>缺陷夹窄了边缘：边缘波在针孔处散射成梳状回声。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>106</td>
+<td><strong>Tiny Edge 8</strong></td>
+<td>eco, edge, small</td>
+<td>8x8 小雪花：短边缘、紧凑的边缘回声颤动；最轻量的效果器。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>107</td>
+<td><strong>Long Edge 32</strong></td>
+<td>edge, large, showcase</td>
+<td>32x32 边缘：路径长四倍，色散被拉成缓慢扫动的尾音。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>108</td>
+<td><strong>Freeze Halo</strong></td>
+<td>defects, freeze, halo</td>
+<td>缺陷环周围的部分冻结：每次敲击后悬停的柔和光晕。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>109</td>
+<td><strong>Crystal Cage</strong></td>
+<td>cavity, defects, freeze</td>
+<td>重缺陷腔体：冻结的模态被困在腔内，像水晶和弦般鸣响。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>110</td>
+<td><strong>Soft Hold</strong></td>
+<td>freeze, pad, soft</td>
+<td>无缺陷的轻度冻结：整片雪花维持柔和、模糊的延音。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>111</td>
+<td><strong>Shattered Ice</strong></td>
+<td>freeze, grainy, hq</td>
+<td>散布缺陷加 HQ：充满颗粒与闪光泛音的冻结场。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>112</td>
+<td><strong>Spiral Lock</strong></td>
+<td>defects, freeze, spiral</td>
+<td>缺陷沿螺旋臂排布：冻结的音色在消退时向外盘旋。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>113</td>
+<td><strong>Glacier 32</strong></td>
+<td>freeze, large, showcase</td>
+<td>32x32 冻结：带一条断层缺陷的巨大、缓慢的冻结模态冰川。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>114</td>
+<td><strong>Bulk Smear</strong></td>
+<td>dark, smear, space</td>
+<td>低手性体态腔体：短而涂抹的共振，让鼓更厚实。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>115</td>
+<td><strong>Honeycomb Room</strong></td>
+<td>room, space, warm</td>
+<td>中等衰减、宽拾音：把雪花当作一间温暖的小木屋。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>116</td>
+<td><strong>Gyro Chamber</strong></td>
+<td>chiral, space, wide</td>
+<td>体态中的强手性：反射盘旋，立体声像随之旋转。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>117</td>
+<td><strong>Dark Plate</strong></td>
+<td>long, plate, space</td>
+<td>低音调、长衰减：垫在人声或键盘下方的暗色板式混响。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>118</td>
+<td><strong>Ember Echo</strong></td>
+<td>bloom, excitable, morphogen, warm</td>
+<td>敲击扇起形态场波；回声在冷却前会微微变亮。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>119</td>
+<td><strong>Static Gate</strong></td>
+<td>excitable, grainy, morphogen, rhythmic</td>
+<td>快速介质：每个瞬态留下短暂的噼啪声，随后归于寂静。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>120</td>
+<td><strong>Living Edge</strong></td>
+<td>bloom, edge, excitable, morphogen</td>
+<td>接近临界 Life 的边缘色散器：输入之后边缘鸣响会膨胀。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>121</td>
+<td><strong>Spark Chamber</strong></td>
+<td>bright, excitable, hq, morphogen</td>
+<td>HQ 体态配敏感介质：瞬态在高频带上迸出火花。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Gap</td>
+</tr>
+<tr>
+<td>122</td>
+<td><strong>Breathing Edge</strong></td>
+<td>edge, evolving, morphogen</td>
+<td>形态场波调制边缘阻尼：鸣响自行呼吸。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+<tr>
+<td>123</td>
+<td><strong>Tidal Freeze</strong></td>
+<td>evolving, freeze, slow</td>
+<td>慢速介质调制部分冻结：保持的音像潮水般起落。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Freeze</td>
+</tr>
+<tr>
+<td>124</td>
+<td><strong>Turing Smear</strong></td>
+<td>evolving, space, spiral</td>
+<td>介质中旋转的螺旋波带动腔体音色一同旋转。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Defects</td>
+</tr>
+<tr>
+<td>125</td>
+<td><strong>Chiral Drift</strong></td>
+<td>chiral, edge, evolving</td>
+<td>形态场直接调制手性：边缘频带在音高与方向上漂移。</td>
+<td>Tone · Chirality · Mix · Decay · Morphogen · Grit · Width · Crosstalk</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 性能门</h2>
+<p><strong>方法</strong>（<code>scripts/presets/cpu6b.py</code>）：</p>
+<ol>
+<li>每个预设在 box 上用 <code>morpho_cli qa --cost 4</code> 计时（块 128，1500 块）。</li>
+<li>把 box 中位数乘以 Phase 5 在 i9 实测的同配置比值 r = i9 中位数 / box 中位数，再乘以 i9 尾部比 tail = i9 最差 p99 / i9 中位数，得到 i9 p99 估计。</li>
+<li>除以预算 20.83 µs/样本（48 kHz）。</li>
+<li>分级：eco &lt; 0.2，standard &lt; 0.5，high ≥ 0.5。</li>
+</ol>
+<p>在 bank 运行里出现 box p99 尖峰的预设，用 10 s 重测（<code>experiments/results/phase6b/cpu/rerun/</code>）。例如 Long Edge 32 在 bank 运行中 box p99 为 0.852，有 11 次超时；两次重测为 0.353 和 0.295，判为 box 虚拟机停顿。</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>box 中位数 µs</th>
+<th>i9 中位数 µs</th>
+<th>i9 最差 p99/预算</th>
+<th>用于</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L32 HQ fast 3T</td>
+<td>5.195</td>
+<td>4.745</td>
+<td>0.757</td>
+<td>32×32 HQ fast</td>
+</tr>
+<tr>
+<td>L32 Quartic 2T</td>
+<td>3.957</td>
+<td>3.520</td>
+<td>0.310</td>
+<td>32×32 FX Quartic</td>
+</tr>
+<tr>
+<td>L32 Quartic 3T</td>
+<td>3.858</td>
+<td>3.500</td>
+<td>0.480</td>
+<td>32×32 乐器 Quartic</td>
+</tr>
+<tr>
+<td>L16 1T</td>
+<td>1.478</td>
+<td>1.635</td>
+<td>0.145</td>
+<td>16×16（Quartic / HQ fast）与 8×8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结果</strong>：eco 43、standard 12、high 2。</p>
+<ul>
+<li>high：Cathedral Gyro 32（0.856）和 Big Spiral 32（0.888），都是 32×32 HQ fast 3T，界面标“High CPU”，CPU 芯片显示三个六边形。</li>
+<li>standard：L16 HQ fast（0.25–0.29），以及 Long Edge 32 / Glacier 32（0.337 / 0.313）。</li>
+<li>eco：L16 Quartic（约 0.14–0.19）和 L8（0.046）。</li>
+</ul>
+<p>所有 32×32 预设都只用 Quartic 或 HQ fast，线程 Auto。HQ exact 只在合成测试里使用，用来检查 L32 回退到 HQ fast（§9）。<strong>注意</strong>：i9 数字是估算；Phase 5 的比值来自 FX 与乐器的 bench，不同预设的介质 / 缺陷负载会让实际值有几个百分点的偏差。</p>
+<h3>4.1 乐器（逐个预设）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>名称</th>
+<th>类别</th>
+<th>晶格 / 势 / 线程</th>
+<th>box µs/样本</th>
+<th>i9 p99/预算（估算）</th>
+<th>CPU</th>
+<th>LUFS-I</th>
+<th>真峰值 dBTP</th>
+<th>余音 s</th>
+<th>质心 Hz</th>
+<th>滚降 85 % Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Gyro Bell</td>
+<td>Gyro Bells</td>
+<td>16x16 HQf 1T</td>
+<td>2.86</td>
+<td>0.280</td>
+<td>standard</td>
+<td>-18.1</td>
+<td>-2.9</td>
+<td>0.55</td>
+<td>2342</td>
+<td>3586</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Counter-Spin Bell</td>
+<td>Gyro Bells</td>
+<td>16x16 HQf 1T</td>
+<td>2.56</td>
+<td>0.251</td>
+<td>standard</td>
+<td>-18.1</td>
+<td>-4.3</td>
+<td>0.80</td>
+<td>543</td>
+<td>539</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Glass Gong</td>
+<td>Gyro Bells</td>
+<td>16x16 HQf 1T</td>
+<td>2.52</td>
+<td>0.247</td>
+<td>standard</td>
+<td>-18.0</td>
+<td>-2.8</td>
+<td>2.30</td>
+<td>746</td>
+<td>1453</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Toy Carillon</td>
+<td>Gyro Bells</td>
+<td>8x8 Q 1T</td>
+<td>0.46</td>
+<td>0.046</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-2.3</td>
+<td>0.00</td>
+<td>569</td>
+<td>656</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Cathedral Gyro 32</td>
+<td>Gyro Bells</td>
+<td>32x32 HQf 3T</td>
+<td>5.88</td>
+<td>0.856</td>
+<td><strong>high</strong></td>
+<td>-18.1</td>
+<td>-3.8</td>
+<td>4.70</td>
+<td>408</td>
+<td>445</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Honeycomb Harp</td>
+<td>Plucks</td>
+<td>16x16 Q 1T</td>
+<td>1.48</td>
+<td>0.145</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-2.0</td>
+<td>0.00</td>
+<td>436</td>
+<td>469</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Snowflake Koto</td>
+<td>Plucks</td>
+<td>16x16 Q 1T</td>
+<td>1.46</td>
+<td>0.143</td>
+<td>eco</td>
+<td>-19.7</td>
+<td>-1.2</td>
+<td>0.00</td>
+<td>625</td>
+<td>656</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Felt Lattice</td>
+<td>Plucks</td>
+<td>16x16 Q 1T</td>
+<td>1.52</td>
+<td>0.149</td>
+<td>eco</td>
+<td>-20.4 PL</td>
+<td>-1.3</td>
+<td>0.00</td>
+<td>225</td>
+<td>258</td>
+</tr>
+<tr>
+<td>009</td>
+<td>Bent Tine</td>
+<td>Plucks</td>
+<td>16x16 HQf 1T</td>
+<td>2.52</td>
+<td>0.247</td>
+<td>standard</td>
+<td>-19.2</td>
+<td>-1.2</td>
+<td>0.00</td>
+<td>748</td>
+<td>773</td>
+</tr>
+<tr>
+<td>010</td>
+<td>Defect Kalimba</td>
+<td>Percussive Lattice</td>
+<td>16x16 Q 1T</td>
+<td>1.51</td>
+<td>0.148</td>
+<td>eco</td>
+<td>-20.4 PL</td>
+<td>-1.3</td>
+<td>1.70</td>
+<td>162</td>
+<td>188</td>
+</tr>
+<tr>
+<td>011</td>
+<td>Low Mallets</td>
+<td>Percussive Lattice</td>
+<td>16x16 Q 1T</td>
+<td>1.54</td>
+<td>0.151</td>
+<td>eco</td>
+<td>-23.7 PL</td>
+<td>-1.3</td>
+<td>0.00</td>
+<td>100</td>
+<td>164</td>
+</tr>
+<tr>
+<td>012</td>
+<td>Shard Clave</td>
+<td>Percussive Lattice</td>
+<td>16x16 Q 1T</td>
+<td>1.48</td>
+<td>0.145</td>
+<td>eco</td>
+<td>-25.9 PL</td>
+<td>-1.1</td>
+<td>0.00</td>
+<td>367</td>
+<td>562</td>
+</tr>
+<tr>
+<td>013</td>
+<td>Ring Cavity Tom</td>
+<td>Percussive Lattice</td>
+<td>16x16 Q 1T</td>
+<td>1.46</td>
+<td>0.143</td>
+<td>eco</td>
+<td>-20.7 PL</td>
+<td>-1.3</td>
+<td>0.00</td>
+<td>191</td>
+<td>258</td>
+</tr>
+<tr>
+<td>014</td>
+<td>Chiral Cello</td>
+<td>Chiral Strings</td>
+<td>16x16 Q 1T</td>
+<td>1.57</td>
+<td>0.154</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-6.5</td>
+<td>1.00</td>
+<td>314</td>
+<td>586</td>
+</tr>
+<tr>
+<td>015</td>
+<td>Rusty Bow</td>
+<td>Chiral Strings</td>
+<td>16x16 Q 1T</td>
+<td>1.57</td>
+<td>0.154</td>
+<td>eco</td>
+<td>-19.3</td>
+<td>-1.2</td>
+<td>0.55</td>
+<td>357</td>
+<td>609</td>
+</tr>
+<tr>
+<td>016</td>
+<td>Viola Gyre</td>
+<td>Chiral Strings</td>
+<td>16x16 Q 1T</td>
+<td>1.48</td>
+<td>0.145</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-5.7</td>
+<td>1.25</td>
+<td>453</td>
+<td>797</td>
+</tr>
+<tr>
+<td>017</td>
+<td>Glass Harmonica</td>
+<td>Chiral Strings</td>
+<td>16x16 HQf 1T</td>
+<td>2.55</td>
+<td>0.250</td>
+<td>standard</td>
+<td>-18.0</td>
+<td>-5.4</td>
+<td>2.00</td>
+<td>2419</td>
+<td>4102</td>
+</tr>
+<tr>
+<td>018</td>
+<td>Sul Ponticello</td>
+<td>Chiral Strings</td>
+<td>16x16 Q 1T</td>
+<td>1.51</td>
+<td>0.149</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-5.8</td>
+<td>0.35</td>
+<td>680</td>
+<td>773</td>
+</tr>
+<tr>
+<td>019</td>
+<td>Rim Rider</td>
+<td>Edge / Topological</td>
+<td>16x16 Q 1T</td>
+<td>1.57</td>
+<td>0.154</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-3.1</td>
+<td>4.10</td>
+<td>556</td>
+<td>820</td>
+</tr>
+<tr>
+<td>020</td>
+<td>Mirror Rim</td>
+<td>Edge / Topological</td>
+<td>16x16 Q 1T</td>
+<td>1.58</td>
+<td>0.155</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-2.6</td>
+<td>4.00</td>
+<td>547</td>
+<td>867</td>
+</tr>
+<tr>
+<td>021</td>
+<td>Edge Chime</td>
+<td>Edge / Topological</td>
+<td>16x16 Q 1T</td>
+<td>1.48</td>
+<td>0.145</td>
+<td>eco</td>
+<td>-19.1</td>
+<td>-1.2</td>
+<td>3.65</td>
+<td>369</td>
+<td>469</td>
+</tr>
+<tr>
+<td>022</td>
+<td>Ember Field</td>
+<td>Excitable Textures</td>
+<td>16x16 Q 1T</td>
+<td>1.51</td>
+<td>0.149</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-3.1</td>
+<td>2.80</td>
+<td>402</td>
+<td>422</td>
+</tr>
+<tr>
+<td>023</td>
+<td>Static Bloom</td>
+<td>Excitable Textures</td>
+<td>16x16 Q 1T</td>
+<td>1.59</td>
+<td>0.156</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-5.8</td>
+<td>0.85</td>
+<td>579</td>
+<td>586</td>
+</tr>
+<tr>
+<td>024</td>
+<td>Slow Tide</td>
+<td>Excitable Textures</td>
+<td>16x16 Q 1T</td>
+<td>1.57</td>
+<td>0.154</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-2.6</td>
+<td>6.10</td>
+<td>478</td>
+<td>914</td>
+</tr>
+<tr>
+<td>025</td>
+<td>Nerve Net</td>
+<td>Excitable Textures</td>
+<td>16x16 HQf 1T</td>
+<td>2.67</td>
+<td>0.262</td>
+<td>standard</td>
+<td>-18.0</td>
+<td>-5.5</td>
+<td>3.10</td>
+<td>1969</td>
+<td>3023</td>
+</tr>
+<tr>
+<td>026</td>
+<td>Spiral Drone</td>
+<td>Drones</td>
+<td>16x16 Q 1T</td>
+<td>1.57</td>
+<td>0.154</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-3.2</td>
+<td>2.75</td>
+<td>510</td>
+<td>938</td>
+</tr>
+<tr>
+<td>027</td>
+<td>Low Orbit</td>
+<td>Drones</td>
+<td>16x16 Q 1T</td>
+<td>1.56</td>
+<td>0.153</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-4.3</td>
+<td>5.70</td>
+<td>259</td>
+<td>305</td>
+</tr>
+<tr>
+<td>028</td>
+<td>Halo Choir</td>
+<td>Drones</td>
+<td>16x16 HQf 1T</td>
+<td>2.74</td>
+<td>0.269</td>
+<td>standard</td>
+<td>-18.0</td>
+<td>-3.9</td>
+<td>3.40</td>
+<td>1192</td>
+<td>2156</td>
+</tr>
+<tr>
+<td>029</td>
+<td>Big Spiral 32</td>
+<td>Drones</td>
+<td>32x32 HQf 3T</td>
+<td>6.10</td>
+<td>0.888</td>
+<td><strong>high</strong></td>
+<td>-18.0</td>
+<td>-3.3</td>
+<td>2.65</td>
+<td>742</td>
+<td>1172</td>
+</tr>
+<tr>
+<td>030</td>
+<td>Morphogen Tapestry</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.64</td>
+<td>0.161</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-6.5</td>
+<td>2.45</td>
+<td>716</td>
+<td>1242</td>
+</tr>
+<tr>
+<td>031</td>
+<td>Turing Bells</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.68</td>
+<td>0.165</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-3.2</td>
+<td>1.75</td>
+<td>533</td>
+<td>680</td>
+</tr>
+<tr>
+<td>032</td>
+<td>Breathing Glass</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.60</td>
+<td>0.157</td>
+<td>eco</td>
+<td>-18.0</td>
+<td>-1.9</td>
+<td>1.50</td>
+<td>1097</td>
+<td>1898</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 FX</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>名称</th>
+<th>类别</th>
+<th>晶格 / 势 / 线程</th>
+<th>box µs/样本</th>
+<th>i9 p99/预算（估算）</th>
+<th>CPU</th>
+<th>LUFS-I</th>
+<th>真峰值 dBTP</th>
+<th>余音 s</th>
+<th>质心 Hz</th>
+<th>滚降 85 % Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Edge Shimmer</td>
+<td>Edge Dispersers</td>
+<td>16x16 Q 1T</td>
+<td>1.71</td>
+<td>0.168</td>
+<td>eco</td>
+<td>-21.8</td>
+<td>-1.2</td>
+<td>0.05</td>
+<td>483</td>
+<td>773</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Low Edge Rumble</td>
+<td>Edge Dispersers</td>
+<td>16x16 Q 1T</td>
+<td>1.66</td>
+<td>0.163</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-1.5</td>
+<td>0.10</td>
+<td>355</td>
+<td>469</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Glass Corridor</td>
+<td>Edge Dispersers</td>
+<td>16x16 HQf 1T</td>
+<td>2.65</td>
+<td>0.260</td>
+<td>standard</td>
+<td>-21.1</td>
+<td>-1.2</td>
+<td>0.05</td>
+<td>367</td>
+<td>445</td>
+</tr>
+<tr>
+<td>104</td>
+<td>Grit Edge</td>
+<td>Edge Dispersers</td>
+<td>16x16 Q 1T</td>
+<td>1.58</td>
+<td>0.155</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-1.5</td>
+<td>0.05</td>
+<td>389</td>
+<td>539</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Pinhole Edge</td>
+<td>Edge Dispersers</td>
+<td>16x16 Q 1T</td>
+<td>1.59</td>
+<td>0.156</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-1.6</td>
+<td>0.05</td>
+<td>487</td>
+<td>750</td>
+</tr>
+<tr>
+<td>106</td>
+<td>Tiny Edge 8</td>
+<td>Edge Dispersers</td>
+<td>8x8 Q 1T</td>
+<td>0.47</td>
+<td>0.046</td>
+<td>eco</td>
+<td>-20.7</td>
+<td>-1.2</td>
+<td>0.05</td>
+<td>504</td>
+<td>773</td>
+</tr>
+<tr>
+<td>107</td>
+<td>Long Edge 32</td>
+<td>Edge Dispersers</td>
+<td>32x32 Q 2T</td>
+<td>4.30</td>
+<td>0.337</td>
+<td>standard</td>
+<td>-20.0</td>
+<td>-2.3</td>
+<td>0.05</td>
+<td>653</td>
+<td>797</td>
+</tr>
+<tr>
+<td>108</td>
+<td>Freeze Halo</td>
+<td>Defect Freezers</td>
+<td>16x16 Q 1T</td>
+<td>1.80</td>
+<td>0.176</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-7.3</td>
+<td>4.20</td>
+<td>532</td>
+<td>891</td>
+</tr>
+<tr>
+<td>109</td>
+<td>Crystal Cage</td>
+<td>Defect Freezers</td>
+<td>16x16 Q 1T</td>
+<td>1.85</td>
+<td>0.182</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-6.0</td>
+<td>0.60</td>
+<td>516</td>
+<td>867</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Soft Hold</td>
+<td>Defect Freezers</td>
+<td>16x16 Q 1T</td>
+<td>1.93</td>
+<td>0.189</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-6.4</td>
+<td>1.70</td>
+<td>423</td>
+<td>773</td>
+</tr>
+<tr>
+<td>111</td>
+<td>Shattered Ice</td>
+<td>Defect Freezers</td>
+<td>16x16 HQf 1T</td>
+<td>2.99</td>
+<td>0.293</td>
+<td>standard</td>
+<td>-20.0</td>
+<td>-6.0</td>
+<td>1.85</td>
+<td>1011</td>
+<td>1570</td>
+</tr>
+<tr>
+<td>112</td>
+<td>Spiral Lock</td>
+<td>Defect Freezers</td>
+<td>16x16 Q 1T</td>
+<td>1.68</td>
+<td>0.165</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-4.6</td>
+<td>2.70</td>
+<td>512</td>
+<td>797</td>
+</tr>
+<tr>
+<td>113</td>
+<td>Glacier 32</td>
+<td>Defect Freezers</td>
+<td>32x32 Q 2T</td>
+<td>4.00</td>
+<td>0.313</td>
+<td>standard</td>
+<td>-20.0</td>
+<td>-6.7</td>
+<td>4.85</td>
+<td>495</td>
+<td>797</td>
+</tr>
+<tr>
+<td>114</td>
+<td>Bulk Smear</td>
+<td>Lattice Spaces</td>
+<td>16x16 Q 1T</td>
+<td>1.68</td>
+<td>0.165</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-1.5</td>
+<td>0.05</td>
+<td>375</td>
+<td>445</td>
+</tr>
+<tr>
+<td>115</td>
+<td>Honeycomb Room</td>
+<td>Lattice Spaces</td>
+<td>16x16 Q 1T</td>
+<td>1.63</td>
+<td>0.160</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-6.4</td>
+<td>0.20</td>
+<td>467</td>
+<td>867</td>
+</tr>
+<tr>
+<td>116</td>
+<td>Gyro Chamber</td>
+<td>Lattice Spaces</td>
+<td>16x16 Q 1T</td>
+<td>1.62</td>
+<td>0.159</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-6.8</td>
+<td>0.70</td>
+<td>340</td>
+<td>352</td>
+</tr>
+<tr>
+<td>117</td>
+<td>Dark Plate</td>
+<td>Lattice Spaces</td>
+<td>16x16 Q 1T</td>
+<td>1.64</td>
+<td>0.161</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-7.8</td>
+<td>1.20</td>
+<td>457</td>
+<td>773</td>
+</tr>
+<tr>
+<td>118</td>
+<td>Ember Echo</td>
+<td>Excitable FX</td>
+<td>16x16 Q 1T</td>
+<td>1.71</td>
+<td>0.168</td>
+<td>eco</td>
+<td>-19.9</td>
+<td>-7.8</td>
+<td>3.25</td>
+<td>488</td>
+<td>820</td>
+</tr>
+<tr>
+<td>119</td>
+<td>Static Gate</td>
+<td>Excitable FX</td>
+<td>16x16 Q 1T</td>
+<td>1.54</td>
+<td>0.151</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-8.4</td>
+<td>0.90</td>
+<td>1102</td>
+<td>1570</td>
+</tr>
+<tr>
+<td>120</td>
+<td>Living Edge</td>
+<td>Excitable FX</td>
+<td>16x16 Q 1T</td>
+<td>1.60</td>
+<td>0.157</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-2.0</td>
+<td>0.05</td>
+<td>423</td>
+<td>656</td>
+</tr>
+<tr>
+<td>121</td>
+<td>Spark Chamber</td>
+<td>Excitable FX</td>
+<td>16x16 HQf 1T</td>
+<td>2.69</td>
+<td>0.264</td>
+<td>standard</td>
+<td>-20.0</td>
+<td>-8.5</td>
+<td>1.75</td>
+<td>1472</td>
+<td>2203</td>
+</tr>
+<tr>
+<td>122</td>
+<td>Breathing Edge</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.66</td>
+<td>0.163</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-1.6</td>
+<td>0.05</td>
+<td>424</td>
+<td>539</td>
+</tr>
+<tr>
+<td>123</td>
+<td>Tidal Freeze</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.50</td>
+<td>0.148</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-8.0</td>
+<td>2.50</td>
+<td>772</td>
+<td>1547</td>
+</tr>
+<tr>
+<td>124</td>
+<td>Turing Smear</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.77</td>
+<td>0.174</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-5.1</td>
+<td>0.50</td>
+<td>598</td>
+<td>961</td>
+</tr>
+<tr>
+<td>125</td>
+<td>Chiral Drift</td>
+<td>Morph Evolutions</td>
+<td>16x16 Q 1T</td>
+<td>1.80</td>
+<td>0.176</td>
+<td>eco</td>
+<td>-20.0</td>
+<td>-2.4</td>
+<td>0.10</td>
+<td>502</td>
+<td>727</td>
+</tr>
+</tbody>
+</table>
+<p>“PL” = 峰值受限（打击类按峰值归一，见 §5）。余音 = 演奏结束后降到 −60 dBFS 以下所需的时间（0 = 演奏结束前已经衰减完）。</p>
+<h2>5. 声音门</h2>
+<p><strong>标准演示</strong>（合成，无采样，可复现）：</p>
+<ul>
+<li>乐器：8 s 的 MPE 乐句，包括旋律、滑音、压力渐强和 CC74 扫动，最后是带压力起伏的三和弦。</li>
+<li>FX：0–4 s 鼓组，4–8 s 小七和弦琶音加低音持续二度。干声为 −20.1 LUFS-I，峰值 −3.1 dBFS。</li>
+<li>之后都留 8 s 余音。</li>
+</ul>
+<p><strong>门限</strong>（<code>scripts/presets/qa_analyze.py</code>）：</p>
+<ul>
+<li>有限值，NaN 复位 0 次；DC &lt; −60 dBFS。</li>
+<li>无能量失控：末端能量 ≤ 1.1·E_cap，且末 2 s 不再增长。</li>
+<li>余音在 12 s 内降到 −60 dBFS。</li>
+<li>真峰值 ≤ −1 dBTP，限幅器 0 次。</li>
+<li>响度：乐器 −18 ±2 LUFS-I；FX −20 ±2 LUFS-I，等于干声，所以旁通对比时响度中性。</li>
+<li>打击类（峰均比高）如果按积分响度归一会超过真峰值，所以改按峰值归一（−1.3 dBTP），并标为“峰值受限”。这与 EBU 对单发音效的做法一致。</li>
+</ul>
+<p><strong>结果</strong>：57/57 通过（<code>experiments/results/phase6b/qa/analysis.json</code>）。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>乐器（32）</th>
+<th>FX（25）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LUFS-I（非峰值受限）</td>
+<td>−19.7 ~ −18.0</td>
+<td>−21.8 ~ −19.9</td>
+</tr>
+<tr>
+<td>峰值受限</td>
+<td>5 个：Felt Lattice −20.4、Defect Kalimba −20.4、Ring Cavity Tom −20.7、Low Mallets −23.7、Shard Clave −25.9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>最大真峰值</td>
+<td>−1.1 dBTP</td>
+<td>−1.2 dBTP</td>
+</tr>
+<tr>
+<td>最长余音</td>
+<td>6.1 s</td>
+<td>4.85 s</td>
+</tr>
+<tr>
+<td>最大 DC</td>
+<td>−137.5 dBFS</td>
+<td>−74.2 dBFS</td>
+</tr>
+<tr>
+<td>谱质心范围</td>
+<td>100–2419 Hz</td>
+<td>340–1472 Hz</td>
+</tr>
+<tr>
+<td>限幅器 / NaN / 失控</td>
+<td>0 / 0 / 0</td>
+<td>0 / 0 / 0</td>
+</tr>
+</tbody>
+</table>
+<p>每个预设的频谱图在 <code>experiments/results/phase6b/qa/*_spec.png</code>。</p>
+<h3>5.1 音色图</h3>
+<p><img alt="音色图" src="phase6b_screens/timbre_map.png" /></p>
+<ul>
+<li>(a) 谱质心中位数（对数）对平均谱通量。</li>
+<li>(b) 5 个特征的 PCA：log 质心、log 85 % 滚降、通量、平坦度、低频占比。PC1 解释 60 %，PC2 解释 27 %。</li>
+</ul>
+<p>最近邻（PCA 前的标准化 5 维空间，<code>timbre_nn.json</code>）的距离中位数为 0.415。最相近的组合：</p>
+<table>
+<thead>
+<tr>
+<th>预设 A</th>
+<th>预设 B</th>
+<th>距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pinhole Edge</td>
+<td>Tiny Edge 8</td>
+<td>0.097</td>
+</tr>
+<tr>
+<td>Bulk Smear</td>
+<td>Low Edge Rumble</td>
+<td>0.145</td>
+</tr>
+<tr>
+<td>Big Spiral 32</td>
+<td>Morphogen Tapestry</td>
+<td>0.147</td>
+</tr>
+<tr>
+<td>Mirror Rim</td>
+<td>Rim Rider</td>
+<td>0.167</td>
+</tr>
+<tr>
+<td>Shattered Ice</td>
+<td>Static Gate</td>
+<td>0.169</td>
+</tr>
+<tr>
+<td>Edge Shimmer</td>
+<td>Pinhole Edge</td>
+<td>0.173</td>
+</tr>
+<tr>
+<td>Counter-Spin Bell</td>
+<td>Static Bloom</td>
+<td>0.178</td>
+</tr>
+<tr>
+<td>Cathedral Gyro 32</td>
+<td>Honeycomb Harp</td>
+<td>0.199</td>
+</tr>
+</tbody>
+</table>
+<p><strong>局限</strong>：边缘色散 FX 在图中聚在一起（右上方）。原因是演示里干声占主导，湿声只有能隙内的窄带，长时间平均的特征差别小。听感上的区别（边缘频带的位置、手性方向、颗粒）需要 6c 听测确认；必要时在 6c 之后把 Pinhole Edge / Tiny Edge 8 拉开，或者合并。</p>
+<h2>6. 演示音频</h2>
+<ul>
+<li>位置：<code>experiments/results/phase6b/demos/NNN_slug.{wav,ogg,mp3}</code>，57 × 3 个文件，共 128 MB。另有分卷 zip，见 §10。</li>
+<li>长度 8.5–16 s，即演奏 + 余音 + 0.5 s，末尾 40 ms 淡出。</li>
+<li>WAV 为 16 bit / 48 kHz（TPDF 抖动），OGG 为 q5，MP3 为 192 kbps。<code>demos.json</code> 记录每个文件的响度与真峰值。</li>
+</ul>
+<p><strong>推荐试听</strong>（按测量挑选：在音色图上位置独特、物理特征鲜明。未经人耳评价，6c 会验证）：</p>
+<table>
+<thead>
+<tr>
+<th>演示</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>005_cathedral_gyro_32</code></td>
+<td>32×32 稠密模态云，劈裂泛音形成缓慢合唱；余音 4.7 s；high CPU</td>
+</tr>
+<tr>
+<td><code>003_glass_gong</code></td>
+<td>宽的在位能隙拉伸泛音列，长而闪烁的锣尾</td>
+</tr>
+<tr>
+<td><code>017_glass_harmonica</code></td>
+<td>PCA 上的离群点之一：高通量、纯净且略带不稳定；旧版失控，新版已修</td>
+</tr>
+<tr>
+<td><code>028_halo_choir</code></td>
+<td>HQ 能隙 + 宽拾音 + 慢形态场，带元音感的铺底（重调后测量中不再出现噪声底）</td>
+</tr>
+<tr>
+<td><code>031_turing_bells</code></td>
+<td>拨奏落在植入螺旋波的介质上，每次敲击的纹理都不同</td>
+</tr>
+<tr>
+<td><code>121_spark_chamber</code></td>
+<td>FX：瞬态在高频带上迸出火花，是 FX 中质心最高的之一</td>
+</tr>
+</tbody>
+</table>
+<p>备选：<code>111_shattered_ice</code>（冻结颗粒场）、<code>025_nerve_net</code>（神经脉冲式连发）、<code>026_spiral_drone</code>。</p>
+<h2>7. 预设浏览器</h2>
+<p><strong>实现</strong>：<code>plugin/Source/ui/PresetBrowser.{h,cpp}</code>，替代 6a 的下拉框。</p>
+<ul>
+<li><strong>标题栏芯片</strong>：类别、名称、CPU 六边形（1–3 个：eco 用强调色，standard 用 ink，high 用警告色）和收藏星。两侧是前 / 后按钮，按库顺序切换，在 Init 状态下跳到首个或末个预设。</li>
+<li><strong>覆盖层</strong>（标题栏与状态栏之间）：</li>
+<li>左列：All、Favourites 以及各类别和数量。</li>
+<li>标签筛选条：只列 ≥ 2 个预设共有的标签，最多 14 个。</li>
+<li>列表：星、名称、类别、晶格 / 势、CPU。</li>
+<li>详情卡：描述、标签、8 个宏名、引擎配置、CPU 说明（“under 20 % of budget (19 est., p99)”）。如果当前预设被筛掉，详情卡仍显示它并加注。</li>
+<li>按钮：Load + close、Init、Close。</li>
+<li>操作：单击试听，双击或 Enter 载入，F 收藏，Esc 关闭，方向键移动。</li>
+<li><strong>收藏</strong>：保存在 <code>userApplicationDataDirectory/MORPHO-PHS/favourites_{inst|fx}.txt</code>（Windows 上是 <code>%APPDATA%</code>）。</li>
+<li><strong>Init</strong>：全部默认参数 + 默认宏映射，程序号 −1。</li>
+<li><strong>宿主与状态</strong>：宿主的程序列表按库顺序；插件状态按名称恢复当前预设。保存用户预设时继承当前出厂预设的类别、标签和描述。</li>
+<li>界面文字为英文，因为 IBM Plex 没有中文字形，中文描述在列表文件与报告里。</li>
+</ul>
+<p>截图（<code>xvfb</code> 快照工具，<code>experiments/results/phase6b/ui/</code>，选取的放在 <code>reports/phase6b_screens/</code>）：</p>
+<p><img alt="乐器：全部" src="phase6b_screens/inst_browser_all_1x.png" />
+<img alt="乐器：类别 2x" src="phase6b_screens/inst_browser_category_2x.png" />
+<img alt="乐器：标签" src="phase6b_screens/inst_browser_tag_1x.png" />
+<img alt="FX：全部" src="phase6b_screens/fx_browser_all_1x.png" />
+<img alt="FX：标签 edge" src="phase6b_screens/fx_browser_tag_1x.png" />
+<img alt="FX：收藏" src="phase6b_screens/fx_browser_favourites_1x.png" />
+<img alt="乐器：标题栏芯片 2x" src="phase6b_screens/inst_header_2x.png" />
+<img alt="FX：标题栏芯片 2x" src="phase6b_screens/fx_header_2x.png" /></p>
+<p><strong>自我评审</strong>（逐张看截图后修改）：</p>
+<ol>
+<li>键位提示行压住列表最后一行 → 列表底部留 30 px，提示放在底部 −26 处。</li>
+<li>Init 状态下芯片显示 “INIT Init” → Init 时类别为空。</li>
+<li>详情卡的 CPU 文本被截断 → 改短。</li>
+<li>当前预设被筛掉时详情卡为空 → 改为显示当前预设并加注。</li>
+<li>快照工具原本只拍到 Init → 改为载入程序 4 并临时设两个收藏，拍完恢复。</li>
+</ol>
+<p><strong>与美术方向一致</strong>：哑光体面板与发丝线；强调色只出现在“导通”的元素上，即选中的行、选中的标签、Load 按钮和收藏星。按钮用六角胶囊；收藏符号是六芒星；CPU 等级用六边形点。</p>
+<p><strong>仍可改进</strong>：</p>
+<ul>
+<li>1x 下宏名的字号偏小。</li>
+<li>标签多时第二行略挤。</li>
+<li>音色图里的标签重叠（只影响报告图）。</li>
+<li>浏览器没有搜索框（57 个预设靠类别和标签已足够，用户预设变多后再考虑）。</li>
+</ul>
+<p><strong>绘制开销</strong>（<code>*_paint.json</code>，Hero 晶格，box）：默认尺寸 1x 中位数 1.3 ms、2x 3.2 ms，最大尺寸 2x 6.6 ms。比 6a 报告的 0.8–1.1 / 2.2–2.8 / 4.2–5.3 ms 略高，原因未逐项分解（box 虚拟机波动或标题栏新芯片），浏览器覆盖层本身只在打开时绘制。音频线程契约不变：编辑器隐藏或关闭时快照发布为 0 Hz。</p>
+<h2>8. 宏的极端位置</h2>
+<ul>
+<li>乐器的 Life 宏推到顶时进入有界自持，松开音符后也不结束（“活体”设计，能量门限幅，不会失控）。</li>
+<li>FX 的 Freeze 宏推到 1 时无限保持。</li>
+<li>带螺旋波种子的预设 Life = 0。</li>
+</ul>
+<p>QA 测的是默认宏位置，极端位置的行为留给 6c 和 DAW 人工检查。</p>
+<h2>9. 回归测试</h2>
+<p>全部在 box 上于 19:19–19:28（Asia/Shanghai）完成。日志：<code>/workspace/p6b/regression.log</code>；输出：<code>experiments/results/phase6b/{tests,pluginval,wincheck,validate}/</code>。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_main</code>、<code>test_mt</code>、<code>test_phase3</code>、<code>test_phase4</code>、<code>test_phase5</code>（含 S5c：L32 HQ-exact → HQ fast 回退、Auto 线程）</td>
+<td>全部 PASS，0 失败</td>
+</tr>
+<tr>
+<td>压力测试 <code>test_phase5_stress 30 s</code>，种子 1/2/3</td>
+<td>3/3 PASS（P3 每轮 23989–25008 次启停，每次 &lt; 2 s；P4 148–159 次池切换，无卡死）</td>
+</tr>
+<tr>
+<td>插桩压力测试（<code>-DSTRESS_HOOKS</code>，20 s），种子 1/2/3</td>
+<td>3/3 PASS（注入 38157–41065 次竞争休眠）</td>
+</tr>
+<tr>
+<td>预设校验 <code>validate presets --factory 1</code></td>
+<td>57 个，0 失败</td>
+</tr>
+<tr>
+<td><code>check-presets</code>（逐预设载入 / 引擎配置检查 + 合成的 L32 / L16 HQ-exact 用例）</td>
+<td>63 项，0 失败；L32 HQ exact → HQ fast 3T 且有警告，L16 HQ exact 保持 HQ exact 2T</td>
+</tr>
+<tr>
+<td>旧 27 个按出厂规则校验（对照）</td>
+<td>27/27 不满足（预期）</td>
+</tr>
+<tr>
+<td>声音 QA（§5）</td>
+<td>57/57 通过</td>
+</tr>
+<tr>
+<td>pluginval 严格度 10（VST3，xvfb，进程内）</td>
+<td>MORPHO-PHS SUCCESS，MORPHO-PHS FX SUCCESS（含 Plugin programs（乐器 32 个、FX 25 个程序，名称全部检查）、编辑器、处理中打开编辑器、状态恢复、参数模糊测试）</td>
+</tr>
+<tr>
+<td>zig 交叉编译（x86_64-windows-gnu，MinGW）引擎 / 测试</td>
+<td><code>test_phase5</code>、<code>test_phase4</code>、<code>test_phase5_stress</code>、stress hooks 均 EXIT 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明</strong>：6b 的代码修改都在 JUCE 层，包括 PresetIO、Processor、Editor、浏览器和 CLI。JUCE 8 不支持 MinGW，所以这些文件不能用 zig 检查，要在 PC 上用 MSVC 编译验证（§10）。引擎代码自 5c 以来没有改动。<code>test_mt.cpp</code> 只能在 Linux 上运行，这是 Phase 3 起就有的限制，不在 Windows 检查范围内。</p>
+<h2>10. 同步包与 PC 步骤</h2>
+<ul>
+<li>代码 / 文档同步包：<code>/workspace/phase6_sync/morpho-phs-phase6b-sync.zip</code>。内容是相对 6a 同步包之后状态的新增与修改文件，附 <code>PHASE6B_SYNC_MANIFEST.txt</code>（每个文件的 SHA256）。不含演示音频、QA WAV 和 build。</li>
+<li>演示音频：<code>/workspace/phase6_sync/morpho-phs-phase6b-demos.zip</code>，按 15 MB 分卷（<code>.zip.001</code>、<code>.zip.002</code>…），附各分卷与整体的 SHA256。</li>
+</ul>
+<p><strong>PC 步骤</strong>（PC 联网后，PowerShell，项目根目录）：</p>
+<ol>
+<li>校验 SHA256（<code>Get-FileHash -Algorithm SHA256 &lt;文件&gt;</code>），把同步包解压覆盖到项目根目录（包里的顶层目录是 <code>morpho-phs-workspace</code>）。</li>
+<li><code>powershell -ExecutionPolicy Bypass -File scripts\windows\apply_phase6b_sync.ps1</code>。zip 不能删除文件，这一步把旧的 <code>presets\NN_*.morpho</code> 移除（副本在 <code>presets\retired\</code>），并检查是否有 57 个新预设。</li>
+<li><code>powershell -ExecutionPolicy Bypass -File scripts\windows\build_windows.ps1 -VsPath C:\SDKs\AetherBuildTools -Generator Ninja</code>，可加 <code>-Install</code>。</li>
+<li><code>dist\windows\morpho_cli.exe validate presets --factory 1</code>，应为 57 OK、0 错误。</li>
+<li>pluginval：<code>tools\pluginval\pluginval.exe --strictness-level 10 --validate-in-process --output-dir logs dist\windows\MORPHO-PHS.vst3</code>，FX 同理。</li>
+<li>可选：i9 实测 CPU 等级。运行 <code>dist\windows\morpho_cli.exe qa presets logs\qa6b --play 8 --tail 8 --cost 4</code>（约 340 MB WAV），把 <code>logs\qa6b\qa.json</code> 发回，即可用 i9 实测替代估算。</li>
+<li>演示音频分卷：<code>cmd /c copy /b morpho-phs-phase6b-demos.zip.001+morpho-phs-phase6b-demos.zip.002+…+morpho-phs-phase6b-demos.zip.008 morpho-phs-phase6b-demos.zip</code>（8 个分卷），校验整体 SHA256 后解压。</li>
+<li>在 DAW 中打开两个插件，检查：浏览器、收藏（重启宿主后仍在）、前后切换、Init、保存 / 载入工程后预设名恢复。</li>
+</ol>
+<h2>11. 给 6c 的 MUSHRA 听测设计建议</h2>
+<p><strong>目的</strong>：</p>
+<ol>
+<li>验证新库相对旧库的感知质量提升。</li>
+<li>检查边缘色散 FX 是否真的彼此可分辨。</li>
+<li>检查 HQ fast 与 Quartic、32×32 与 16×16 的差别是否值得多出的 CPU。</li>
+</ol>
+<p><strong>方法</strong>：ITU-R BS.1534-3（MUSHRA），0–100 连续量表，网页工具（如 webMUSHRA，开源），耳机，安静环境。至少 15 名有经验的听者，事后剔除规则按 BS.1534-3：隐藏参考在 ≥ 15 % 的试次中得分 &lt; 90 的听者剔除。</p>
+<p><strong>刺激</strong>：使用 §5 的标准演示（乐器乐句与 FX 干声输入），截 6–8 s，全部响度对齐到 −23 LUFS-I（播放端统一增益），避免“更响 = 更好”。</p>
+<p><strong>实验 A：新旧对比</strong>（每个试次 = 一个声音角色，选 10 组新旧对应的预设，如 Glass Harmonica、Halo Choir / Twisted Choir、Spiral Drone、Defect Kalimba、Edge Shimmer、Freeze Halo、Big Spiral 32、Glass Corridor、Chiral Cello、Low Mallets）。条件：</p>
+<ul>
+<li>参考：新预设。这里的 MUSHRA 不是保真度评价，而是“与设计意图的接近程度 / 整体质量”，参考由声音设计者确认为目标声音。</li>
+<li>隐藏参考：同一新预设。</li>
+<li>旧预设（响度对齐，失控或不结束的截断到相同长度）。</li>
+<li>旁通 / 干声（FX）或基础 Init 音色（乐器）。</li>
+<li>低锚：参考的 3.5 kHz 低通（BS.1534-3 规定）。</li>
+<li>中锚：参考的 7 kHz 低通，或 Quartic 16×16 降阶版。</li>
+</ul>
+<p><strong>实验 B：配置差异</strong>（选 6 个 HQ fast 或 32×32 预设）：参考为原配置；条件为同预设改 Quartic、改 16×16、改 8×8；锚点同上。回答“high CPU 是否换来可闻的质量”，结果用于决定 Auto 档位与 ECO 模式的降级策略。</p>
+<p><strong>实验 C：边缘色散 FX 可分辨性</strong>（重点）：参考为 Edge Shimmer；条件为 Pinhole Edge、Tiny Edge 8、Low Edge Rumble、Grit Edge、Glass Corridor 和干声。以“与参考的相似度”评分，配合一组 ABX：Pinhole Edge 对 Tiny Edge 8、Low Edge Rumble 对 Bulk Smear，各 16 次，检验 p &lt; 0.05。不可分辨的组合在 6c 之后重做或合并。</p>
+<p><strong>分析</strong>：每个条件报告中位数和 95 % 置信区间（bootstrap），用 Wilcoxon 符号秩检验并做 Holm 校正，或用线性混合模型（听者为随机效应）。预注册假设：新库中位数 &gt; 旧库中位数，且差值 ≥ 10 分；HQ fast 对 Quartic 的差值 &lt; 5 分时，ECO 模式默认降级为 Quartic。</p>
+<p><strong>时长</strong>：每位听者约 45 分钟（A 10 试次、B 6 试次、C 1 试次 + ABX），中间休息。</p>
+<h2>12. 未解决与后续</h2>
+<ul>
+<li>CPU 等级是估算，需要 i9 实测（§10 第 6 步）。多实例和真实 DAW 仍按 Phase 5 的结论，没有新测。</li>
+<li>边缘色散 FX 的可分辨性需要听测（§11 实验 C）。</li>
+<li>极端宏位置只通过设计规则保证，没有逐个预设渲染 QA。</li>
+<li>所有判断都来自测量，未经人耳评价；推荐试听也是按测量挑的。</li>
+<li>中文描述只在文件与文档里，界面字体没有 CJK 字形。</li>
+</ul>
+<h2>13. 文件清单</h2>
+<ul>
+<li>生成器与测量：<code>scripts/presets/{bank6b.py, bank6b_measured.json, fit_gain6b.py（增益拟合）, qa_analyze.py, cpu6b.py, make_demos6b.py, timbre_map6b.py, docs6b.py}</code>。</li>
+<li>预设：<code>presets/NNN_*.morpho</code>（57 个）、<code>presets/PRESET_LIST.md</code>、<code>presets/retired/</code>（旧 27 个，不打包）。</li>
+<li>代码：<code>plugin/Source/ui/PresetBrowser.{h,cpp}</code>（新）；<code>PresetIO.{h,cpp}</code>、<code>PluginProcessor.{h,cpp}</code>、<code>PluginEditor.{h,cpp}</code>、<code>cli/main.cpp</code>、<code>harness/UiSnapHarness.cpp</code>、<code>plugin/CMakeLists.txt</code>（改）。</li>
+<li>文档：<code>docs/phase6/preset_audit.md</code>、<code>docs/morpho_preset_spec.md</code>（新字段与出厂规则）、<code>README.md</code> §3.8、<code>scripts/windows/README_WINDOWS.md</code>、<code>scripts/windows/apply_phase6b_sync.ps1</code>。</li>
+<li>数据：<code>experiments/results/phase6b/</code>，包括 <code>qa/</code>、<code>cpu/</code>、<code>demos/</code>、<code>ui/</code>、<code>tests/</code>、<code>pluginval/</code>、<code>wincheck/</code>、<code>validate/</code>、<code>timbre_map.png</code>、<code>timbre_nn.json</code> 和 <code>bank_summary.json</code>。</li>
+</ul></body></html>

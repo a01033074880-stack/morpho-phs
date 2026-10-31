@@ -1,0 +1,24 @@
+active_mu30000 ESAV 0 / 16 {} 3.0
+active_mu30000 ESAVgate 0 / 16 {} 3.4
+active_mu30000 RK4 16 / 16 {} 1.5
+active_mu30000 Verlet 15 / 16 {} 1.5
+active_mu30000 TanhFB 16 / 16 {} 1.0
+active_mu30000 IMDG 0 / 16 {'newton_fail': 0, 'newton_iters_mean': 5.165416666666666} 110.0
+active_mu30000 SSDG 8 / 16 {} 7.6
+saved stress active_mu30000
+modulated ESAV 0 / 16 {} 3.1
+modulated ESAVgate 0 / 16 {} 3.5
+modulated RK4 16 / 16 {} 0.0
+modulated Verlet 12 / 16 {} 1.6
+modulated TanhFB 12 / 16 {} 1.9
+modulated IMDG 0 / 16 {'newton_fail': 14, 'newton_iters_mean': 4.683125} 84.7
+modulated SSDG 6 / 16 {} 9.7
+saved stress modulated
+active_mu600_modulated ESAV 0 / 16 {} 3.2
+active_mu600_modulated ESAVgate 0 / 16 {} 4.2
+active_mu600_modulated RK4 12 / 16 {} 3.6
+active_mu600_modulated Verlet 12 / 16 {} 1.7
+active_mu600_modulated TanhFB 12 / 16 {} 2.0
+active_mu600_modulated IMDG 1 / 16 {'newton_fail': 1, 'newton_iters_mean': 4.137291666666667} 75.4
+active_mu600_modulated SSDG 7 / 16 {} 8.9
+saved stress active_mu600_modulated

@@ -1,0 +1,6 @@
+rep 0: 3.546 GHz (x=0)
+rep 1: 3.538 GHz (x=1)
+rep 2: 3.493 GHz (x=0)
+rep 3: 3.421 GHz (x=1)
+rep 4: 3.489 GHz (x=0)
+effective_clock_GHz_max 3.546

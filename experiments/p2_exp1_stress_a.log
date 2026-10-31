@@ -1,0 +1,32 @@
+impulse ESAV 0 / 16 {} 3.2
+impulse ESAVgate 0 / 16 {} 3.4
+impulse RK4 16 / 16 {} 3.1
+impulse Verlet 16 / 16 {} 1.5
+impulse TanhFB 16 / 16 {} 1.7
+impulse IMDG 0 / 16 {'newton_fail': 16, 'newton_iters_mean': 9.473541666666666} 222.2
+impulse SSDG 8 / 16 {} 7.3
+saved stress impulse
+active_mu60 ESAV 0 / 16 {} 2.9
+active_mu60 ESAVgate 0 / 16 {} 3.3
+active_mu60 RK4 16 / 16 {} 2.1
+active_mu60 Verlet 11 / 16 {} 1.7
+active_mu60 TanhFB 11 / 16 {} 1.9
+active_mu60 IMDG 0 / 16 {'newton_fail': 5, 'newton_iters_mean': 4.053333333333334} 70.1
+active_mu60 SSDG 8 / 16 {} 8.2
+saved stress active_mu60
+active_mu600 ESAV 0 / 16 {} 3.0
+active_mu600 ESAVgate 0 / 16 {} 3.3
+active_mu600 RK4 16 / 16 {} 0.7
+active_mu600 Verlet 16 / 16 {} 0.9
+active_mu600 TanhFB 16 / 16 {} 1.0
+active_mu600 IMDG 0 / 16 {'newton_fail': 0, 'newton_iters_mean': 4.086666666666667} 74.0
+active_mu600 SSDG 7 / 16 {} 8.0
+saved stress active_mu600
+active_mu6000 ESAV 0 / 16 {} 3.1
+active_mu6000 ESAVgate 0 / 16 {} 3.3
+active_mu6000 RK4 16 / 16 {} 1.9
+active_mu6000 Verlet 15 / 16 {} 1.4
+active_mu6000 TanhFB 15 / 16 {} 1.6
+active_mu6000 IMDG 1 / 16 {'newton_fail': 1, 'newton_iters_mean': 4.239375} 76.2
+active_mu6000 SSDG 7 / 16 {} 7.7
+saved stress active_mu6000

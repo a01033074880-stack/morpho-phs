@@ -1,0 +1,46 @@
+/workspace/morpho-phs-workspace/python/scripts/phase2/p2_exp4_inverse.py:175: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  hist.append(float(L))
+[risset_bell/esav] it 0 loss 2.6270 t 3s
+[risset_bell/esav] it 10 loss 2.2001 t 40s
+[risset_bell/esav] it 20 loss 1.9176 t 78s
+[risset_bell/esav] it 30 loss 1.7088 t 114s
+[risset_bell/esav] it 40 loss 1.7704 t 150s
+[risset_bell/esav] it 50 loss 1.6305 t 187s
+[risset_bell/esav] it 60 loss 1.6029 t 223s
+[risset_bell/esav] it 70 loss 1.9463 t 259s
+[risset_bell/esav] it 80 loss 1.9253 t 294s
+[risset_bell/esav] it 90 loss 1.5904 t 332s
+[risset_bell/esav] it 100 loss 1.5612 t 371s
+[risset_bell/esav] it 110 loss 1.5852 t 410s
+[risset_bell/esav] it 120 loss 1.6314 t 448s
+[risset_bell/esav] it 130 loss 1.6578 t 485s
+[risset_bell/esav] it 140 loss 1.5390 t 525s
+[risset_bell/esav] it 150 loss 1.3937 t 562s
+[risset_bell/esav] it 160 loss 1.4559 t 600s
+[risset_bell/esav] it 170 loss 1.6270 t 637s
+[risset_bell/esav] it 180 loss 1.5227 t 676s
+[risset_bell/esav] it 190 loss 1.4480 t 714s
+[risset_bell/esav] it 199 loss 1.3699 t 749s
+[risset_bell/modal] it 0 loss 3.9119 t 0s
+[risset_bell/modal] it 10 loss 4.7507 t 0s
+[risset_bell/modal] it 20 loss 4.6170 t 0s
+[risset_bell/modal] it 30 loss 3.9319 t 0s
+[risset_bell/modal] it 40 loss 2.4145 t 0s
+[risset_bell/modal] it 50 loss 2.2467 t 0s
+[risset_bell/modal] it 60 loss 1.6231 t 1s
+[risset_bell/modal] it 70 loss 2.0012 t 1s
+[risset_bell/modal] it 80 loss 1.9993 t 1s
+[risset_bell/modal] it 90 loss 1.6507 t 1s
+[risset_bell/modal] it 100 loss 1.3329 t 1s
+[risset_bell/modal] it 110 loss 1.8594 t 1s
+[risset_bell/modal] it 120 loss 1.6823 t 1s
+[risset_bell/modal] it 130 loss 2.0578 t 1s
+[risset_bell/modal] it 140 loss 1.7162 t 1s
+[risset_bell/modal] it 150 loss 1.6988 t 1s
+[risset_bell/modal] it 160 loss 1.5528 t 2s
+[risset_bell/modal] it 170 loss 1.6954 t 2s
+[risset_bell/modal] it 180 loss 1.8196 t 2s
+[risset_bell/modal] it 190 loss 1.4378 t 2s
+[risset_bell/modal] it 199 loss 1.7024 t 2s
+{"risset_bell": {"esav": 1.3505110762705137, "modal": 1.2081958825274313, "silence": 3.478951104891923}}

@@ -1,0 +1,133 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Living Edge",
+  "category": "Excitable FX",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Edge disperser with near-critical Life: the rim ring swells after the input.",
+  "description_zh": "接近临界 Life 的边缘色散器：输入之后边缘鸣响会膨胀。",
+  "tags": [
+    "bloom",
+    "edge",
+    "excitable",
+    "morphogen"
+  ],
+  "cpu_class": "standard",
+  "params": {
+    "mode": "FX Edge Disperser",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1399.9472,
+    "chirality": 0.85,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.7,
+    "life": 0.1119,
+    "morph": 0.6,
+    "tau": 0.122,
+    "freeze": 0.0,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": 4.53,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5693,
+    "macro2": 0.925,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.6,
+    "macro6": 0.25,
+    "macro7": 0.5,
+    "macro8": 0.0,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Crosstalk"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 560.0,
+        "hi": 2800.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.3,
+        "hi": 0.85
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "edge_crosstalk",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

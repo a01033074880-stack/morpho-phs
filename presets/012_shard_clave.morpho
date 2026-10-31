@@ -1,0 +1,176 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Shard Clave",
+  "category": "Percussive Lattice",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Dense random defects and fast damping: dry, glassy clicks with pitch.",
+  "description_zh": "密集随机缺陷与快速阻尼：干脆、玻璃质、带音高的咔哒声。",
+  "tags": [
+    "bright",
+    "defects",
+    "percussion",
+    "short"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 2400.0642,
+    "chirality": 0.1,
+    "nonlinear": 0.3,
+    "hq": 0.3,
+    "decay": 0.62,
+    "life": 0.0,
+    "morph": 0.05,
+    "tau": 0.9979,
+    "freeze": 0.0,
+    "wet": 0.9,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": 14.57,
+    "spread": 0.25,
+    "exciter": "Pluck",
+    "defect_depth": 1.0,
+    "macro1": 0.7565,
+    "macro2": 0.1,
+    "macro3": 0.7,
+    "macro4": 0.3529,
+    "macro5": 0.05,
+    "macro6": 0.0,
+    "macro7": 0.5,
+    "macro8": 1.0,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Chirality",
+      "Sustain",
+      "Grit",
+      "Morphogen",
+      "Life",
+      "Width",
+      "Defects"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 1200.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "decay",
+        "lo": 0.27,
+        "hi": 0.77
+      },
+      {
+        "macro": 4,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.85
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.2,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.304
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.2,
+        "hi": 1.8
+      },
+      {
+        "macro": 8,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.8266,
+        0.723
+      ],
+      [
+        0.4421,
+        0.3645
+      ],
+      [
+        0.2518,
+        0.7482
+      ],
+      [
+        0.1802,
+        0.8383
+      ],
+      [
+        0.3019,
+        0.2464
+      ],
+      [
+        0.4053,
+        0.3567
+      ],
+      [
+        0.4334,
+        0.4816
+      ],
+      [
+        0.2573,
+        0.8098
+      ],
+      [
+        0.1974,
+        0.1379
+      ],
+      [
+        0.7687,
+        0.1332
+      ],
+      [
+        0.6875,
+        0.2797
+      ],
+      [
+        0.3276,
+        0.3227
+      ]
+    ],
+    "morphogen": []
+  }
+}

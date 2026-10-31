@@ -1,0 +1,39 @@
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+none            128  32    1      21.050   2694.4   4440.0     9564.3   12217.8   2666.7    1.665  1264/2250     FAIL*  pin=none mmcss=0 pool=caller+0
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    1       5.206    666.4   1032.3     1342.7    1580.1   2666.7    0.387     0/2250     PASS*   3.55    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=stencil barrier=spin
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    1      25.538   3268.9   3774.2     5010.9    6248.2   2666.7    1.415  2250/2250     FAIL*   3.63    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=csr barrier=spin
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    2       3.786    484.6    661.5     7111.4    8923.6   2666.7    0.248     5/2250     FAIL*   3.79    4     1  pin=cpuset mmcss=1 pool=caller+1 cpus=[1,2,3,4,5,6,7] pinned=1/1 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/1 kernel=stencil barrier=spin ecoqos_off=0/1
+cpuset+mmcss    128  32    3       3.135    401.3    540.7     7744.8    9883.2   2666.7    0.203     3/2250     FAIL*   3.90    6     0  pin=cpuset mmcss=1 pool=caller+2 cpus=[1,2,3,4,5,6,7] pinned=2/2 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/2 kernel=stencil barrier=spin ecoqos_off=0/2
+cpuset+mmcss    128  32    4       2.872    367.6    464.4     4548.8   12041.0   2666.7    0.174     3/2250     FAIL*   2.58    9     0  pin=cpuset mmcss=1 pool=caller+3 cpus=[1,2,3,4,5,6,7] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3 kernel=stencil barrier=spin ecoqos_off=0/3
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    2       3.957    506.5    794.0     1045.7    3306.2   2666.7    0.298     1/2250     NEAR*   3.91    1     0  pin=cpuset mmcss=1 pool=caller+1 cpus=[1,2,3,4,5,6,7] pinned=1/1 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/1 kernel=stencil barrier=spin ecoqos_off=0/1
+cpuset+mmcss    128  32    3       3.361    430.2   1010.5     5582.1   12375.7   2666.7    0.379     9/2250     FAIL*   3.94    8     6  pin=cpuset mmcss=1 pool=caller+2 cpus=[1,2,3,4,5,6,7] pinned=2/2 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/2 kernel=stencil barrier=spin ecoqos_off=0/2
+cpuset+mmcss    128  32    4       3.048    390.1    618.3     1588.4   13811.9   2666.7    0.232     2/2250     NEAR*   3.84    9     6  pin=cpuset mmcss=1 pool=caller+3 cpus=[1,2,3,4,5,6,7] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3 kernel=stencil barrier=spin ecoqos_off=0/3
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+none            128  32    1      21.495   2751.3   4245.9     8029.9   22476.5   2666.7    1.592  1615/2250     FAIL*  pin=none mmcss=0 pool=caller+0
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    1       5.510    705.3   1102.2     1364.9    1626.0   2666.7    0.413     0/2250     PASS*   3.92    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=stencil barrier=spin
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    1      26.074   3337.5   3882.4     5159.7    7589.3   2666.7    1.456  2250/2250     FAIL*   3.89    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=csr barrier=spin
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    2       4.433    567.5    731.3      789.2     843.4   2666.7    0.274     0/2250     PASS*   3.86    0     0  pin=cpuset mmcss=1 pool=caller+1 cpus=[1,2,3,4,5,6,7] pinned=1/1 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/1 kernel=stencil barrier=spin ecoqos_off=0/1
+cpuset+mmcss    128  32    3       3.868    495.1    630.2      735.4    1129.9   2666.7    0.236     0/2250     PASS*   3.62    0     0  pin=cpuset mmcss=1 pool=caller+2 cpus=[1,2,3,4,5,6,7] pinned=2/2 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/2 kernel=stencil barrier=spin ecoqos_off=0/2
+cpuset+mmcss    128  32    4       3.578    458.0    566.7      627.2    9093.7   2666.7    0.213     1/2250     NEAR*   3.81    0     3  pin=cpuset mmcss=1 pool=caller+3 cpus=[1,2,3,4,5,6,7] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3 kernel=stencil barrier=spin ecoqos_off=0/3
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+cpuset+mmcss    128  32    2       4.586    587.1    800.5     7842.0   11063.1   2666.7    0.300     6/2250     FAIL*   3.84    6     0  pin=cpuset mmcss=1 pool=caller+1 cpus=[1,2,3,4,5,6,7] pinned=1/1 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/1 kernel=stencil barrier=spin ecoqos_off=0/1
+cpuset+mmcss    128  32    3       3.858    493.9   1089.3     5005.6   21163.2   2666.7    0.409     8/2250     FAIL*   3.76    2     0  pin=cpuset mmcss=1 pool=caller+2 cpus=[1,2,3,4,5,6,7] pinned=2/2 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/2 kernel=stencil barrier=spin ecoqos_off=0/2
+cpuset+mmcss    128  32    4       3.645    466.6    743.3     7139.6   10947.4   2666.7    0.279     6/2250     FAIL*   3.71   26     3  pin=cpuset mmcss=1 pool=caller+3 cpus=[1,2,3,4,5,6,7] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3 kernel=stencil barrier=spin ecoqos_off=0/3
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)
+BENCH_DONE

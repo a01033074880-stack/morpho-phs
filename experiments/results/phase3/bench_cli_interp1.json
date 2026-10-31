@@ -1,0 +1,71 @@
+{
+  "tool": "morpho_cli bench",
+  "host": "grok-bot-vm-509861073",
+  "cpu": "Intel(R) Xeon(R) Processor",
+  "logical_cores": 8,
+  "os": "Linux",
+  "time": "2026-10-30T19:01:40.371+08:00",
+  "fs": 48000.0,
+  "mode": 0,
+  "potential": 1,
+  "interp": 1,
+  "seconds_per_config": 2.0,
+  "rows": [
+    {
+      "block": 128,
+      "L": 16,
+      "threads": 1,
+      "us_per_sample_median": 6.740765625,
+      "load_pct_median": 32.355675000000005,
+      "block_p99_us": 1166.417999999999893,
+      "block_max_us": 1421.119999999999891,
+      "budget_us": 2666.666666666666515,
+      "p99_over_budget": 0.43740675,
+      "overruns": 0,
+      "blocks_measured": 750,
+      "nan_resets": 0
+    },
+    {
+      "block": 128,
+      "L": 16,
+      "threads": 4,
+      "us_per_sample_median": 3.0161015625,
+      "load_pct_median": 14.477287500000001,
+      "block_p99_us": 502.98399999999998,
+      "block_max_us": 2451.271000000000186,
+      "budget_us": 2666.666666666666515,
+      "p99_over_budget": 0.188619,
+      "overruns": 0,
+      "blocks_measured": 750,
+      "nan_resets": 0
+    },
+    {
+      "block": 128,
+      "L": 32,
+      "threads": 1,
+      "us_per_sample_median": 27.818390624999999,
+      "load_pct_median": 133.528275000000008,
+      "block_p99_us": 4754.556999999999789,
+      "block_max_us": 6257.220999999999549,
+      "budget_us": 2666.666666666666515,
+      "p99_over_budget": 1.782958875,
+      "overruns": 750,
+      "blocks_measured": 750,
+      "nan_resets": 0
+    },
+    {
+      "block": 128,
+      "L": 32,
+      "threads": 4,
+      "us_per_sample_median": 9.490054687500001,
+      "load_pct_median": 45.552262500000005,
+      "block_p99_us": 1684.305000000000064,
+      "block_max_us": 19099.884999999998399,
+      "budget_us": 2666.666666666666515,
+      "p99_over_budget": 0.631614375,
+      "overruns": 4,
+      "blocks_measured": 750,
+      "nan_resets": 0
+    }
+  ]
+}

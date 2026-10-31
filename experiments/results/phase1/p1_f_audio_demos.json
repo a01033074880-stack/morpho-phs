@@ -1,0 +1,9 @@
+{
+  "edge_sign+1": {"bandpass_776Hz": false, "file": "experiments/audio/01_edge_disperser_OmegaPlus.wav", "seconds": 9.000, "pickup_energy_R_over_L_dB": 6.05, "E_final": 9.987044e-05, "E0_plus_input_work": 3.660481e+01, "passive_ok": true},
+  "edge_sign+0": {"bandpass_776Hz": false, "file": "experiments/audio/02_edge_disperser_Omega0_reference.wav", "seconds": 9.000, "pickup_energy_R_over_L_dB": 0.08, "E_final": 3.049048e-06, "E0_plus_input_work": 2.667548e+01, "passive_ok": true},
+  "edge_sign-1": {"bandpass_776Hz": false, "file": "experiments/audio/03_edge_disperser_OmegaMinus.wav", "seconds": 9.000, "pickup_energy_R_over_L_dB": -6.07, "E_final": 9.579641e-05, "E0_plus_input_work": 3.660481e+01, "passive_ok": true},
+  "edge_gapband_sign+1": {"bandpass_776Hz": true, "file": "experiments/audio/06_edge_disperser_gapband_OmegaPlus.wav", "seconds": 9.000, "pickup_energy_R_over_L_dB": 5.40, "E_final": 3.953939e-06, "E0_plus_input_work": 4.022282e+00, "passive_ok": true},
+  "edge_gapband_sign-1": {"bandpass_776Hz": true, "file": "experiments/audio/07_edge_disperser_gapband_OmegaMinus.wav", "seconds": 9.000, "pickup_energy_R_over_L_dB": -5.46, "E_final": 3.814437e-06, "E0_plus_input_work": 4.022282e+00, "passive_ok": true},
+  "selfosc": {"file": "experiments/audio/04_selfoscillating_spiral_patch.wav", "seconds": 12.0, "E_cap": 2.000e+06, "max_E": 2.002737e+06, "bound_rho_Ecap_tilde": 2.010942e+06, "rho": 1.005326, "bounded_ok": true, "enpu_ticks": 9000, "enpu_scaled": 4166, "spiral_charge_end": 1, "rms_last_second_pickup": 5.9014e+01},
+  "mpe_chord": {"file": "experiments/audio/05_mpe_chord_shared_lattice.wav", "seconds": 7.0, "voices": 3, "per_voice_input_work": [6.785929e+02, 7.355696e+02, 3.315641e+02], "E_final": 1.664822e-01, "E0_plus_input_work": 1.745727e+03, "passive_ok": true}
+}

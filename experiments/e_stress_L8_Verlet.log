@@ -1,0 +1,5 @@
+free_passive | Störmer-Verlet {"divergence_rate": 0.321, "n": 1000, "max_energy_ratio": 644.4460000716966, "final_energy_ratio_median": 36.42120893324003, "wall_s": 19.9, "us_per_step_per_trial": 9.71731054596603, "passivity_violation_rate": 1.0, "max_single_step_rel_increase": 0.04544821834570962}
+passive | Störmer-Verlet {"divergence_rate": 0.321, "n": 1000, "max_energy_ratio": 725.7406113706279, "final_energy_ratio_median": 36.421236504581145, "wall_s": 24.35, "us_per_step_per_trial": 11.889671441167593}
+active | Störmer-Verlet {"divergence_rate": 0.321, "n": 1000, "max_energy_ratio": 1478.607101935902, "final_energy_ratio_median": 41.80525496900638, "wall_s": 22.3, "us_per_step_per_trial": 10.887965676374733}
+pump | Störmer-Verlet {"divergence_rate": 0.0, "n": 64, "max_energy_ratio": 33.107644817913, "final_energy_ratio_median": 16.898416944467854, "wall_s": 1.48, "us_per_step_per_trial": 11.304742656648159}
+pump_lossless | Störmer-Verlet {"divergence_rate": 1.0, "n": 64, "max_energy_ratio": null, "final_energy_ratio_median": null, "wall_s": 0.73, "us_per_step_per_trial": 5.585836333921179}

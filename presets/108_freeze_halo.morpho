@@ -1,0 +1,165 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Freeze Halo",
+  "category": "Defect Freezers",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Partial freeze around a defect ring: a soft halo that hangs on after each hit.",
+  "description_zh": "缺陷环周围的部分冻结：每次敲击后悬停的柔和光晕。",
+  "tags": [
+    "defects",
+    "freeze",
+    "halo"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 899.966,
+    "chirality": 0.5,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.8,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.4959,
+    "freeze": 0.6,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": -4.48,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5693,
+    "macro2": 0.75,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.2,
+    "macro6": 0.25,
+    "macro7": 0.5,
+    "macro8": 0.6,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Freeze"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 360.0,
+        "hi": 1800.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.4,
+        "hi": 0.95
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "freeze",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.8,
+        0.5
+      ],
+      [
+        0.7121,
+        0.7121
+      ],
+      [
+        0.5,
+        0.8
+      ],
+      [
+        0.2879,
+        0.7121
+      ],
+      [
+        0.2,
+        0.5
+      ],
+      [
+        0.2879,
+        0.2879
+      ],
+      [
+        0.5,
+        0.2
+      ],
+      [
+        0.7121,
+        0.2879
+      ]
+    ],
+    "morphogen": []
+  }
+}

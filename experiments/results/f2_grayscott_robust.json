@@ -1,0 +1,132 @@
+{
+ "mitosis (spots)": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "32": {
+   "alive_fraction": 0.625,
+   "wavelength_cells_median": 16.0,
+   "settle_steps_median": 1500.0,
+   "settle_seconds_median_at_750Hz": 2.0,
+   "settle_seconds_max_at_750Hz": 3.2666666666666666,
+   "late_relative_variability_median": 1.4588272111334999e-08
+  },
+  "64": {
+   "alive_fraction": 0.875,
+   "wavelength_cells_median": 14.310835055998654,
+   "settle_steps_median": 2700.0,
+   "settle_seconds_median_at_750Hz": 3.6,
+   "settle_seconds_max_at_750Hz": 5.266666666666667,
+   "late_relative_variability_median": 1.7460181347808522e-06
+  }
+ },
+ "coral (labyrinth)": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "32": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "64": {
+   "alive_fraction": 1.0,
+   "wavelength_cells_median": 13.555417527999328,
+   "settle_steps_median": 1775.0,
+   "settle_seconds_median_at_750Hz": 2.3666666666666667,
+   "settle_seconds_max_at_750Hz": 3.4,
+   "late_relative_variability_median": 3.438157625096994e-05
+  }
+ },
+ "solitons": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "32": {
+   "alive_fraction": 1.0,
+   "wavelength_cells_median": 14.310835055998654,
+   "settle_steps_median": 500.0,
+   "settle_seconds_median_at_750Hz": 0.6666666666666666,
+   "settle_seconds_max_at_750Hz": 1.1333333333333333,
+   "late_relative_variability_median": 6.692221525245562e-05
+  },
+  "64": {
+   "alive_fraction": 1.0,
+   "wavelength_cells_median": 12.8,
+   "settle_steps_median": 800.0,
+   "settle_seconds_median_at_750Hz": 1.0666666666666667,
+   "settle_seconds_max_at_750Hz": 2.3333333333333335,
+   "late_relative_variability_median": 9.46817285817088e-07
+  }
+ },
+ "waves/chaos": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "32": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "64": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  }
+ },
+ "worms": {
+  "16": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "32": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  },
+  "64": {
+   "alive_fraction": 0.0,
+   "wavelength_cells_median": null,
+   "settle_steps_median": null,
+   "settle_seconds_median_at_750Hz": null,
+   "settle_seconds_max_at_750Hz": null,
+   "late_relative_variability_median": null
+  }
+ }
+}

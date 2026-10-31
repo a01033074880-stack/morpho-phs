@@ -1,0 +1,134 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Shattered Ice",
+  "category": "FX Freezer",
+  "author": "MORPHO-PHS factory",
+  "description": "Random scattered defects with HQ potential: frozen field with grainy partials.",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "HQ (fast log-cosh)",
+    "interp": "1 sample",
+    "tone": 1800,
+    "chirality": 0.6,
+    "nonlinear": 0.5,
+    "hq": 0.5,
+    "decay": 0.75,
+    "life": 0.0,
+    "morph": 0.3,
+    "tau": 0.0833,
+    "freeze": 0.7,
+    "wet": 0.7,
+    "dry": 0.5,
+    "in_gain": 0.0,
+    "out_gain": 0.0,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.7,
+    "macro2": 0.8451,
+    "macro3": 0.6,
+    "macro4": 0.6618,
+    "macro5": 0.3333,
+    "macro6": 0.7,
+    "macro7": 0.5,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Freeze",
+      "Tone",
+      "Defects",
+      "Decay",
+      "Morphogen",
+      "Mix",
+      "",
+      ""
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "freeze",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 2,
+        "param": "tone",
+        "lo": 300.0,
+        "hi": 2500.0
+      },
+      {
+        "macro": 3,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.3,
+        "hi": 0.98
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 0.9
+      },
+      {
+        "macro": 6,
+        "param": "wet",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 6,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.2,
+        0.3
+      ],
+      [
+        0.33,
+        0.72
+      ],
+      [
+        0.48,
+        0.41
+      ],
+      [
+        0.62,
+        0.66
+      ],
+      [
+        0.71,
+        0.24
+      ],
+      [
+        0.84,
+        0.55
+      ],
+      [
+        0.27,
+        0.52
+      ],
+      [
+        0.56,
+        0.18
+      ]
+    ],
+    "morphogen": []
+  }
+}

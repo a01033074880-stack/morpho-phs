@@ -1,0 +1,30 @@
+MORPHO-PHS morpho_cli bench  host=grok-bot-vm-509861073  cpu=Intel(R) Xeon(R) Processor  logical_cores=8  fs=48000  mode=0  potential=0  interp=0
+topology: source=sysfs logical=8 physical=8 perf_physical=8 hybrid=0  auto_threads(L32)=6
+tag=pset  pin=pset  mmcss=1  pool=dedicated  load_threads=0  barrier_spin_us=50  idle_spin_us=200  adaptive_spin=1  paced=1
+time=2026-10-30T21:13:41.510+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+pset             64  16    3       3.200    204.8    358.5     1221.3    2463.4   1333.3    0.269     1/3000     NEAR   pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset             64  16    4       2.819    180.4    387.1      989.6    1366.1   1333.3    0.290     1/3000     NEAR   pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset             64  16    5       2.783    178.1    310.8     1041.5    3368.2   1333.3    0.233     2/3000     NEAR   pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset             64  16    6       2.427    155.3    232.8     5079.6   17248.5   1333.3    0.175     9/3000     FAIL   pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pset             64  32    3      10.159    650.1   1124.0     6675.5    9375.4   1333.3    0.843    12/3000     FAIL   pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset             64  32    4       8.800    563.2   1069.2     2528.5    3421.1   1333.3    0.802    17/3000     FAIL   pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset             64  32    5       7.477    478.5    830.2     4313.2    8124.8   1333.3    0.623    12/3000     FAIL   pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset             64  32    6       7.938    508.0   2191.2     6309.2   12042.2   1333.3    1.643    50/3000     FAIL   pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pset            128  16    3       3.966    507.6    962.4     1248.4    1702.0   2666.7    0.361     0/1500     PASS   pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset            128  16    4       3.587    459.1    841.7     2131.5    3745.7   2666.7    0.316     1/1500     NEAR   pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset            128  16    5       3.337    427.1   1379.3     9178.7    9416.8   2666.7    0.517    14/1500     FAIL   pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset            128  16    6       3.425    438.4   7567.5     8682.8   10232.5   2666.7    2.838    53/1500     FAIL   pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pset            128  32    3      10.539   1349.0   2413.9     3299.2    3770.0   2666.7    0.905     5/1500     FAIL*  pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset            128  32    4      10.872   1391.6   2061.0     5431.5   13124.2   2666.7    0.773     3/1500     FAIL*  pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset            128  32    5       7.384    945.1   8467.2    27464.6   28545.4   2666.7    3.175    23/1500     FAIL*  pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset            128  32    6       7.415    949.2   2005.7     9860.8   10571.7   2666.7    0.752     9/1500     FAIL*  pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pset            512  16    3       4.603   2356.9   4070.6     6784.9    6784.9  10666.7    0.382     0/375      PASS   pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset            512  16    4       4.025   2061.0   3420.4     8520.0    8520.0  10666.7    0.321     0/375      PASS   pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset            512  16    5       3.896   1994.8   9998.9    29351.9   29351.9  10666.7    0.937     2/375      FAIL   pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset            512  16    6       3.679   1883.5  12238.6    19773.2   19773.2  10666.7    1.147     5/375      FAIL   pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+pset            512  32    3      11.798   6040.7   8920.5    22960.5   22960.5  10666.7    0.836     1/375      FAIL   pin=pset mmcss=1 pool=dedicated3 cpus=[8 cpus] pinned=3/3 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/3
+pset            512  32    4      10.982   5622.9   8434.3     9121.4    9121.4  10666.7    0.791     0/375      FAIL   pin=pset mmcss=1 pool=dedicated4 cpus=[8 cpus] pinned=4/4 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/4
+pset            512  32    5       9.329   4776.5   7672.1    13330.5   13330.5  10666.7    0.719     1/375      FAIL   pin=pset mmcss=1 pool=dedicated5 cpus=[8 cpus] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5
+pset            512  32    6       9.366   4795.3   7581.4    19618.9   19618.9  10666.7    0.711     3/375      FAIL   pin=pset mmcss=1 pool=dedicated6 cpus=[8 cpus] pinned=6/6 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/6
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

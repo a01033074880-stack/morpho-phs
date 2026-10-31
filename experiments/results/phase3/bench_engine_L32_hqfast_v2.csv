@@ -1,0 +1,13 @@
+config,L,dof,precision,potential,control,threads,us_per_sample_median,pct_one_core_48k,block64_p99_us,block64_max_us,status
+bench_mt,32,4096,f32,hq_fast,1,1,28.8559,138.51,3107.0,10091.6,finite
+bench_mt,32,4096,f32,hq_fast,1,2,15.1362,72.65,1150.6,2715.3,finite
+bench_mt,32,4096,f32,hq_fast,1,3,11.0307,52.95,964.5,2218.6,finite
+bench_mt,32,4096,f32,hq_fast,1,4,9.3995,45.12,942.1,3095.0,finite
+bench_mt,32,4096,f32,hq_fast,1,6,7.7729,37.31,659.1,8803.6,finite
+bench_mt,32,4096,f32,hq_fast,1,8,6.2285,29.90,1007.4,14410.6,finite
+bench_mt,32,4096,f64,hq_fast,1,1,44.1810,212.07,6551.9,19314.9,finite
+bench_mt,32,4096,f64,hq_fast,1,2,26.6004,127.68,2473.5,11239.2,finite
+bench_mt,32,4096,f64,hq_fast,1,3,17.7849,85.37,1345.3,7377.1,finite
+bench_mt,32,4096,f64,hq_fast,1,4,14.4074,69.16,1169.1,6245.8,finite
+bench_mt,32,4096,f64,hq_fast,1,6,11.7962,56.62,1101.8,12759.2,finite
+bench_mt,32,4096,f64,hq_fast,1,8,10.0050,48.02,1554.1,9854.8,finite

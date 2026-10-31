@@ -1,0 +1,875 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:"Noto Sans CJK SC","Noto Sans SC","WenQuanYi Micro Hei",sans-serif;font-size:10.5pt;line-height:1.5;margin:0 6mm}
+table{border-collapse:collapse;margin:8px 0;font-size:9pt}td,th{border:1px solid #999;padding:3px 6px;vertical-align:top}th{background:#eee}
+img{max-width:100%;page-break-inside:avoid}h1{font-size:18pt}h2{font-size:14pt;border-bottom:1px solid #ccc;margin-top:18px}code{background:#f4f4f4;font-size:9pt}
+@page{size:A4;margin:14mm}</style></head><body><!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<h1>Phase 4 阶段报告：实时线程、双插件、预设 v2 与 AGPLv3</h1>
+<p>日期：2026-10-30（Asia/Shanghai）。全部工作在 box（Linux KVM 虚拟机，8 vCPU，Intel Xeon）上完成，没有在用户 PC 上运行任何东西。2026-10-31 补充：Phase 4 代码已在用户的 i9-13900H 上用 MSVC 构建并跑完完整基准（<code>bench_windows.ps1 -All</code>，Windows“最佳性能”电源模式），结果见新增的 <strong>§10</strong>。结论：16×16 在绑核 + MMCSS 下达标；<strong>32×32 块 128 仍没有任何配置 PASS</strong>（最好约 0.5% 的块超时），是尾部延迟问题而不是吞吐问题。§1–§9 保留 2026-10-30 box 阶段的原文，只在相关处加了指向 §10 的说明。</p>
+<h2>1. 起点：Phase 3 在 i9-13900H 上的实测（用户转述）</h2>
+<p>48 kHz，预算 20.83 µs/样本。原始目录 <code>experiments/results/phase3/windows/DESKTOP-114514_20261030_201314/</code>（写报告时不在 box 上，2026-10-31 已补回仓库），以下为当时引用的数字：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>i9 实测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L16 四次势</td>
+<td>4–5 µs/样本，0 次超时</td>
+</tr>
+<tr>
+<td>L32 四次势最佳</td>
+<td>块 64、8 线程：中位数 11.0 µs/样本，p99/预算 0.82，超时 8/2250</td>
+</tr>
+<tr>
+<td>L32 其它</td>
+<td>大量超时；线程扩展非单调（4 线程常比 3 线程差）</td>
+</tr>
+<tr>
+<td>8 线程块最大值</td>
+<td>40–100 ms 尖峰</td>
+</tr>
+<tr>
+<td>HQ-fast</td>
+<td>只在 L8 稳定；HQ 精确 L32 ≥ 34 µs</td>
+</tr>
+</tbody>
+</table>
+<p>判断：瓶颈在调度和同步（E 核、纯自旋屏障被抢占、无优先级、SMT），不在算力。</p>
+<h2>2. 结论摘要</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>结果</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 逐样本斜坡</td>
+<td><code>interp</code> 默认 0（1 样本）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>D2 两个插件</td>
+<td>MORPHO-PHS（乐器，IS_SYNTH，<code>Mpsi</code>，<code>lab.morpho.phs.instrument</code>）与 MORPHO-PHS FX（效果，<code>Mpsx</code>，<code>lab.morpho.phs.fx</code>），各有 VST3 / CLAP / Standalone，一个 CMake 工程</td>
+<td>✅ Linux 构建</td>
+</tr>
+<tr>
+<td>D3 宏覆盖 Tone</td>
+<td>保留覆盖语义，写入规范与代码注释</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>D4 edge_width / edge_crosstalk</td>
+<td>可自动化参数 + 湿声 2×2 矩阵（默认值时跳过，逐位不变）；预设格式 v2（v1 可读）；27 个预设迁移，<code>validate</code> 27 OK</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>D5 MMCSS</td>
+<td>工作线程 <code>AvSetMmThreadCharacteristicsW("Pro Audio")</code>，其它系统为空操作</td>
+<td>✅ 编译检查（zig mingw）</td>
+</tr>
+<tr>
+<td>D6 AGPLv3</td>
+<td><code>LICENSE</code> 全文、79 个源文件 SPDX 头、README、<code>docs/LICENSES_phase4.md</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>删除 <code>logcosh_fit.json</code> 中过时 K=2 条目</td>
+<td>✅（另见 §8 第 4 条）</td>
+</tr>
+<tr>
+<td>实时线程</td>
+<td>拓扑感知绑核、混合屏障、专用常驻池、MMCSS、自动线程数、自适应自旋、超订阅保护、调用方阻塞等待</td>
+<td>✅ Linux；✅ i9 MSVC 构建</td>
+</tr>
+<tr>
+<td>i9 复测（2026-10-31，§10）</td>
+<td>16×16：pin_mmcss / pin_mmcss_caller 块 128、512 全部 PASS；32×32 块 128：0/32 组 PASS，最好 p3spin 4–6 线程 7–12/1500 次超时</td>
+<td>⚠️ 32×32 未达标</td>
+</tr>
+<tr>
+<td>测试</td>
+<td>test_phase4（Q1–Q5）、test_mt、test_phase3、test_main 全部通过</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>pluginval strictness 10</td>
+<td>两个 VST3</td>
+<td>见 §6</td>
+</tr>
+<tr>
+<td>32×32 块 128 判据（box）</td>
+<td>在这台 VM 上没有一个变体稳定 PASS（VM 抖动）；最好的几组接近</td>
+<td>⚠️ 见 §5</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 改了什么</h2>
+<h3>3.1 实时线程（<code>include/morpho_phs/rt_thread.hpp</code>、<code>esav_lf_mt.hpp</code>）</h3>
+<ul>
+<li><strong>拓扑</strong>：Windows 用 <code>GetLogicalProcessorInformationEx(RelationProcessorCore)</code> 的 EfficiencyClass 区分 P/E 核；Linux 用 sysfs 拓扑 + <code>/sys/devices/cpu_core</code>、<code>cpu_atom</code>。每个物理 P 核只取一个逻辑线程（避开 SMT 兄弟）。合成的 i9 拓扑测试：P 核 CPU = {0,2,4,6,8,10}，L32 默认 5 线程（Q4b）。</li>
+<li><strong>绑核模式</strong> <code>pin</code>：none / pcores（每个工作线程钉一个物理 P 核）/ pset（软亲和到整个 P 核集合）。Windows <code>SetThreadGroupAffinity</code>，Linux <code>pthread_setaffinity_np</code>。工作线程多于 P 核时不再把两个线程钉在同一核上（多出的改用 P 核集合）。</li>
+<li><strong>MMCSS</strong>：<code>MmcssScope</code>（<code>AvSetMmThreadCharacteristicsW</code> + <code>AvSetMmThreadPriority(HIGH)</code>），线程退出时 <code>AvRevertMmThreadCharacteristics</code>。</li>
+<li><strong>混合屏障 HybridBarrier</strong>：自旋（默认 50 µs）→ yield（到 200 µs）→ <code>std::atomic::wait</code>（Linux futex / Windows WaitOnAddress）。替代 Phase 3 的纯自旋。</li>
+<li><strong>专用常驻池</strong>：可选让全部计算线程都是可绑核的池线程，宿主线程只发布任务并等待 <code>done_</code>；或“调用方计算”（宿主线程是 0 号计算线程）。</li>
+<li><strong>自动线程数</strong>：L≤16 → 1；否则 clamp(P 核数 − 1, 2, 6)。</li>
+<li><strong>自适应自旋</strong>：box 上 paced 运行时，工作线程在块间睡眠再唤醒使中位数慢约 40%（L32/块 128/5 线程/pcores/专用池：不 paced 7.87 vs paced 10.85 µs/样本；<code>--idle-spin-us 3000</code> 时 7.55）。现在调用方跟踪块周期 EMA，工作线程的块间自旋 = clamp(1.25 × 周期, idle_spin, 10 ms)。快测（4 线程 paced）：开 8.62，关 11.14 µs/样本。</li>
+<li><strong>超订阅保护</strong>：专用池 T ≥ 逻辑 CPU 数时退回调用方计算。依据：box 上 8 个专用工作线程（加调用方共 9 个线程 / 8 vCPU）时 L32 为 168 µs/样本（<code>A_quiet_unpaced_pin.txt</code> 8T 行，<code>D8_oversub_*</code>）。</li>
+<li><strong>调用方阻塞等待</strong>（<code>caller_pool_spin = false</code>，默认）：专用池时宿主线程只自旋 barrier_spin，然后阻塞，每块只多一次唤醒。依据：有 3 个外部忙循环时，调用方整块自旋会多占一个 CPU，“计算线程 + 调用方 + 负载 &gt; CPU 数”时屏障崩溃（pin 5 线程 171 → 48.5 µs/样本，但仍全部超时；而 3–4 线程时阻塞等待反而更差：超时 7 → 20、35 → 60，见 §5.3）。这一默认值的收益不明确，列为待决（§8 第 9 条），<code>bench_windows.ps1 -All</code> 中的 <code>pin_mmcss_cspin</code> 变体用于在 i9 上比较。</li>
+<li>填充的 chunk 部分和（每线程从新的缓存行开始），避免伪共享。</li>
+<li>处理循环仍然零分配、无锁（Q3）；任意线程数、任意池/绑核/MMCSS 变体与 1 线程逐位一致（Q1/Q2）。</li>
+</ul>
+<h3>3.2 插件（<code>plugin/</code>）</h3>
+<ul>
+<li>一个 CMake 工程两个插件（<code>morpho_add_plugin()</code>）；<code>MORPHO_VARIANT_FX=0/1</code> 编译开关。乐器版没有模式下拉、只有输出总线、接收 MIDI；FX 版模式为 “FX Edge Disperser | FX Defect Freezer”，工厂预设按变体过滤。</li>
+<li>旧插件代码 <code>Mphs</code> / <code>lab.morpho.phs</code> 退役：<strong>用旧版本保存的 DAW 工程会找不到插件</strong>。</li>
+<li>编辑器：新增 “Edge Width”“X-talk” 旋钮，网格 6 列 × 3 行；标题显示插件名。</li>
+<li>实时选项可用环境变量覆盖：<code>MORPHO_PHS_PIN</code>（none|pcores|pset，默认 pset）、<code>MORPHO_PHS_MMCSS</code>（默认 1）、<code>MORPHO_PHS_POOL</code>（dedicated|caller，默认 dedicated）。</li>
+<li>版本 0.4.0。</li>
+</ul>
+<h3>3.3 预设 v2（<code>docs/morpho_preset_spec.md</code>、<code>presets/</code>）</h3>
+<ul>
+<li>新参数 <code>edge_width</code>（0–2，默认 1）、<code>edge_crosstalk</code>（0–1，默认 0）；读取 v1 和 v2，写 v2；v1 中缺少 <code>interp</code> 时按旧默认 “8 samples” 读取，以保持旧预设听感。</li>
+<li>迁移脚本 <code>python/scripts/phase4/p4_migrate_presets.py</code>（幂等）：全部改为 interp “1 sample”；<code>07_wide_pickups</code> edge_width 1.5；<code>13_bulk_smear</code> crosstalk 0.35；其余 1 / 0。</li>
+</ul>
+<h3>3.4 基准 CLI 与 Windows 脚本</h3>
+<ul>
+<li><code>morpho_cli bench</code>：<code>--pin --mmcss --pool --threads N（0=Auto） --paced 0|1 --adaptive 0|1 --caller-spin 0|1 --load N --barrier-spin-us --idle-spin-us --tag</code>；输出中位数、p99、p99.9、max、超时数、PASS/NEAR/FAIL 判定；默认 paced（按块周期调用，最后 1.5 ms 自旋对齐）。</li>
+<li><code>build_windows.ps1</code>：<code>-VsPath</code>（直接用该安装的 vcvars64），构建两个插件。</li>
+<li><code>bench_windows.ps1</code>：变体 p3spin / baseline / pin / pin_mmcss（<code>-All</code> 加 pset_mmcss、pin_mmcss_cspin、pin_mmcss_caller），L16/L32 × 块 64/128/512 × 线程 3/4/5/6，<code>SUMMARY.txt</code> 给判据表。</li>
+<li>Windows 代码路径用 zig 0.17（x86_64-windows-gnu）以最终头文件交叉编译 <code>test_phase4.cpp</code> 通过（21:49 CST 重编，<code>zig c++ -target x86_64-windows-gnu -std=c++20 -O2 -mavx2 -mfma -Iinclude tests/test_phase4.cpp -lavrt</code>；只编译，box 上无法运行 .exe），导入 AVRT.dll（AvSetMmThreadCharacteristicsW 等）、GetLogicalProcessorInformationEx、SetThreadGroupAffinity。<code>build_windows.ps1</code> 与 <code>bench_windows.ps1</code> 用 PowerShell 7.4 解析器检查为 0 个语法错误（只解析，未执行），并已改为纯 ASCII，避免 Windows PowerShell 5.1 按 ANSI 读取时出错。<strong>JUCE 插件本身没有在 Windows 上编译过 Phase 4 版本</strong>（<code>windows.h</code> 与 JUCE 头的冲突风险未验证，已加 NOMINMAX / WIN32_LEAN_AND_MEAN）。</li>
+</ul>
+<h2>4. 测试（<code>experiments/results/phase4/tests/</code>）</h2>
+<table>
+<thead>
+<tr>
+<th>测试</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td>f32 输出与状态，9 种池/绑核/MMCSS 变体（1–8 线程），32×32，四次势与 HQ-fast：与 1 线程逐位一致</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>f64 HQ 精确，专用绑核池 4 线程 + MMCSS：逐位一致</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>192 000 样本、4 线程，专用池与调用方计算：0 次堆分配</td>
+</tr>
+<tr>
+<td>Q4 / Q4b</td>
+<td>box 拓扑 8/8/8，L8/16/32 默认 1/1/6；合成 i9：P 核 {0,2,4,6,8,10}，L32 默认 5</td>
+</tr>
+<tr>
+<td>Q5</td>
+<td>超订阅（8 个忙线程 + 8 个工作线程 / 8 CPU）：不死锁，200 块全部完成（每块平均 0.1–0.2 s，说明超订阅时的退化程度）</td>
+</tr>
+<tr>
+<td>test_mt / test_phase3 / test_main</td>
+<td>全部通过</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Linux 前后对比（box）</h2>
+<p>完整表：<code>experiments/results/phase4/linux_summary.md</code>（由 <code>p4_summarize_linux.py</code> 从 JSON 生成）。before = Phase 3 CLI（纯自旋、调用方计算、不 paced，5 s/配置）；after 每配置 4 s。变体：p3spin（新 CLI 模拟 Phase 3：自旋 1 s 才等待）、baseline（混合屏障、调用方计算、不绑核）、pin（专用池、pcores）、pset（专用池、P 核集合）。Linux 上 MMCSS 是空操作，所以 pin_mmcss = pin，没有单独跑。</p>
+<p><strong>重要提醒</strong>：box 是 KVM 虚拟机，vCPU 不是独占物理核，块最大值里有数 ms 到数十 ms 的 VM 抖动，同一配置两次运行的超时数可以相差数倍（例如 pin 4 线程块 128：不 paced 8.02 µs、0 次超时；paced 11.20 µs、6 次）。这些数字只能看趋势，不能代表 i9。</p>
+<h3>5.1 判据行：32×32、块 128（单元格 = µs/样本中位数 / p99÷预算 / 超时块数）</h3>
+<table>
+<thead>
+<tr>
+<th>线程</th>
+<th>before（安静、不 paced）</th>
+<th>after p3spin（安静、不 paced）</th>
+<th>after baseline（安静、不 paced）</th>
+<th>after pin（安静、不 paced）</th>
+<th>after baseline（安静、paced）</th>
+<th>after pin，调用方阻塞（安静、paced）</th>
+<th>after pset，调用方阻塞（安静、paced）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>9.62 / 0.702 / 3</td>
+<td>9.46 / 0.698 / 2</td>
+<td>9.86 / 0.744 / 3</td>
+<td>10.87 / 1.034 / 20</td>
+<td>10.59 / 0.940 / 11</td>
+<td>10.57 / 0.954 / 11</td>
+<td>10.52 / 0.814 / 2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7.96 / 0.630 / 2</td>
+<td>7.65 / 0.556 / 1</td>
+<td>8.28 / 0.691 / 1</td>
+<td><strong>8.02 / 0.585 / 0（PASS）</strong></td>
+<td><strong>8.85 / 0.759 / 0</strong></td>
+<td>8.87 / 0.738 / 9</td>
+<td>11.13 / 3.842 / 59</td>
+</tr>
+<tr>
+<td>5</td>
+<td>—</td>
+<td>7.12 / 0.524 / 0（PASS）</td>
+<td>7.07 / 0.510 / 1</td>
+<td>8.53 / 0.857 / 12</td>
+<td>10.10 / 0.649 / 4</td>
+<td>9.71 / 0.645 / 3</td>
+<td>7.87 / 0.603 / 4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6.81 / 0.559 / 2</td>
+<td>6.34 / 0.470 / 1</td>
+<td>5.74 / 0.415 / 5</td>
+<td>6.66 / 0.596 / 3</td>
+<td>6.68 / 0.494 / 1</td>
+<td>7.64 / 0.796 / 7</td>
+<td>7.29 / 0.762 / 8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6.60 / 2.209 / 271</td>
+<td>5.27 / 0.575 / 5</td>
+<td>5.34 / 2.990 / 34</td>
+<td>168.3 / 11.5 / 全部（超订阅，已加保护）</td>
+<td>6.48 / 3.935 / 90</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>不 paced 每配置 1500 块（before 1875 块）；paced 1500 块。</p>
+<h3>5.2 读法</h3>
+<ul>
+<li>安静时，中位数在各变体间差别不大（4 线程约 7.7–8.9 µs/样本，6 线程约 5.7–7.6），都在预算 20.83 的一半以下；<strong>决定成败的是尾部</strong>（p99、max、超时数），而尾部在这台 VM 上主要由 VM 抖动决定。</li>
+<li>8 线程（= vCPU 数）时：Phase 3 纯自旋 271 次超时；新混合屏障 34–90 次；专用池 8 线程完全崩溃（现已有保护）。<strong>规律：计算线程 + 宿主线程 + 其它负载 ≥ CPU 数时，每样本一次的屏障会崩溃</strong>，混合屏障崩得比纯自旋更“干脆”（中位数变差），纯自旋则表现为数百 ms 的尖峰。</li>
+<li>box 不是混合架构，也不是 Windows，绑核与 MMCSS 的主要收益（避开 E 核、避开被抢占）在这里体现不出来，所以 pin/pset 在 box 上没有比 baseline 更好。这一点只能在 i9 上验证。</li>
+</ul>
+<h3>5.3 有负载（3 个外部忙循环，块 128，32×32）</h3>
+<table>
+<thead>
+<tr>
+<th>线程</th>
+<th>before（不 paced）</th>
+<th>p3spin（不 paced）</th>
+<th>baseline（不 paced）</th>
+<th>baseline（paced）</th>
+<th>pin 调用方自旋（paced）</th>
+<th>pin 调用方阻塞（paced）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>9.87 / 0.712 / 0</td>
+<td>9.97 / 0.819 / 0</td>
+<td>13.64 / 0.817 / 2</td>
+<td>10.24 / 0.798 / 1</td>
+<td>10.20 / 0.903 / 7</td>
+<td>10.70 / 1.138 / 20</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7.92 / 0.762 / 8</td>
+<td>8.57 / 0.797 / 4</td>
+<td>10.91 / 0.737 / 5</td>
+<td>9.20 / 0.765 / 6</td>
+<td>10.40 / 1.289 / 35</td>
+<td>10.10 / 1.988 / 60</td>
+</tr>
+<tr>
+<td>5</td>
+<td>—</td>
+<td>7.23 / 0.665 / 0</td>
+<td>10.37 / 3.455 / 69</td>
+<td>7.67 / 3.931 / 47</td>
+<td>170.5 / 18.2 / 1486</td>
+<td>48.5 / 12.2 / 1351</td>
+</tr>
+<tr>
+<td>6</td>
+<td>8.66 / 37.8 / 344</td>
+<td>6.71 / 3.40 / 296</td>
+<td>64.45 / 6.75 / 1449</td>
+<td>114.6 / 7.90 / 1426</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>37.14 / 223 / 1000</td>
+<td>7.09 / 214 / 597</td>
+<td>124.8 / 11.7 / 1500</td>
+<td>130.1 / 12.5 / 1500</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>结论：只要线程数 + 负载 ≤ CPU 数（3–4 线程 + 3 个负载），各变体 p99/预算在 0.7–3.0 之间，超时数个到数十个；一旦超过，基于等待的屏障整体崩溃。这说明在用户机器上<strong>线程数绝不能超过真正空闲的 P 核数</strong>，Auto=5（i9 6 个 P 核）也只留 1 个 P 核给宿主和其它插件，需要在 i9 上实测 4 与 5 的差别。</p>
+<h2>6. pluginval（strictness 10，Linux，Xvfb，in-process）</h2>
+<p>在本轮最终代码（含超订阅保护与 <code>caller_pool_spin</code>）重新构建后运行（21:44 CST），命令：<code>xvfb-run -a pluginval --strictness-level 10 --validate-in-process --timeout-ms 1200000 &lt;插件&gt;.vst3</code>。</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>结果</th>
+<th>测试组</th>
+<th>总线</th>
+<th>预设（programs）</th>
+<th>延迟 / 尾长</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MORPHO-PHS（乐器，VST3）</td>
+<td><strong>SUCCESS</strong>，退出码 0</td>
+<td>25 组全部完成</td>
+<td>0 入 / 2 出</td>
+<td>12</td>
+<td>0 / 8 s</td>
+<td><code>experiments/results/phase4/pluginval/pluginval_s10_MORPHO-PHS.txt</code></td>
+</tr>
+<tr>
+<td>MORPHO-PHS FX（效果器，VST3）</td>
+<td><strong>SUCCESS</strong>，退出码 0</td>
+<td>25 组全部完成</td>
+<td>2 入 / 2 出</td>
+<td>15</td>
+<td>0 / 8 s</td>
+<td><code>experiments/results/phase4/pluginval/pluginval_s10_MORPHO-PHS_FX.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p>12 + 15 = 27 个预设（v2 格式），与迁移数量一致。同一次构建也产出了两个插件的 CLAP 与 Standalone（Linux），但 CLAP 未用 clap-validator 检查，Standalone 未在音频设备上运行（box 没有声卡）。Windows 版的 pluginval 需要在 i9 上运行（命令见 §9）。</p>
+<h2>7. 还需要在 i9 上测的东西</h2>
+<blockquote>
+<p>2026-10-31：第 1、2、3 条已完成，结果见 §10（第 3 条：pin_mmcss 消除了大尖峰，块 128 最大 4.3 ms；4–6 线程比 3 线程好，扩展单调；但 32×32 仍不达标）。第 4、5 条尚未做。</p>
+</blockquote>
+<ol>
+<li><code>build_windows.ps1 -VsPath C:\SDKs\AetherBuildTools -Generator Ninja</code>：Phase 4 版本（两个插件）能否用 MSVC 14.44 编译（<code>windows.h</code> 与 JUCE 冲突风险）。</li>
+<li><code>bench_windows.ps1</code>（建议加 <code>-All</code>）：p3spin / baseline / pin / pin_mmcss / pset_mmcss / pin_mmcss_cspin / pin_mmcss_caller，L16/L32 × 块 64/128/512 × 线程 3/4/5/6；判据 32×32、块 128：0 超时且 p99/预算 &lt; 0.7。</li>
+<li>重点看：pin_mmcss 是否消除 40–100 ms 尖峰；4 与 5 线程哪个更稳；线程扩展是否恢复单调。</li>
+<li>在 DAW 中实测两个插件（乐器版是否出现在乐器列表、多实例、不同缓冲区大小）。</li>
+<li>可选：Windows 上的 pluginval（命令见 <code>scripts/windows/README_WINDOWS.md</code>）。</li>
+</ol>
+<h2>8. Phase 5 待决事项（本阶段不开始 Phase 5）</h2>
+<ol>
+<li><strong>自适应自旋 vs CPU 占用</strong>：默认开（宿主持续调用时工作核保持忙等，任务管理器里看起来满核）。是否保留？10 ms 上限是否合适？</li>
+<li><strong>默认绑核</strong>：插件默认 pset（软亲和，多实例安全）；pcores（硬）在单实例时可能更稳。i9 数据（§10）：pset_mmcss 在 32×32、4–6 线程为 95–188 次超时，pin_mmcss 为 27–60 次；16×16 上 pcores + MMCSS 全部达标而 pset 只有 6/12。倾向改为 pcores + MMCSS，但要先验证多实例。</li>
+<li><strong>授权</strong>：AGPL-3.0-only 还是 or-later；是否购买 JUCE 商业许可以闭源发布。</li>
+<li><strong>logcosh_fit.json</strong>：删除 K=2 后，剩余 K=3/K=4 条目与代码实际常数（<code>core_types.hpp</code>、<code>logcosh_surrogate_eval.json</code>）不一致：重新生成还是删除？</li>
+<li><strong>旧插件 ID <code>Mphs</code> 退役</strong>：是否需要兼容（旧工程仍可打开）？</li>
+<li><strong>线程选项列表</strong>是 Auto|1|2|3|4|6|8，没有 5（Auto 在 i9 上选 5）：是否改为 1–8 全选？</li>
+<li><strong>每样本一次屏障的结构性限制</strong>：i9 上 pin_mmcss 确实仍不达标（§10），是否投入“每 k 样本一次同步”的时空分块或降采样子晶格（会影响能量证明的形式，需要重新论证）？</li>
+<li>HQ-fast 在 i9 上只有 L8 稳定：是否把 HQ 限制在 ≤ 16×16？</li>
+<li><strong>专用池时宿主线程等待方式</strong>：阻塞（当前默认，少占一个 CPU，超订阅时好得多）还是自旋（box 上有负载、3–4 线程时超时更少）？以 i9 上 <code>pin_mmcss</code> 与 <code>pin_mmcss_cspin</code> 的对比为准。i9 结果：差别很小（5/6 线程 27/28 vs 23/20 次超时，3–4 线程时自旋略差），倾向保留阻塞。</li>
+<li><strong>新增（i9 复测后）</strong>：补测“绑核 + MMCSS + 纯自旋屏障”和排除 CPU 0 的 P 核列表；基准脚本记录电源模式覆盖与实际频率；32×32 是否降级为“高负载 / 大缓冲”选项。</li>
+</ol>
+<h2>9. 文件清单（相对上次同步的新增/修改）</h2>
+<p>见同步包中的 <code>PHASE4_SYNC_MANIFEST.txt</code>。主要新增：<code>LICENSE</code>、<code>include/morpho_phs/rt_thread.hpp</code>、<code>tests/test_phase4.cpp</code>、<code>docs/LICENSES_phase4.md</code>、<code>python/scripts/phase4/*</code>、<code>experiments/results/phase4/*</code>、本报告。2026-10-31 的 i9 增量同步只包含 <code>README.md</code>、本报告（.md/.html/.pdf）与 <code>reports/phase4_progress.md</code>；i9 原始数据与日志已在用户 PC 上。主要修改：<code>esav_lf_mt.hpp</code>、<code>plugin/CMakeLists.txt</code>、<code>plugin/Source/**</code>、<code>presets/*.morpho</code>、<code>docs/morpho_preset_spec.md</code>、<code>scripts/windows/*</code>、<code>README.md</code>、<code>experiments/results/phase3/logcosh_fit.json</code>，以及 79 个源文件的 SPDX 头。</p>
+<h2>10. i9-13900H 复测结果（2026-10-31，Asia/Shanghai）</h2>
+<p><strong>运行条件</strong></p>
+<ul>
+<li>权威数据：<code>experiments/results/phase4/windows/DESKTOP-114514_20261031_112539/</code>（<code>SUMMARY.txt</code>、各变体 <code>*.txt</code> / <code>*.json</code>、<code>sysinfo.json</code>），控制台日志 <code>logs/bench_phase4_console_bestperf.txt</code>。</li>
+<li>构建：Phase 4 代码，用户机器 MSVC 14.44（<code>build_windows.ps1 -VsPath C:\SDKs\AetherBuildTools -Generator Ninja</code>），2026-10-30 21:52 构建成功（两个插件 VST3/CLAP/Standalone + <code>morpho_cli.exe</code>，日志 <code>logs/build_phase4_console.txt</code>）。</li>
+<li>电源：Windows 11 电源模式“最佳性能”（覆盖方案 GUID ded574b5…），底层电源计划仍是“平衡”（381b4222…）。<code>sysinfo.json</code> 只记录了底层计划，<strong>没有记录电源模式覆盖</strong>；“最佳性能”来自用户确认，以及运行前在 PC 上读取到的电源模式覆盖 GUID（ded574b5…）；这一信息不在结果文件里。<code>max_clock_mhz=2600</code> 是 WMI 报告的标称频率，不是实际睿频。</li>
+<li>矩阵：<code>bench_windows.ps1 -All</code>，paced（按宿主块周期调用），每配置 4 s，L16/L32 × 块 64/128/512 × 线程 3/4/5/6；变体 baseline、p3spin、pin、pin_mmcss、pin_mmcss_caller、pin_mmcss_cspin、pset_mmcss，以及乐器模式 inst_L32_pin_mmcss（L32、块 128）。共 32 组判据行 + 全矩阵，全部有数据。</li>
+<li>排除的运行：<code>DESKTOP-114514_20261030_215301/</code>（“平衡”模式，PC 关机中断，只有 baseline、p3spin）仅用于电源模式对比；<code>DESKTOP-114514_20261031_111728_mixed_power_aborted/</code> 运行中途切换了电源模式，<strong>整组排除，不引用</strong>。</li>
+<li>判据：32×32、块 128（预算 2666.7 µs/块 = 20.83 µs/样本）：0 次超时且 p99/预算 &lt; 0.7 为 PASS；超时 ≤ 0.1% 且 p99/预算 &lt; 0.7 为 NEAR。</li>
+</ul>
+<p><strong>判据表：32×32、块 128（1500 块）</strong></p>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>线程</th>
+<th>中位数 µs/样本</th>
+<th>p99 µs</th>
+<th>max µs</th>
+<th>p99/预算</th>
+<th>超时块</th>
+<th>判定</th>
+<th>线程配置（rt_report 摘要）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p3spin</td>
+<td>3</td>
+<td>11.39</td>
+<td>2,768</td>
+<td>3,293</td>
+<td>1.038</td>
+<td>31</td>
+<td>FAIL</td>
+<td>不绑核，无 MMCSS，调用方 + 2，纯自旋屏障</td>
+</tr>
+<tr>
+<td>p3spin</td>
+<td>4</td>
+<td>11.25</td>
+<td>2,555</td>
+<td>3,287</td>
+<td><strong>0.958</strong></td>
+<td><strong>8</strong></td>
+<td>FAIL</td>
+<td>调用方 + 3</td>
+</tr>
+<tr>
+<td>p3spin</td>
+<td>5</td>
+<td>14.14</td>
+<td>2,646</td>
+<td>3,385</td>
+<td>0.992</td>
+<td>12</td>
+<td>FAIL</td>
+<td>调用方 + 4</td>
+</tr>
+<tr>
+<td>p3spin</td>
+<td>6</td>
+<td>13.47</td>
+<td>2,594</td>
+<td>3,311</td>
+<td>0.973</td>
+<td><strong>7</strong></td>
+<td>FAIL</td>
+<td>调用方 + 5</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>3</td>
+<td>15.00</td>
+<td>4,383</td>
+<td>6,866</td>
+<td>1.644</td>
+<td>426</td>
+<td>FAIL</td>
+<td>不绑核，无 MMCSS，混合屏障，调用方 + 2</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>4</td>
+<td>17.61</td>
+<td>4,099</td>
+<td>6,429</td>
+<td>1.537</td>
+<td>308</td>
+<td>FAIL</td>
+<td>调用方 + 3</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>5</td>
+<td>21.70</td>
+<td>11,723</td>
+<td>46,867</td>
+<td>4.396</td>
+<td>832</td>
+<td>FAIL</td>
+<td>调用方 + 4</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>6</td>
+<td>14.07</td>
+<td>3,762</td>
+<td>4,922</td>
+<td>1.411</td>
+<td>92</td>
+<td>FAIL</td>
+<td>调用方 + 5</td>
+</tr>
+<tr>
+<td>pin</td>
+<td>3</td>
+<td>12.94</td>
+<td>2,451</td>
+<td>3,439</td>
+<td>0.919</td>
+<td>9</td>
+<td>FAIL</td>
+<td>专用池，pcores [10,8,6]，无 MMCSS</td>
+</tr>
+<tr>
+<td>pin</td>
+<td>4</td>
+<td>11.23</td>
+<td>3,425</td>
+<td>88,858</td>
+<td>1.284</td>
+<td>43</td>
+<td>FAIL</td>
+<td>[10,8,6,4]</td>
+</tr>
+<tr>
+<td>pin</td>
+<td>5</td>
+<td>10.03</td>
+<td>3,802</td>
+<td>6,457</td>
+<td>1.426</td>
+<td>73</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2]</td>
+</tr>
+<tr>
+<td>pin</td>
+<td>6</td>
+<td>13.17</td>
+<td>6,547</td>
+<td>163,259</td>
+<td>2.455</td>
+<td>376</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2,0]（含 CPU 0）</td>
+</tr>
+<tr>
+<td>pin_mmcss</td>
+<td>3</td>
+<td>20.25</td>
+<td>3,305</td>
+<td>4,317</td>
+<td>1.239</td>
+<td>581</td>
+<td>FAIL</td>
+<td>专用池，pcores [10,8,6]，MMCSS 3/3 成功</td>
+</tr>
+<tr>
+<td>pin_mmcss</td>
+<td>4</td>
+<td>17.03</td>
+<td>2,970</td>
+<td>4,215</td>
+<td>1.114</td>
+<td>60</td>
+<td>FAIL</td>
+<td>[10,8,6,4]</td>
+</tr>
+<tr>
+<td>pin_mmcss</td>
+<td>5</td>
+<td>15.37</td>
+<td>2,873</td>
+<td>3,870</td>
+<td>1.077</td>
+<td>27</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2]</td>
+</tr>
+<tr>
+<td>pin_mmcss</td>
+<td>6</td>
+<td>13.91</td>
+<td>2,930</td>
+<td>4,341</td>
+<td>1.099</td>
+<td>28</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2,0]（含 CPU 0）</td>
+</tr>
+<tr>
+<td>pin_mmcss_caller</td>
+<td>3</td>
+<td>19.28</td>
+<td>3,372</td>
+<td>4,193</td>
+<td>1.264</td>
+<td>363</td>
+<td>FAIL</td>
+<td>宿主线程参与计算，其余钉 [10,8]</td>
+</tr>
+<tr>
+<td>pin_mmcss_caller</td>
+<td>4</td>
+<td>16.68</td>
+<td>3,016</td>
+<td>3,522</td>
+<td>1.131</td>
+<td>87</td>
+<td>FAIL</td>
+<td>[10,8,6]</td>
+</tr>
+<tr>
+<td>pin_mmcss_caller</td>
+<td>5</td>
+<td>14.57</td>
+<td>2,916</td>
+<td>3,818</td>
+<td>1.094</td>
+<td>34</td>
+<td>FAIL</td>
+<td>[10,8,6,4]</td>
+</tr>
+<tr>
+<td>pin_mmcss_caller</td>
+<td>6</td>
+<td>13.46</td>
+<td>2,816</td>
+<td>3,901</td>
+<td>1.056</td>
+<td>26</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2]</td>
+</tr>
+<tr>
+<td>pin_mmcss_cspin</td>
+<td>3</td>
+<td>20.39</td>
+<td>3,437</td>
+<td>4,210</td>
+<td>1.289</td>
+<td>582</td>
+<td>FAIL</td>
+<td>pin_mmcss + 宿主线程为池自旋</td>
+</tr>
+<tr>
+<td>pin_mmcss_cspin</td>
+<td>4</td>
+<td>17.27</td>
+<td>3,042</td>
+<td>4,226</td>
+<td>1.141</td>
+<td>81</td>
+<td>FAIL</td>
+<td>[10,8,6,4]</td>
+</tr>
+<tr>
+<td>pin_mmcss_cspin</td>
+<td>5</td>
+<td>15.17</td>
+<td>2,820</td>
+<td>3,867</td>
+<td>1.057</td>
+<td>23</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2]</td>
+</tr>
+<tr>
+<td>pin_mmcss_cspin</td>
+<td>6</td>
+<td>13.87</td>
+<td>2,747</td>
+<td>3,566</td>
+<td>1.030</td>
+<td>20</td>
+<td>FAIL</td>
+<td>[10,8,6,4,2,0]（含 CPU 0）</td>
+</tr>
+<tr>
+<td>pset_mmcss（插件默认）</td>
+<td>3</td>
+<td>13.10</td>
+<td>3,277</td>
+<td>3,930</td>
+<td>1.229</td>
+<td>208</td>
+<td>FAIL</td>
+<td>软亲和到 12 个 P 核逻辑 CPU，MMCSS</td>
+</tr>
+<tr>
+<td>pset_mmcss</td>
+<td>4</td>
+<td>17.59</td>
+<td>3,422</td>
+<td>4,513</td>
+<td>1.283</td>
+<td>141</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+<tr>
+<td>pset_mmcss</td>
+<td>5</td>
+<td>16.57</td>
+<td>3,930</td>
+<td>5,472</td>
+<td>1.474</td>
+<td>188</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+<tr>
+<td>pset_mmcss</td>
+<td>6</td>
+<td>15.11</td>
+<td>3,853</td>
+<td>5,518</td>
+<td>1.445</td>
+<td>95</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+<tr>
+<td>inst_L32_pin_mmcss（乐器）</td>
+<td>3</td>
+<td>25.72</td>
+<td>4,245</td>
+<td>4,573</td>
+<td>1.592</td>
+<td>1112</td>
+<td>FAIL</td>
+<td>同 pin_mmcss</td>
+</tr>
+<tr>
+<td>inst_L32_pin_mmcss</td>
+<td>4</td>
+<td>20.21</td>
+<td>3,606</td>
+<td>6,844</td>
+<td>1.352</td>
+<td>589</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+<tr>
+<td>inst_L32_pin_mmcss</td>
+<td>5</td>
+<td>18.19</td>
+<td>3,256</td>
+<td>4,038</td>
+<td>1.221</td>
+<td>205</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+<tr>
+<td>inst_L32_pin_mmcss</td>
+<td>6</td>
+<td>16.50</td>
+<td>3,179</td>
+<td>4,136</td>
+<td>1.192</td>
+<td>84</td>
+<td>FAIL</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>注：P 核逻辑 CPU 由 <code>GetLogicalProcessorInformationEx</code> 得到（6 个 P 核 / 14 个物理核，每个 P 核取一个逻辑线程：10,8,6,4,2,0）。</p>
+<p><strong>32×32 其它块大小（摘要）</strong></p>
+<ul>
+<li>块 64（1333 µs 预算）：所有变体都 FAIL；最好的是 p3spin（45–64/3000 超时，p99/预算 1.04–1.10）。</li>
+<li>块 512（10.67 ms 预算）：pin_mmcss 5/6 线程、pin_mmcss_caller 4/5/6 线程、p3spin 4/5/6 线程、pset_mmcss 4 线程为 <strong>0 超时</strong>，但 p99/预算 0.79–0.98，超过 0.7 的余量要求，所以仍记为 FAIL。最好：p3spin 6 线程 0/375、p99/预算 0.787；pin_mmcss_caller 6 线程 0/375、0.844。</li>
+</ul>
+<p><strong>16×16 结果（中位数 µs/样本 / p99÷预算 / 超时块）</strong></p>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>块 64（3000 块）</th>
+<th>块 128（1500 块）</th>
+<th>块 512（375 块）</th>
+<th>PASS 数 / 12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p3spin</td>
+<td>3T–6T 全 PASS（3.1–3.8 / 0.40–0.45 / 0）</td>
+<td>3/5/6T PASS，4T NEAR（1 次）</td>
+<td>全 PASS（0.25–0.28）</td>
+<td>11</td>
+</tr>
+<tr>
+<td>pin_mmcss</td>
+<td>3/4T PASS，5/6T NEAR（3、2 次）</td>
+<td><strong>3T–6T 全 PASS</strong>（5.8–6.4 / 0.51–0.68 / 0）</td>
+<td><strong>全 PASS</strong>（3.5–4.4 / 0.30–0.32 / 0）</td>
+<td>10</td>
+</tr>
+<tr>
+<td>pin_mmcss_caller</td>
+<td>3T FAIL（22 次），4–6T PASS</td>
+<td><strong>全 PASS</strong>（5.0–5.8 / 0.44–0.53 / 0）</td>
+<td><strong>全 PASS</strong>（0.26–0.31）</td>
+<td>11</td>
+</tr>
+<tr>
+<td>pin_mmcss_cspin</td>
+<td>4T NEAR、6T NEAR，3/5T FAIL</td>
+<td>4/5T PASS，3T NEAR，6T FAIL（2 次）</td>
+<td>3/4/6T PASS，5T FAIL（1 次）</td>
+<td>5</td>
+</tr>
+<tr>
+<td>pset_mmcss</td>
+<td>3T PASS，4–6T NEAR</td>
+<td>5T PASS，其余 FAIL（p99/预算 0.70–0.74 或 2 次超时）</td>
+<td>全 PASS</td>
+<td>6</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>3/4T PASS，5T NEAR，6T FAIL</td>
+<td>3T PASS，4T NEAR，5/6T FAIL</td>
+<td>3/5/6T PASS，4T FAIL（1 次，11 ms 尖峰）</td>
+<td>6</td>
+</tr>
+<tr>
+<td>pin（无 MMCSS）</td>
+<td>全 FAIL（39–329 次，尖峰 13–54 ms）</td>
+<td>全 FAIL（4–149 次，尖峰最大 55 ms）</td>
+<td>3T PASS，其余 FAIL（尖峰 12–56 ms）</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>电源模式的影响（只比较两次都有的 baseline / p3spin，32×32、块 128）</strong></p>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>线程</th>
+<th>“平衡”（20261030_215301）</th>
+<th>“最佳性能”（20261031_112539）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p3spin</td>
+<td>3 / 4 / 5 / 6</td>
+<td>20.3 / 19.7 / 16.7 / 16.1 µs；664 / 585 / 288 / 140 次超时</td>
+<td>11.4 / 11.2 / 14.1 / 13.5 µs；31 / 8 / 12 / 7 次</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>3 / 4 / 5 / 6</td>
+<td>20.8 / 18.2 / 18.2 / 17.0 µs；744 / 423 / 328 / 101 次</td>
+<td>15.0 / 17.6 / 21.7 / 14.1 µs；426 / 308 / 832 / 92 次</td>
+</tr>
+</tbody>
+</table>
+<p>“最佳性能”使纯自旋的中位数下降约 15–45%、超时减少 20–70 倍；混合屏障收益小得多，5 线程甚至更差（单次测量，46.9 ms 尖峰）。Phase 3 的 i9 数据（“平衡”、不 paced、每配置 3 s、FX 四次势、块 128）最好是 2 线程 14/1125 次超时，其余 93–484 次；条件不同，只能看量级。</p>
+<p><strong>关键结论</strong></p>
+<ol>
+<li><strong>32×32 仍不能可靠实时</strong>：块 128 没有任何一组 PASS（也没有 NEAR）。最好的是 Phase 3 式纯自旋 p3spin 4–6 线程：7–12/1500 次超时（0.5–0.8%），p99/预算 0.958–0.992，max 3.3–3.4 ms。中位数 11–14 µs/样本，低于 20.83 µs 预算，所以这是<strong>尾部延迟问题，不是吞吐问题</strong>：p99 块耗时约为中位数块耗时的 1.5–1.9 倍（例如 p3spin 4T：中位数 1440 µs，p99 2555 µs）。</li>
+<li><strong>只绑核、不开 MMCSS（pin）最差</strong>：L32 出现 89 ms（4T）、163 ms（6T 块 128）、183 ms（6T 块 64）、178 ms（6T 块 512）尖峰；L16 也有 13–56 ms 尖峰，12 组只有 1 组 PASS。6 线程时 CPU 集合包含逻辑 CPU 0（[10,8,6,4,2,0]），6T 最差；但 <strong>3–5 线程不含 CPU 0 也有 13–89 ms 尖峰</strong>，所以 CPU 0 不能单独解释。硬绑核后线程不能迁移，一旦所在核被同级或更高优先级的线程（或 DPC/ISR）占用，就只能等待。</li>
+<li><strong>绑核 + MMCSS 让 16×16 完全达标</strong>：pin_mmcss 与 pin_mmcss_caller 在块 128 和 512 上 3–6 线程全部 0 超时，p99/预算 ≤ 0.68，max ≤ 2.5 ms（块 128）。MMCSS 把 pin 的 50–180 ms 尖峰压到 L32 最多 13 ms（块 512）、块 128 最多 4.3 ms。</li>
+<li><strong>但在 32×32 上，绑核 + MMCSS 不如不绑核的纯自旋</strong>：pin_mmcss 最好 27–28 次（5/6T）、pin_mmcss_cspin 最好 20 次（6T）、pin_mmcss_caller 最好 26 次（6T）；3 线程时中位数 19–20 µs、几百次超时。这一族变体都是线程越多越好：3 线程时每个线程的计算量太大，块耗时中位数已接近预算。</li>
+<li><strong>pset（软亲和到 P 核集合，当前插件默认）不比 pcores 好</strong>：32×32 块 128、4–6 线程为 95–188 次超时，比 pin_mmcss 的 27–60 次差（只有 3 线程时 pset 的 208 次好于 pin_mmcss 的 581 次）；16×16 也只有 6/12 PASS。插件默认值需要重新决定（§8 第 2 条）。</li>
+<li><strong>乐器模式更重</strong>：inst_L32_pin_mmcss 中位数 16.5–25.7 µs，84–1112 次超时，比 FX 模式的 pin_mmcss 差一截。</li>
+<li><strong>宿主线程等待方式</strong>（§8 第 9 条）：pin_mmcss_cspin（宿主自旋）与 pin_mmcss（宿主阻塞）在 i9 上差别很小（5T 23 vs 27、6T 20 vs 28 次），3–4 线程时自旋略差。阻塞可以保留为默认。</li>
+<li><strong>一个混淆因素（新发现）</strong>：p3spin 是唯一使用纯自旋屏障的变体（<code>barrier_spin_us=1e6</code>）；其余 Phase 4 变体都是混合屏障（自旋 50 µs 后转 <code>WaitOnAddress</code>）。<code>*.json</code> 的 <code>barrier_os_waits</code> 显示，32×32 块 128 时混合屏障每次测量有 219–12,395 次 OS 等待（p3spin 为 0），每次唤醒都有调度延迟。所以“绑核 + MMCSS 不如 p3spin”可能有一部分来自屏障类型，而不是绑核本身。<strong>“绑核 + MMCSS + 纯自旋屏障”这个组合还没测过</strong>，是最直接的下一个实验。</li>
+</ol>
+<p><strong>原因假设（尚未逐一验证）</strong></p>
+<ul>
+<li><strong>CPU 0 / 中断负载</strong>：Windows 把大量 DPC/ISR 放在 CPU 0；6 线程的 pcores 集合包含 CPU 0。可用 xperf/WPA 或 LatencyMon 查看各核的 DPC/ISR 时间来验证；或把 CPU 0 从 P 核列表中排除再测。</li>
+<li><strong>每样本一次屏障</strong>：块 128 = 每块 128 次全线程同步；每个样本的墙钟时间约 11–14 µs，屏障之间每个线程只有几 µs 计算（i9 单线程约 28 µs/样本，按线程数平分）。任一线程晚到几十 µs，整块就被拖延；超时是“偶发长尖峰叠加”的结果。</li>
+<li><strong>Windows 对硬绑核线程的调度</strong>：硬亲和让线程无法迁移，所在核被占用时只能等；MMCSS 提高优先级后好很多，但 MMCSS 的调度器会在“Pro Audio”任务上做占空比限制（可能造成周期性停顿），对此尚无数据。</li>
+<li><strong>混合架构的频率与功耗状态</strong>：“平衡”与“最佳性能”的巨大差异说明频率、C 状态或 Thread Director 有很大影响；E 核负载、P 核睿频降档、核间频率不一致都可能把最慢的线程变得更慢。本次没有记录实际频率和温度。</li>
+</ul></body></html>

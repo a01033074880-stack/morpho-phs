@@ -1,0 +1,14 @@
+[PASS] P1 surrogate: |L-logcosh|<=1.25e-03 (|s|<=10), |L'-tanh|<=1.23e-03, min L=0.0e+00, min L''=7.27e-12>0, constraints 8.9e-16, FD derivative err 1.3e-09
+[PASS] P2 f32 bit-exact outputs+state, threads {1,2,3,4,6,8}, 32x32, 12000 samples, HQ-fast, ENPU-C/64, ramp step 8, gate
+[PASS] P2 f64 bit-exact outputs+state, threads {1,2,3,4,6,8}, 32x32, 12000 samples, HQ-fast, ENPU-C/64, ramp step 8, gate
+[PASS] P3 power balance HQ-fast + ramp (g flips, mu jumps every block): tracked vs recomputed energy max rel diff 3.14e-14
+[PASS] P4 f32 passivity HQ-fast, 48000 samples, strong input: max (E - (E0 + work))/|E0+work| = 0.00e+00
+[PASS] P4 f64 passivity HQ-fast, 48000 samples, strong input: max (E - (E0 + work))/|E0+work| = 0.00e+00
+[PASS] P5 30 live switches quartic -> HQ-fast -> HQ: max rel energy increase -6.40e-07
+[PASS] P6 HQ-fast vs HQ output, 12000 samples, 32x32: relative RMS difference 7.64e-09 (-162.3 dB)  [informative]
+[PASS] P7 zero heap allocations: 2000 blocks (64/512), f32, 4 threads, HQ-fast, ramp, ENPU-C (0 allocs)
+ALL PHASE-3 ENGINE TESTS PASSED (0 failures)
+
+real	0m4.512s
+user	0m15.396s
+sys	0m0.048s

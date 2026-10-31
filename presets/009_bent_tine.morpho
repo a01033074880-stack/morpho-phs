@@ -1,0 +1,126 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Bent Tine",
+  "category": "Plucks",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "HQ gap plus nonlinearity: tine-like pluck whose pitch bends as it rings out.",
+  "description_zh": "HQ 能隙加非线性：像音叉齿的拨奏，振幅衰减时音高随之弯曲。",
+  "tags": [
+    "hq",
+    "metallic",
+    "pluck"
+  ],
+  "cpu_class": "standard",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "HQ (fast log-cosh)",
+    "interp": "1 sample",
+    "tone": 1699.9499,
+    "chirality": 0.55,
+    "nonlinear": 0.6,
+    "hq": 0.6,
+    "decay": 0.78,
+    "life": 0.0,
+    "morph": 0.1,
+    "tau": 0.8298,
+    "freeze": 0.0,
+    "wet": 0.9,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": 14.33,
+    "spread": 0.25,
+    "exciter": "Pluck",
+    "defect_depth": 0.6,
+    "macro1": 0.5496,
+    "macro2": 0.55,
+    "macro3": 0.7,
+    "macro4": 0.6,
+    "macro5": 0.1,
+    "macro6": 0.0,
+    "macro7": 0.5,
+    "macro8": 0.0,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Chirality",
+      "Sustain",
+      "Grit",
+      "Morphogen",
+      "Life",
+      "Width",
+      "Crosstalk"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 850.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "decay",
+        "lo": 0.43,
+        "hi": 0.93
+      },
+      {
+        "macro": 4,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.2,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.088
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.2,
+        "hi": 1.8
+      },
+      {
+        "macro": 8,
+        "param": "edge_crosstalk",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

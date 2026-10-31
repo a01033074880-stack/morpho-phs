@@ -1,0 +1,15 @@
+[PASS] T1 C++ vs Python reference (L=4, 3 ports, ENPU@199): rel err y(<=50 steps) 1.46e-12; after 400 steps q 1.73e-07, y 6.82e-08, E 7.70e-11
+[PASS] T2 per-step discrete power balance, 8x8, 4000 steps, random active params: max rel residual 5.58e-16
+[PASS] T2b incremental energy tracker drift after 4000 steps: rel 6.79e-14
+[PASS] T2c power balance, Potential::Quartic fast path, 8x8, 4000 steps: max rel residual 6.20e-16
+[PASS] T3 ENPU 2000 random parameter jumps: max rel (E_after - max(E_before,0)) = -1.87e-06 (scaled in 1100 jumps)
+[PASS] T4 gated self-oscillation 4 s with spiral-modulated g/mu: max E~ = 1.005738e+07 <= rho*E~cap = 1.013383e+07 (rho=1.013370, gamma=0.242)
+[PASS] T4b oscillation actually grows to the cap region: max E = 1.006e+07 (cap 1.0e+07)
+[PASS] T5 zero heap allocations in 192000-sample process loop incl. ENPU + medium ticks (0 allocs)
+[PASS] T6 Barkley spiral alive after 4 s on 8x8 (|charge| = 1)
+[PASS] T7 float32 passive run 1 s: finite, max E/E0 = 1.0000000
+ALL TESTS PASSED (0 failures)
+
+real	0m2.381s
+user	0m2.375s
+sys	0m0.000s

@@ -1,0 +1,17 @@
+﻿# build outputs
+build/
+dist/
+logs/
+_sync/
+# raw audio and archives (MP3 previews are kept)
+*.wav
+*.ogg
+*.zip
+*.zip.*
+# sync manifests
+PHASE*_SYNC_MANIFEST.txt
+# python / misc
+__pycache__/
+*.pyc
+.venv/
+venv/

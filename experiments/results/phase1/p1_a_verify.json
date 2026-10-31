@@ -1,0 +1,49 @@
+{
+ "A1_symbolic_1site": {
+  "identity_holds": true,
+  "expanded_terms": 18
+ },
+ "A1_symbolic_2site": {
+  "identity_holds": true,
+  "expanded_terms": 44
+ },
+ "A1_time_s": 0.07926487922668457,
+ "A2_single_cell_muneg": {
+  "steps": 400,
+  "reps": 6,
+  "max_rel_balance_residual": 1.0055812781755405e-50,
+  "max_rel_passivity_excess": -1.296492132766134e-07
+ },
+ "A2_single_cell_mupos": {
+  "steps": 400,
+  "reps": 6,
+  "max_rel_balance_residual": 9.51211342191434e-51,
+  "max_rel_passivity_excess": null
+ },
+ "A2_flake_2x2_muneg": {
+  "steps": 150,
+  "reps": 3,
+  "max_rel_balance_residual": 5.877296986851364e-51,
+  "max_rel_passivity_excess": -1.941234820881004e-05
+ },
+ "A2_flake_2x2_mupos": {
+  "steps": 150,
+  "reps": 3,
+  "max_rel_balance_residual": 5.1925841353543867e-51,
+  "max_rel_passivity_excess": null
+ },
+ "A2_flake_3x3_muneg": {
+  "steps": 60,
+  "reps": 2,
+  "max_rel_balance_residual": 4.968376049269394e-51,
+  "max_rel_passivity_excess": -2.2928647093611643e-05
+ },
+ "A2_flake_3x3_mupos": {
+  "steps": 60,
+  "reps": 2,
+  "max_rel_balance_residual": 4.272955610011547e-51,
+  "max_rel_passivity_excess": null
+ },
+ "A2_time_s": 4.21745753288269,
+ "A2_dps": 50
+}

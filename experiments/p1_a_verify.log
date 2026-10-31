@@ -1,0 +1,8 @@
+A1 1 True 18
+A1 2 True 44
+A2 single_cell -1 {'steps': 400, 'reps': 6, 'max_rel_balance_residual': 1.0055812781755405e-50, 'max_rel_passivity_excess': -1.296492132766134e-07}
+A2 single_cell 1 {'steps': 400, 'reps': 6, 'max_rel_balance_residual': 9.51211342191434e-51, 'max_rel_passivity_excess': None}
+A2 flake_2x2 -1 {'steps': 150, 'reps': 3, 'max_rel_balance_residual': 5.877296986851364e-51, 'max_rel_passivity_excess': -1.941234820881004e-05}
+A2 flake_2x2 1 {'steps': 150, 'reps': 3, 'max_rel_balance_residual': 5.1925841353543867e-51, 'max_rel_passivity_excess': None}
+A2 flake_3x3 -1 {'steps': 60, 'reps': 2, 'max_rel_balance_residual': 4.968376049269394e-51, 'max_rel_passivity_excess': -2.2928647093611643e-05}
+A2 flake_3x3 1 {'steps': 60, 'reps': 2, 'max_rel_balance_residual': 4.272955610011547e-51, 'max_rel_passivity_excess': None}

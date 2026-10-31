@@ -1,0 +1,6 @@
+# Phase 6b zig mingw cross-compile check 2026-10-31 19:28:10 CST  flags: -target x86_64-windows-gnu -mcpu=x86_64_v3 -std=c++20 -O2 -fno-math-errno -ffp-contract=off -Iinclude  libs: -lavrt (MSVC: #pragma comment(lib, avrt))
+test_phase5 EXIT 0
+test_phase4 EXIT 0
+test_phase5_stress EXIT 0
+test_phase5_stress_hooks EXIT 0
+test_mt.cpp: Linux-only test (std::aligned_alloc in operator new; pre-existing since Phase 3), not part of the Windows check

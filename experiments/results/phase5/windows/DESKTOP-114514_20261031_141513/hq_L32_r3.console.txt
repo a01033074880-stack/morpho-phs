@@ -1,0 +1,10 @@
+MORPHO-PHS morpho_cli bench  host=desktop-114514  cpu=13th Gen Intel(R) Core(TM) i9-13900H  logical_cores=20  fs=48000  mode=0  potential=2  interp=0
+topology: source=GetLogicalProcessorInformationEx logical=20 physical=14 perf_physical=6 hybrid=1  auto_threads(L32)=2
+tag=hq_L32  pin=cpuset  mmcss=1  pool=caller  load_threads=0  barrier_spin_us=50  idle_spin_us=3500  adaptive_spin=0  caller_spin=0  paced=1
+variant=hq_L32#r3  kernel=stencil  ersav=0  inblock_os_wait=0  ecoqos_off=1  caller_cpuset=0/0  caller_mmcss=0/0
+time=2026-10-31T15:33:11.593+08:00  seconds/config=10
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+hq_L32          128  32    1      56.115   7182.7   9758.7    13608.2   17004.7   2666.7    3.660  3750/3750     FAIL*   4.74    0     0  pin=cpuset mmcss=1 pool=caller+0 cpus=[] pinned=0/0  mmcss_ok=0/0 kernel=stencil barrier=spin
+hq_L32          128  32    2      32.076   4105.7   5736.1     7074.6    7361.4   2666.7    2.151  3750/3750     FAIL*   4.35    1    22  pin=cpuset mmcss=1 pool=caller+1 cpus=[2,4,6,8,10] pinned=1/1 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=1/1 kernel=stencil barrier=spin ecoqos_off=1/1
+hq_L32          128  32    3      26.573   3401.4   6134.1     6756.7    8998.1   2666.7    2.300  3750/3750     FAIL*   3.60    2    60  pin=cpuset mmcss=1 pool=caller+2 cpus=[2,4,6,8,10] pinned=2/2 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=2/2 kernel=stencil barrier=spin ecoqos_off=2/2
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = criterion row (32x32, block 128)

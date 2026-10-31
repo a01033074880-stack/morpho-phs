@@ -1,0 +1,107 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Rusty Bow",
+  "category": "Inst Bowed",
+  "author": "MORPHO-PHS factory",
+  "description": "Strong quartic nonlinearity; louder playing bends the timbre.",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 600,
+    "chirality": 0.4,
+    "nonlinear": 0.9,
+    "hq": 0.3,
+    "decay": 0.7,
+    "life": 0.0,
+    "morph": 0.3,
+    "tau": 0.0833,
+    "freeze": 0.0,
+    "wet": 0.85,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": -4.0,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.4716,
+    "macro2": 0.7,
+    "macro3": 0.6,
+    "macro4": 0.597,
+    "macro5": 0.0,
+    "macro6": 0.6695,
+    "macro7": 1.0,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Twist",
+      "Body",
+      "Sustain",
+      "Life",
+      "Morph Speed",
+      "Grit",
+      ""
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 250,
+        "hi": 1600
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "defect_depth",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.3,
+        "hi": 0.97
+      },
+      {
+        "macro": 5,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.5
+      },
+      {
+        "macro": 6,
+        "param": "tau",
+        "lo": 1.5,
+        "hi": 0.02
+      },
+      {
+        "macro": 7,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.9
+      },
+      {
+        "macro": 7,
+        "param": "hq",
+        "lo": 0.0,
+        "hi": 0.8
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

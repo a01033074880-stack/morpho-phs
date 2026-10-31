@@ -1,0 +1,132 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Gyro Chamber",
+  "category": "Lattice Spaces",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Strong chirality in the bulk: reflections swirl and the stereo image rotates.",
+  "description_zh": "体态中的强手性：反射盘旋，立体声像随之旋转。",
+  "tags": [
+    "chiral",
+    "space",
+    "wide"
+  ],
+  "cpu_class": "standard",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1299.951,
+    "chirality": 0.95,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.68,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.4959,
+    "freeze": 0.0,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": -6.47,
+    "spread": 0.38,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5693,
+    "macro2": 0.975,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.2,
+    "macro6": 0.25,
+    "macro7": 0.825,
+    "macro8": 0.0,
+    "edge_width": 1.65,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Crosstalk"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 520.0,
+        "hi": 2600.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.28,
+        "hi": 0.83
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "edge_crosstalk",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

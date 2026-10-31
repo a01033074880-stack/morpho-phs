@@ -1,0 +1,19 @@
+{
+ "reference": "spiral_v2_b1 (ENPU-C every sample, linear g/mu interpolation)",
+ "skip_s": 0.5,
+ "block64_step": {
+  "file": "spiral_blk64_i0.f32",
+  "hf_dB_vs_ref": 8.329824671318674,
+  "rms_dB_vs_ref": 0.07801186342293534
+ },
+ "block64_ramp8": {
+  "file": "spiral_blk64_i8.f32",
+  "hf_dB_vs_ref": 2.424348603966693,
+  "rms_dB_vs_ref": -0.023222112449901057
+ },
+ "block64_ramp1": {
+  "file": "spiral_blk64_i1.f32",
+  "hf_dB_vs_ref": -3.4460892951993848e-09,
+  "rms_dB_vs_ref": 5.660602228667426e-13
+ }
+}

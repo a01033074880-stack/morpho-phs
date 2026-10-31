@@ -1,0 +1,17 @@
+{
+ "gap1_448_1104Hz": {
+  "max_abs_dB_diff_where_ref>-100dB": 4.997525593353203e-07,
+  "passband_peak_dB": -0.0,
+  "stopband_max_dB_outside_edges": -80.0
+ },
+ "gap2_1500_2229Hz": {
+  "max_abs_dB_diff_where_ref>-100dB": 4.99914790452749e-07,
+  "passband_peak_dB": -0.0,
+  "stopband_max_dB_outside_edges": -80.0
+ },
+ "gap3_2400_2794Hz": {
+  "max_abs_dB_diff_where_ref>-100dB": 4.999651963544238e-07,
+  "passband_peak_dB": -0.0,
+  "stopband_max_dB_outside_edges": -80.0
+ }
+}

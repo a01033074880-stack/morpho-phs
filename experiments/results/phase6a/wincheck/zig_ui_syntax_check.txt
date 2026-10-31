@@ -1,0 +1,50 @@
+# Phase 6a: zig (x86_64-windows-gnu) -fsyntax-only of the new UI sources 2026-10-31 17:43:50 CST
+variant_fx=0 plugin/Source/ui/Theme.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=0 plugin/Source/ui/Controls.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=0 plugin/Source/LatticeView.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=0 plugin/Source/PluginEditor.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=1 plugin/Source/ui/Theme.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=1 plugin/Source/ui/Controls.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=1 plugin/Source/LatticeView.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+variant_fx=1 plugin/Source/PluginEditor.cpp EXIT 1
+third_party/JUCE/modules/juce_core/system/juce_TargetPlatform.h:113:6: error: "MinGW is not supported. Please use an alternative compiler."
+  113 |     #error "MinGW is not supported. Please use an alternative compiler."
+third_party/JUCE/modules/juce_core/containers/juce_HashMap.h:61:109: error: cast from pointer to smaller type 'pointer_sized_uint' (aka 'unsigned int') loses information
+third_party/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h:173:74: error: no matching constructor for initialization of 'AudioProcessor'
+3 errors generated.
+NOTE: JUCE 8.0.9 juce_TargetPlatform.h has '#error MinGW is not supported', so JUCE-based UI sources cannot be cross-checked with zig/mingw on the box. The Windows build of the UI is MSVC-only (build_windows.ps1 on the PC). Engine/test sources are still checked by step_zig6a.sh.

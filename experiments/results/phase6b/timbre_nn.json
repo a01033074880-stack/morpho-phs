@@ -1,0 +1,312 @@
+{
+ "explained_variance": [
+  0.599,
+  0.271,
+  0.082,
+  0.041,
+  0.007
+ ],
+ "loadings": [
+  [
+   -0.489,
+   -0.465,
+   -0.438,
+   0.298,
+   0.514
+  ],
+  [
+   0.441,
+   0.473,
+   -0.318,
+   0.668,
+   0.188
+  ]
+ ],
+ "nn": [
+  {
+   "name": "Pinhole Edge",
+   "nearest": "Tiny Edge 8",
+   "dist": 0.097
+  },
+  {
+   "name": "Tiny Edge 8",
+   "nearest": "Pinhole Edge",
+   "dist": 0.097
+  },
+  {
+   "name": "Low Edge Rumble",
+   "nearest": "Bulk Smear",
+   "dist": 0.145
+  },
+  {
+   "name": "Bulk Smear",
+   "nearest": "Low Edge Rumble",
+   "dist": 0.145
+  },
+  {
+   "name": "Big Spiral 32",
+   "nearest": "Morphogen Tapestry",
+   "dist": 0.147
+  },
+  {
+   "name": "Morphogen Tapestry",
+   "nearest": "Big Spiral 32",
+   "dist": 0.147
+  },
+  {
+   "name": "Rim Rider",
+   "nearest": "Mirror Rim",
+   "dist": 0.167
+  },
+  {
+   "name": "Mirror Rim",
+   "nearest": "Rim Rider",
+   "dist": 0.167
+  },
+  {
+   "name": "Shattered Ice",
+   "nearest": "Static Gate",
+   "dist": 0.169
+  },
+  {
+   "name": "Static Gate",
+   "nearest": "Shattered Ice",
+   "dist": 0.169
+  },
+  {
+   "name": "Edge Shimmer",
+   "nearest": "Pinhole Edge",
+   "dist": 0.173
+  },
+  {
+   "name": "Counter-Spin Bell",
+   "nearest": "Static Bloom",
+   "dist": 0.178
+  },
+  {
+   "name": "Static Bloom",
+   "nearest": "Counter-Spin Bell",
+   "dist": 0.178
+  },
+  {
+   "name": "Cathedral Gyro 32",
+   "nearest": "Honeycomb Harp",
+   "dist": 0.199
+  },
+  {
+   "name": "Honeycomb Harp",
+   "nearest": "Cathedral Gyro 32",
+   "dist": 0.199
+  },
+  {
+   "name": "Soft Hold",
+   "nearest": "Dark Plate",
+   "dist": 0.201
+  },
+  {
+   "name": "Dark Plate",
+   "nearest": "Soft Hold",
+   "dist": 0.201
+  },
+  {
+   "name": "Glass Corridor",
+   "nearest": "Bulk Smear",
+   "dist": 0.202
+  },
+  {
+   "name": "Grit Edge",
+   "nearest": "Breathing Edge",
+   "dist": 0.244
+  },
+  {
+   "name": "Breathing Edge",
+   "nearest": "Grit Edge",
+   "dist": 0.244
+  },
+  {
+   "name": "Freeze Halo",
+   "nearest": "Glacier 32",
+   "dist": 0.25
+  },
+  {
+   "name": "Glacier 32",
+   "nearest": "Freeze Halo",
+   "dist": 0.25
+  },
+  {
+   "name": "Spiral Lock",
+   "nearest": "Honeycomb Room",
+   "dist": 0.265
+  },
+  {
+   "name": "Honeycomb Room",
+   "nearest": "Spiral Lock",
+   "dist": 0.265
+  },
+  {
+   "name": "Toy Carillon",
+   "nearest": "Static Bloom",
+   "dist": 0.351
+  },
+  {
+   "name": "Living Edge",
+   "nearest": "Grit Edge",
+   "dist": 0.352
+  },
+  {
+   "name": "Slow Tide",
+   "nearest": "Spiral Drone",
+   "dist": 0.391
+  },
+  {
+   "name": "Spiral Drone",
+   "nearest": "Slow Tide",
+   "dist": 0.391
+  },
+  {
+   "name": "Ember Field",
+   "nearest": "Honeycomb Harp",
+   "dist": 0.415
+  },
+  {
+   "name": "Chiral Cello",
+   "nearest": "Rusty Bow",
+   "dist": 0.42
+  },
+  {
+   "name": "Rusty Bow",
+   "nearest": "Chiral Cello",
+   "dist": 0.42
+  },
+  {
+   "name": "Snowflake Koto",
+   "nearest": "Toy Carillon",
+   "dist": 0.432
+  },
+  {
+   "name": "Chiral Drift",
+   "nearest": "Spiral Lock",
+   "dist": 0.512
+  },
+  {
+   "name": "Shard Clave",
+   "nearest": "Ember Field",
+   "dist": 0.524
+  },
+  {
+   "name": "Turing Bells",
+   "nearest": "Static Bloom",
+   "dist": 0.611
+  },
+  {
+   "name": "Bent Tine",
+   "nearest": "Static Bloom",
+   "dist": 0.627
+  },
+  {
+   "name": "Gyro Bell",
+   "nearest": "Nerve Net",
+   "dist": 0.629
+  },
+  {
+   "name": "Nerve Net",
+   "nearest": "Gyro Bell",
+   "dist": 0.629
+  },
+  {
+   "name": "Glass Gong",
+   "nearest": "Morphogen Tapestry",
+   "dist": 0.662
+  },
+  {
+   "name": "Viola Gyre",
+   "nearest": "Rim Rider",
+   "dist": 0.675
+  },
+  {
+   "name": "Felt Lattice",
+   "nearest": "Ring Cavity Tom",
+   "dist": 0.694
+  },
+  {
+   "name": "Ring Cavity Tom",
+   "nearest": "Felt Lattice",
+   "dist": 0.694
+  },
+  {
+   "name": "Long Edge 32",
+   "nearest": "Crystal Cage",
+   "dist": 0.768
+  },
+  {
+   "name": "Crystal Cage",
+   "nearest": "Long Edge 32",
+   "dist": 0.768
+  },
+  {
+   "name": "Tidal Freeze",
+   "nearest": "Shattered Ice",
+   "dist": 0.779
+  },
+  {
+   "name": "Edge Chime",
+   "nearest": "Cathedral Gyro 32",
+   "dist": 0.799
+  },
+  {
+   "name": "Ember Echo",
+   "nearest": "Freeze Halo",
+   "dist": 0.882
+  },
+  {
+   "name": "Defect Kalimba",
+   "nearest": "Low Mallets",
+   "dist": 0.911
+  },
+  {
+   "name": "Low Mallets",
+   "nearest": "Defect Kalimba",
+   "dist": 0.911
+  },
+  {
+   "name": "Halo Choir",
+   "nearest": "Breathing Glass",
+   "dist": 0.949
+  },
+  {
+   "name": "Breathing Glass",
+   "nearest": "Halo Choir",
+   "dist": 0.949
+  },
+  {
+   "name": "Spark Chamber",
+   "nearest": "Static Gate",
+   "dist": 0.976
+  },
+  {
+   "name": "Turing Smear",
+   "nearest": "Glacier 32",
+   "dist": 1.293
+  },
+  {
+   "name": "Gyro Chamber",
+   "nearest": "Soft Hold",
+   "dist": 1.301
+  },
+  {
+   "name": "Sul Ponticello",
+   "nearest": "Viola Gyre",
+   "dist": 1.362
+  },
+  {
+   "name": "Low Orbit",
+   "nearest": "Shard Clave",
+   "dist": 1.496
+  },
+  {
+   "name": "Glass Harmonica",
+   "nearest": "Nerve Net",
+   "dist": 1.742
+  }
+ ]
+}

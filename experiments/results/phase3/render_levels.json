@@ -1,0 +1,1262 @@
+[
+ {
+  "file": "experiments/audio/phase3/L0/fx_defect_freezer_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.14950443515335066,
+    "rms_dbfs": -18.23286475442334,
+    "frac_above_0p9": 2.34375e-05,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.2070121891172296,
+    "rms_dbfs": -20.175766773781525,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/fx_defect_freezer_frozen_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.8340903627619847,
+    "rms_dbfs": -20.514990221699296,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.126120408649175,
+    "rms_dbfs": -16.47527305645191,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/fx_edge_disperser_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5048942594091157,
+    "rms_dbfs": -23.168599109812007,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.8334403562850348,
+    "rms_dbfs": -22.468527641106757,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/fx_edge_disperser_chir_neg_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -1.8576571252054352,
+    "rms_dbfs": -22.428428181059385,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.5048058401476325,
+    "rms_dbfs": -23.168621560108114,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/fx_edge_disperser_chir_zero_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5039424181078185,
+    "rms_dbfs": -22.635447301557136,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.504098518456657,
+    "rms_dbfs": -22.76700078508586,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/input_drums_reference.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   },
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/instrument_bow_mpe_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -3.9752091764211044,
+    "rms_dbfs": -20.82920338646137,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -4.884491447181412,
+    "rms_dbfs": -21.99295351497394,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/instrument_life_spiral_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -4.270626175420287,
+    "rms_dbfs": -20.052506969399893,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -6.0193471227639606,
+    "rms_dbfs": -20.927619427310496,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L0/instrument_pluck_mpe_L8.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.7703803693792155,
+    "rms_dbfs": -21.84852495759607,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -5.162127533163772,
+    "rms_dbfs": -22.228722277137543,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/fx_defect_freezer_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.5175385349810913,
+    "rms_dbfs": -19.15290315229442,
+    "frac_above_0p9": 1.0416666666666666e-05,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.3691019529143893,
+    "rms_dbfs": -21.00370730733711,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/fx_defect_freezer_frozen_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.1607981670900847,
+    "rms_dbfs": -17.89072916111817,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.6009588830482806,
+    "rms_dbfs": -15.506121770640021,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/fx_edge_disperser_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.507280537823898,
+    "rms_dbfs": -23.169955893011505,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.5069336784118885,
+    "rms_dbfs": -22.45690516966324,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/fx_edge_disperser_chir_neg_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.506932296529582,
+    "rms_dbfs": -22.453993618754957,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.507280537823898,
+    "rms_dbfs": -23.169714370909837,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/fx_edge_disperser_chir_zero_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5073828018083573,
+    "rms_dbfs": -22.977636143935033,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.5069571704447293,
+    "rms_dbfs": -22.979463256733087,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/input_drums_reference.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   },
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/instrument_bow_mpe_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.970842838963195,
+    "rms_dbfs": -24.60098624686242,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -11.850513794583737,
+    "rms_dbfs": -28.66878297835313,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/instrument_life_spiral_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -6.505110155918377,
+    "rms_dbfs": -21.66332786687829,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.702856160626403,
+    "rms_dbfs": -22.087658633297437,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1/instrument_pluck_mpe_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -4.724187302911151,
+    "rms_dbfs": -27.087420364102147,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -12.996612311279257,
+    "rms_dbfs": -30.260043712823766,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/fx_defect_freezer_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.6351169835210003,
+    "rms_dbfs": -21.16131261475807,
+    "frac_above_0p9": 5.208333333333333e-06,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.9887384396259054,
+    "rms_dbfs": -21.213179799034346,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/fx_defect_freezer_frozen_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.763450095817049,
+    "rms_dbfs": -20.73143427342812,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.047246779927093,
+    "rms_dbfs": -20.684894479434707,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/fx_edge_disperser_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5071948581152363,
+    "rms_dbfs": -23.16995992927595,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.5067595629726225,
+    "rms_dbfs": -22.42410157020101,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/fx_edge_disperser_chir_neg_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.506767854104872,
+    "rms_dbfs": -22.418621455997577,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.507193476191377,
+    "rms_dbfs": -23.169933059881483,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/fx_edge_disperser_chir_zero_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.507988118695617,
+    "rms_dbfs": -23.01020646504208,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.507631557067188,
+    "rms_dbfs": -23.009043173999434,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/input_drums_reference.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   },
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/instrument_bow_mpe_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.3957686524875511,
+    "rms_dbfs": -21.92936161740512,
+    "frac_above_0p9": 2.34375e-05,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -11.083974115923969,
+    "rms_dbfs": -27.86883708577473,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/instrument_life_spiral_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -7.2130589562811345,
+    "rms_dbfs": -21.68302040129806,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.7626676715482805,
+    "rms_dbfs": -22.012873514899507,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L1_hqfast/instrument_pluck_mpe_L16.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -12.404304118911435,
+    "rms_dbfs": -32.814750089910895,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -15.044733695487222,
+    "rms_dbfs": -33.566508266492534,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/fx_defect_freezer_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -1.1780889205615184,
+    "rms_dbfs": -20.850251430353982,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -0.4249781638247154,
+    "rms_dbfs": -19.856646338802733,
+    "frac_above_0p9": 1.3020833333333334e-05,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/fx_defect_freezer_frozen_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.5392667253502916,
+    "rms_dbfs": -15.964690542376474,
+    "frac_above_0p9": 7.8125e-06,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.8227844132666038,
+    "rms_dbfs": -15.752537270354477,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/fx_edge_disperser_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5071202345414676,
+    "rms_dbfs": -23.169761772680534,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -0.19227922827740568,
+    "rms_dbfs": -22.111623225989593,
+    "frac_above_0p9": 5.208333333333333e-06,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/fx_edge_disperser_chir_neg_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -0.19299911684703486,
+    "rms_dbfs": -22.11191674451485,
+    "frac_above_0p9": 5.208333333333333e-06,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.5070939782513193,
+    "rms_dbfs": -23.169745430148282,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/fx_edge_disperser_chir_zero_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.5066545426491524,
+    "rms_dbfs": -23.045086757997847,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.50737589204175,
+    "rms_dbfs": -23.045272150359946,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/input_drums_reference.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   },
+   {
+    "peak_dbfs": 0.0,
+    "rms_dbfs": -17.154246231491047,
+    "frac_above_0p9": 0.0002838541666666667,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/instrument_bow_mpe_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -10.684632149146342,
+    "rms_dbfs": -29.75647986905036,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -17.61574627281623,
+    "rms_dbfs": -35.98851305139287,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/instrument_life_spiral_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -6.412253612363045,
+    "rms_dbfs": -22.095286269154705,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -9.09121610475134,
+    "rms_dbfs": -22.72366531927289,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/L2/instrument_pluck_mpe_L32.wav",
+  "fs": 48000,
+  "seconds": 8.0,
+  "channels": [
+   {
+    "peak_dbfs": -17.220992760205778,
+    "rms_dbfs": -35.883576091025674,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -21.98315919602961,
+    "rms_dbfs": -39.65631206362793,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/01_edge_shimmer.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.333844246648422,
+    "rms_dbfs": -24.596755730872133,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.725790169863451,
+    "rms_dbfs": -23.9881996257309,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/02_reverse_edge.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.713826382340334,
+    "rms_dbfs": -23.98714266412288,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -5.333844246648422,
+    "rms_dbfs": -24.59674489677704,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/03_low_edge_rumble.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -6.136409932880601,
+    "rms_dbfs": -25.39928927794189,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -6.136409932880601,
+    "rms_dbfs": -24.970058940239706,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/04_glass_corridor.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -4.599652889993212,
+    "rms_dbfs": -23.862383681502024,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.9527445361779208,
+    "rms_dbfs": -23.67821688289574,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/05_breathing_edge.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.333844246648422,
+    "rms_dbfs": -24.59555963829374,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.923129017088795,
+    "rms_dbfs": -24.01007564663008,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/06_grit_edge.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -3.9222962376405954,
+    "rms_dbfs": -23.185196501451216,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.9222962376405954,
+    "rms_dbfs": -22.859753916056192,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/07_wide_pickups.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.3343341030982625,
+    "rms_dbfs": -24.596824741360493,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -5.3343341030982625,
+    "rms_dbfs": -24.54584851861228,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/08_pinhole_edge.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.333844246648422,
+    "rms_dbfs": -24.59622502079231,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -4.73941423826791,
+    "rms_dbfs": -23.84340077569568,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/09_freeze_halo.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.571706252846608,
+    "rms_dbfs": -21.26317565059566,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -5.243208054098324,
+    "rms_dbfs": -20.874636399384855,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/10_crystal_cage.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -11.147281728772656,
+    "rms_dbfs": -25.200482908506903,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.977507903656026,
+    "rms_dbfs": -18.391605087960873,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/11_soft_hold.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.39529141452964,
+    "rms_dbfs": -19.538379584699868,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -5.474583477822486,
+    "rms_dbfs": -19.79844720041963,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/12_shattered_ice.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -6.799922174184697,
+    "rms_dbfs": -22.261857767165107,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.873207322008428,
+    "rms_dbfs": -22.689383200558616,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/13_bulk_smear.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -4.31928855597012,
+    "rms_dbfs": -23.746309861959375,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -4.846657329459527,
+    "rms_dbfs": -23.912055358591008,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/14_chiral_cello.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -1.462853273213294,
+    "rms_dbfs": -20.569055802230487,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -9.091266239101115,
+    "rms_dbfs": -25.291098004748676,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/15_glass_harmonica.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -3.2943496648717647,
+    "rms_dbfs": -19.903763811118452,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -1.8394936602756191,
+    "rms_dbfs": -19.766945107857193,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/16_twisted_choir.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -4.548487991427102,
+    "rms_dbfs": -19.6884088666863,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -2.8103676196305956,
+    "rms_dbfs": -20.178701801528494,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/17_rusty_bow.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.8942970248777176,
+    "rms_dbfs": -22.6304169643262,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -11.7083664001749,
+    "rms_dbfs": -28.325589301451796,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/18_honeycomb_harp.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -10.44997948778543,
+    "rms_dbfs": -24.39269561776127,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -6.052999086683019,
+    "rms_dbfs": -25.2115021022832,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/19_defect_kalimba.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -9.868683902839953,
+    "rms_dbfs": -25.70689510705062,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -4.969790727240438,
+    "rms_dbfs": -27.846927696950665,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/20_metal_lattice.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -3.811830935217006,
+    "rms_dbfs": -23.814909569291807,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.599840685406673,
+    "rms_dbfs": -23.513399241062828,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/21_low_mallets.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.6377177284604625,
+    "rms_dbfs": -33.998790963566336,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -10.033721604515698,
+    "rms_dbfs": -38.03123025615837,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/22_spiral_drone.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.650092444289813,
+    "rms_dbfs": -19.15708235973184,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.355472214372385,
+    "rms_dbfs": -20.146750290199144,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/23_ember_field.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -7.018967473002987,
+    "rms_dbfs": -20.67934154337547,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -7.610801116556793,
+    "rms_dbfs": -21.267627547086676,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/24_restless_swarm.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -2.8854240628686223,
+    "rms_dbfs": -16.979695522075712,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.5287197969721906,
+    "rms_dbfs": -18.07508493458309,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/25_big_edge_32.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.3343341030982625,
+    "rms_dbfs": -24.59687187201248,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.011227808853301,
+    "rms_dbfs": -23.557603192962414,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/26_big_spiral_32.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.008866585982618,
+    "rms_dbfs": -20.790211355094158,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -6.6117645193256855,
+    "rms_dbfs": -21.62214352797958,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ },
+ {
+  "file": "experiments/audio/phase3/presets/27_tiny_edge_8.wav",
+  "fs": 48000,
+  "seconds": 6.0,
+  "channels": [
+   {
+    "peak_dbfs": -5.340214536364152,
+    "rms_dbfs": -24.595532641994552,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   },
+   {
+    "peak_dbfs": -3.1644087313887006,
+    "rms_dbfs": -23.886323786377943,
+    "frac_above_0p9": 0.0,
+    "finite": true
+   }
+  ],
+  "limiter_engaged": false
+ }
+]

@@ -1,0 +1,15 @@
+{
+  "variant": "inst",
+  "publish_hz": 30,
+  "sizes": [
+    {"size": "min", "w": 960, "h": 600, "scale": 1, "render_px": [455, 274], "paint_median_us": 1281.0, "paint_p95_us": 1847.0, "rebuilds": 14, "rebuild_us": 1850, "png": "inst_min_1x.png"},
+    {"size": "min", "w": 960, "h": 600, "scale": 2, "render_px": [911, 547], "paint_median_us": 2129.0, "paint_p95_us": 2323.0, "rebuilds": 16, "rebuild_us": 5971, "png": "inst_min_2x.png"},
+    {"size": "default", "w": 1152, "h": 720, "scale": 1, "render_px": [546, 328], "paint_median_us": 1098.0, "paint_p95_us": 1253.0, "rebuilds": 0, "rebuild_us": 2314, "png": "inst_default_1x.png"},
+    {"size": "default", "w": 1152, "h": 720, "scale": 2, "render_px": [1092, 656], "paint_median_us": 2770.0, "paint_p95_us": 2887.0, "rebuilds": 20, "rebuild_us": 8344, "png": "inst_default_2x.png"},
+    {"size": "max", "w": 1728, "h": 1080, "scale": 1, "render_px": [819, 492], "paint_median_us": 1838.0, "paint_p95_us": 2038.0, "rebuilds": 0, "rebuild_us": 4838, "png": "inst_max_1x.png"},
+    {"size": "max", "w": 1728, "h": 1080, "scale": 2, "render_px": [1638, 984], "paint_median_us": 5248.0, "paint_p95_us": 5721.0, "rebuilds": 30, "rebuild_us": 18354, "png": "inst_max_2x.png"}
+  ],
+  "eco_default_2x": {"paint_median_us": 2722.0, "paint_p95_us": 2901.0, "fps": 12, "publish_hz": 12},
+  "publish_hz_hidden": 0,
+  "publish_hz_closed": 0
+}

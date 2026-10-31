@@ -1,0 +1,107 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Grit Edge",
+  "category": "FX Edge",
+  "author": "MORPHO-PHS factory",
+  "description": "High nonlinearity on the edge channel; transients bend and smear.",
+  "params": {
+    "mode": "FX Edge Disperser",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1100,
+    "chirality": 0.6,
+    "nonlinear": 0.85,
+    "hq": 0.3,
+    "decay": 0.5,
+    "life": 0.0,
+    "morph": 0.3,
+    "tau": 0.0833,
+    "freeze": 0.0,
+    "wet": 0.6,
+    "dry": 0.6,
+    "in_gain": 0.0,
+    "out_gain": 0.0,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5934,
+    "macro2": 0.8,
+    "macro3": 0.5,
+    "macro4": 0.4,
+    "macro5": 0.3333,
+    "macro6": 0.9444,
+    "macro7": 0.5,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Edge Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "",
+      ""
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 400,
+        "hi": 2200
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.2,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 0.8,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.2,
+        "hi": 0.95
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 0.9
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 0.5,
+        "hi": 0.05
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.9
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

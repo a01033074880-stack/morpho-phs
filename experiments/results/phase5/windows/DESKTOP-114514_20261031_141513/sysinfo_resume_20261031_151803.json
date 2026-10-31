@@ -1,0 +1,21 @@
+﻿{
+    "host":  "DESKTOP-114514",
+    "time":  "2026-10-31T15:18:03.5287361+08:00",
+    "cpu":  "13th Gen Intel(R) Core(TM) i9-13900H",
+    "cores":  14,
+    "logical":  20,
+    "max_clock_mhz":  2600,
+    "os":  "Microsoft Windows 11 家庭版 中文版",
+    "power_plan":  "电源方案 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e (平衡)",
+    "power_overlay":  "best_performance",
+    "power_source":  "AC",
+    "ram_gb":  15.6,
+    "seconds_per_config":  10,
+    "blocks":  "128",
+    "sizes":  "32",
+    "paced":  true,
+    "load_threads":  0,
+    "repeats":  3,
+    "seed":  5,
+    "cooldown_s":  20
+}

@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\title{Morphohedra (NR-PHMS) --- Theory v1:\\ Energy-stable explicit simulation and passive modulation\\ of a gyroscopic topological lattice}
+\author{Project Morphohedra, Phase 1 working document}
+\date{30 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We state and prove the four results the Phase-1 implementation relies on: (1) an exact discrete power balance for an explicit
+scalar-auxiliary-variable leapfrog scheme (ESAV-LF) applied to a two-degree-of-freedom gyroscopic honeycomb lattice with
+nonlinear on-site potential, Rayleigh-type nonlinear damping and multiple input/output ports; (2) non-negativity of the
+discrete energy and discrete passivity under the linear CFL condition only; (3) an energy-non-increasing parameter update
+(ENPU) for time-varying mass, stiffness nonlinearity, gyroscopy and damping; (4) a bound on the energy of energy-gated
+self-oscillation. Two propositions cover multi-port (MPE) operation and an ``energy firewall'' coupling to an arbitrary
+control layer (here a Barkley excitable medium). Every identity was checked symbolically (sympy) and in 50-digit arithmetic
+(mpmath); the numerical evidence is summarised in the Phase-1 report.
+\end{abstract}
+
+\section{Model}
+\begin{definition}[Lattice PHS]
+Let $N$ sites carry planar displacements $x_i\in\R^2$, $q=(x_1,\dots,x_N)\in\R^{n}$, $n=2N$. Let
+$M=\operatorname{diag}(m_iI_2)$, $m_i>0$;
+$K=k_0I+\sum_{(i,j)}k_c(e_i-e_j)(e_i-e_j)^\top\otimes n_{ij}n_{ij}^\top\succeq0$;
+$U(q)=\sum_{k=1}^{n}U_k(q_k)$ with $U_k(s)=\tfrac{\alpha}{4}s^4+\beta\log\cosh s$, $\alpha,\beta\ge0$ (so $U_k$ is convex,
+$U_k\ge0$, $U_k(0)=0$); $G=\operatorname{blockdiag}(g_iJ)$, $J=\begin{psmallmatrix}0&1\\-1&0\end{psmallmatrix}$;
+$D(v)=\operatorname{blockdiag}\big((-\mu_i+\eta_i|v_i|^2)I_2\big)$, $\eta_i\ge0$; $B\in\R^{n\times P}$ (one column per port).
+The continuous system is $M\ddot q=-Kq-\nabla U(q)+G\dot q-D(\dot q)\dot q+Bu$, $y=B^\top\dot q$, with
+$\dot H=y^\top u-\dot q^\top D\dot q$ for $H=\tfrac12\dot q^\top M\dot q+\tfrac12 q^\top Kq+U(q)$.
+\end{definition}
+
+\begin{definition}[ESAV-LF]
+With $h=1/f_s$, $c_0>0$, $w:=q^{n+1}-q^{n-1}$, $\bar v:=w/(2h)$, $v^{n-1/2}:=(q^n-q^{n-1})/h$,
+\begin{align}
+M\frac{q^{n+1}-2q^n+q^{n-1}}{h^2}&=-Kq^n-g^n\odot\frac{\psi^{n+1}+\psi^{n-1}}{2}+(G-D^n)\bar v+Bu^n,\label{eq:scheme}\\
+\psi^{n+1}&=\psi^{n-1}+g^n\odot w,\qquad g^n_k=\frac{U_k'(q^n_k)}{\sqrt{2U_k(q^n_k)+c_0}},\qquad D^n:=D(v^{n-1/2}).\notag
+\end{align}
+Eliminating $\psi^{n+1}$, the unknown $w$ solves a block-diagonal system with $2\times2$ blocks
+$\begin{psmallmatrix}a_x&-c\\c&a_y\end{psmallmatrix}$, $a_\bullet=m_i/h^2+\tfrac12(g^n_\bullet)^2+d_i/(2h)$, $c=g_i/(2h)$,
+$d_i=-\mu_i+\eta_i|v_i^{n-1/2}|^2$, whose determinant $a_xa_y+c^2$ is positive whenever $\mu_i<2m_i/h$. The scheme is
+therefore explicit (one $2\times2$ solve per site, no iteration).
+\end{definition}
+
+\begin{definition}[Discrete energy]
+$E^{n-1/2}=\tfrac12\|v^{n-1/2}\|_M^2+\tfrac12(q^n)^\top Kq^{n-1}+\tfrac14\sum_k\big((\psi^n_k)^2+(\psi^{n-1}_k)^2\big)-\tfrac{nc_0}{2}$,
+and $\tilde E:=E+nc_0/2$. At consistency $\psi_k=\sqrt{2U_k+c_0}$, $\tfrac14(\psi^2+\psi^2)-c_0/2\approx U_k$.
+\end{definition}
+
+\section{Results}
+\begin{theorem}[Exact discrete power balance]\label{thm:balance}
+For all parameters, states and inputs,
+$E^{n+1/2}-E^{n-1/2}=h\,(u^n)^\top y^n-h\,\bar v^\top D^n\bar v$, where $y^n:=B^\top\bar v$.
+\end{theorem}
+\begin{proof}
+Take the inner product of \eqref{eq:scheme} with $w=2h\bar v=h(v^{n+1/2}+v^{n-1/2})$. Since
+$q^{n+1}-2q^n+q^{n-1}=h(v^{n+1/2}-v^{n-1/2})$, the left side equals $\|v^{n+1/2}\|_M^2-\|v^{n-1/2}\|_M^2$.
+By symmetry of $K$, $-\ip{w}{Kq^n}=-\big((q^{n+1})^\top Kq^n-(q^n)^\top Kq^{n-1}\big)$. From the $\psi$ update,
+$g^n\odot w=\psi^{n+1}-\psi^{n-1}$, hence $-\tfrac12\ip{w}{g^n\odot(\psi^{n+1}+\psi^{n-1})}=-\tfrac12\big(\|\psi^{n+1}\|^2-\|\psi^{n-1}\|^2\big)$.
+Skew-symmetry gives $\ip{w}{G\bar v}=2h\,\bar v^\top G\bar v=0$. The remaining terms are $-2h\bar v^\top D^n\bar v+2h\bar v^\top Bu^n$.
+Dividing by $2$ and adding and subtracting $\tfrac14\|\psi^n\|^2$ yields the claim.
+\end{proof}
+
+\begin{lemma}\label{lem:split}
+With $\bar q=(q^n+q^{n-1})/2$ and $v=v^{n-1/2}$: $(q^n)^\top Kq^{n-1}=\bar q^\top K\bar q-\tfrac{h^2}{4}v^\top Kv$.
+\end{lemma}
+\begin{proof}$q^n=\bar q+\tfrac h2v$, $q^{n-1}=\bar q-\tfrac h2v$; expand.\end{proof}
+
+\begin{theorem}[Non-negativity and passivity under the linear CFL condition]\label{thm:passive}
+Let $\gamma:=\tfrac h2\omega_{\max}<1$, $\omega_{\max}^2=\lambda_{\max}(M^{-1}K)$. Then
+$\tilde E^{n-1/2}\ge\tfrac12(1-\gamma^2)\|v^{n-1/2}\|_M^2+\tfrac12\bar q^\top K\bar q\ge0$.
+If moreover $\mu_i\le0$ for all $i$, then $\tilde E^{n+1/2}-\tilde E^{n-1/2}\le h\,(u^n)^\top y^n$; for $u\equiv0$ the energy is non-increasing
+and, if $k_0>0$, $\|q^n\|$ is bounded by a constant depending only on $\tilde E^{1/2}$, $k_0$ and $\gamma$---independently of $\alpha,\beta,g,\eta$ and of the amplitude.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:split}, $\tfrac12\|v\|_M^2+\tfrac12(q^n)^\top Kq^{n-1}=\tfrac12v^\top(M-\tfrac{h^2}{4}K)v+\tfrac12\bar q^\top K\bar q$ and
+$M-\tfrac{h^2}4K\succeq(1-\gamma^2)M$. The $\psi$ terms are non-negative. If $\mu_i\le0$ then $D^n\succeq0$ and Theorem~\ref{thm:balance} gives the inequality.
+Finally $k_0\|\bar q\|^2\le\bar q^\top K\bar q\le2\tilde E$ and $\|v\|_M^2\le2\tilde E/(1-\gamma^2)$ bound $q^n=\bar q+\tfrac h2v$.
+\end{proof}
+\begin{remark}
+``Unconditional'' therefore means: with respect to the nonlinearity, gyroscopy, nonlinear damping and (Theorem~\ref{thm:gate}) gated gain.
+Only the \emph{linear} CFL condition remains; at the audio parameters used ($f_{\rm unit}=1500$ Hz, $f_s=48$ kHz) $\gamma\approx0.20$--$0.29$.
+\end{remark}
+
+\begin{theorem}[ENPU: energy-non-increasing parameter update]\label{thm:enpu}
+Let $P\to P'$ be a parameter change with $P'$ admissible ($\alpha',\beta'\ge0$, CFL for $M'$; $K$ unchanged). Define
+$v'_i=\sqrt{m_i/m'_i}\,v_i$, the candidate state $Z(s)=\big(s(\bar q+\tfrac h2v'),\,s(\bar q-\tfrac h2v')\big)$ with $\psi$ re-projected
+($\psi_k=\sqrt{2U'_k(\cdot)+c_0}$), and $F(s):=E'(Z(s))$. Then $F(s)\le sF(1)$ for $s\in[0,1]$. Choosing $s=1$ if $F(1)\le\max(E_{\rm old},0)$
+and $s=\max(E_{\rm old},0)/F(1)$ otherwise gives $E_{\rm new}\le\max(E_{\rm old},0)$.
+\end{theorem}
+\begin{proof}
+With re-projection, $\tfrac14(\psi^2+\psi^2)-c_0/2=\tfrac12(U'_k(a_k)+U'_k(b_k))$ for the two time levels $a,b$. By Lemma~\ref{lem:split},
+$F(s)=s^2A+\tfrac12\sum_k\big(U'_k(sa_k)+U'_k(sb_k)\big)$ with $A=\tfrac12v'^\top(M'-\tfrac{h^2}4K)v'+\tfrac12\bar q^\top K\bar q\ge0$.
+Convexity and $U'_k(0)=0$ give $U'_k(sa)\le sU'_k(a)$, so $F(s)\le s^2A+sB\le s(A+B)=sF(1)$ for $s\in[0,1]$. If $F(1)>\max(E_{\rm old},0)\ge0$
+the chosen $s\in[0,1)$ gives $F(s)\le\max(E_{\rm old},0)$.
+\end{proof}
+\begin{remark}
+(i) Re-projection makes $E\ge0$ after the update; drift of $\psi$ away from consistency can make $E_{\rm old}<0$, in which case $s=0$ (state reset).
+This corner case was not hit in the stress tests but must be handled musically (Phase 2: a ``keep-$\psi$'' variant that preserves $E$ exactly, valid because $K$ is not modulated).
+(ii) Any convex $U$ with $U(0)=0$ is admissible; the theorem does not depend on the specific quartic/log-cosh form.
+\end{remark}
+
+\begin{theorem}[Energy-gated self-oscillation is bounded]\label{thm:gate}
+Let $\mu_i\le\mu_{\max}$ with $\mu_{\max}>0$, $\eta_i\ge0$, and apply $\mu_{\rm eff}=\mu$ if $E^{n-1/2}<E_{\rm cap}$, otherwise $\min(\mu,0)$.
+Let $\delta=h\mu_{\max}/(m_{\min}(1-\gamma^2))<1$, $\rho=(1+\delta)/(1-\delta)$. Then for $u\equiv0$ and with ENPU updates at arbitrary times,
+$\tilde E^{n+1/2}\le\max(\tilde E^{1/2},\rho\tilde E_{\rm cap})$, $\tilde E_{\rm cap}=E_{\rm cap}+nc_0/2$.
+\end{theorem}
+\begin{proof}
+If the gate is open, $-\bar v^\top D^n\bar v\le\mu_{\max}\|\bar v\|^2\le\frac{\mu_{\max}}{m_{\min}}\cdot\frac12\big(\|v^{n+1/2}\|_M^2+\|v^{n-1/2}\|_M^2\big)\le\frac{\delta}{h}(\tilde E^{n+1/2}+\tilde E^{n-1/2})$
+by Theorem~\ref{thm:passive}. Theorem~\ref{thm:balance} gives $(1-\delta)\tilde E^{n+1/2}\le(1+\delta)\tilde E^{n-1/2}<(1+\delta)\tilde E_{\rm cap}$.
+If the gate is closed, $\tilde E^{n+1/2}\le\tilde E^{n-1/2}$. ENPU does not increase $E$ (Theorem~\ref{thm:enpu}). Induction completes the proof.
+\end{proof}
+
+\begin{proposition}[Multi-port / MPE]\label{prop:mpe}
+With $P$ ports, $h(u^n)^\top y^n=h\sum_ku_k^ny_k^n$: the energy delivered by each voice is metered separately. Terminating any port in a passive load
+($u_k=-r_ky_k$, $r_k\ge0$) or interconnecting with any passive external system through a power-preserving interconnection keeps the composite passive.
+\end{proposition}
+\begin{proof}Immediate from Theorems~\ref{thm:balance}--\ref{thm:passive}; a passive load contributes $-hr_ky_k^2\le0$.\end{proof}
+
+\begin{proposition}[Energy firewall]\label{prop:firewall}
+Let a control layer with arbitrary state $z$ and arbitrary dynamics (possibly driven by audio features and by the lattice output) produce, at control ticks,
+parameters $P_j=\Phi(z_j)$ clamped to the admissible set $\mathcal A=\{m\in[m_{lo},m_{hi}],\ \alpha,\beta\ge0,\ \eta\ge0,\ \mu\le\mu_{\max}\}$, applied via ENPU.
+Then for $\mu_{\max}\le0$: $\tilde E^n\le\tilde E^0+\sum_{m<n}h(u^m)^\top y^m$; for $\mu_{\max}>0$ with gating and $u\equiv0$: $\tilde E^n\le\max(\tilde E^0,\rho\tilde E_{\rm cap})$.
+\end{proposition}
+\begin{proof}Between ticks Theorems~\ref{thm:balance}, \ref{thm:passive} and~\ref{thm:gate} apply with fixed parameters; at ticks Theorem~\ref{thm:enpu} applies. The only energy channels into the lattice are $u^\top y$ and gated gain; $\Phi$ only selects parameters.\end{proof}
+
+\section{Control layer: Barkley medium}
+On the honeycomb graph Laplacian $L$: $\dot u=\varepsilon^{-1}u(1-u)\big(u-(v+b)/a\big)+D\,Lu$, $\dot v=u-v$ (D.~Barkley, Physica D 49 (1991) 61--70,
+doi:10.1016/0167-2789(91)90194-E), explicit Euler with $a=0.75$, $b=0.03$, $\varepsilon=0.02$, $D=0.5$, $\Delta t=0.016$, one model time unit $=1/12$\,s (adjustable by sub-stepping).
+The map $\Phi$: $g_i=g_0(1-2\kappa_gu_i)$, $\mu_i=\min(\mu_0+\kappa_\mu u_i,\mu_{\max})$, $\alpha_i=\alpha_0(1+\kappa_\alpha u_i)$, all in $\mathcal A$, so Proposition~\ref{prop:firewall} applies.
+
+\section{Machine verification (summary)}
+Theorem~\ref{thm:balance} was verified symbolically (sympy; 1 and 2 sites) and in 50-digit arithmetic (max relative residual $\le1.0\times10^{-50}$ on 1-site, $2\times2$ and $3\times3$ flakes).
+Theorems~\ref{thm:passive}--\ref{thm:gate} were stress-tested on $8\times8$ lattices with $4\times10^4$ randomised trials (see Phase-1 report, gate table).
+\end{document}

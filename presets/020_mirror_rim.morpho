@@ -1,0 +1,126 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Mirror Rim",
+  "category": "Edge / Topological",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "The same edge, counter-rotating, with crosstalk folding the two pickups together.",
+  "description_zh": "同一条边缘反向旋转，串扰把两个拾音点折叠在一起。",
+  "tags": [
+    "bowed",
+    "chiral",
+    "edge"
+  ],
+  "cpu_class": "eco",
+  "params": {
+    "mode": "Instrument",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1400.0,
+    "chirality": -1.0,
+    "nonlinear": 0.1,
+    "hq": 0.3,
+    "decay": 0.82,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.5738,
+    "freeze": 0.0,
+    "wet": 0.9,
+    "dry": 0.0,
+    "in_gain": 0.0,
+    "out_gain": -14.44,
+    "spread": 0.45,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.5,
+    "macro2": 0.0,
+    "macro3": 0.7,
+    "macro4": 0.1667,
+    "macro5": 0.2,
+    "macro6": 0.0,
+    "macro7": 1.0,
+    "macro8": 0.35,
+    "edge_width": 1.8,
+    "edge_crosstalk": 0.35
+  },
+  "macros": {
+    "names": [
+      "Brightness",
+      "Chirality",
+      "Sustain",
+      "Grit",
+      "Morphogen",
+      "Life",
+      "Width",
+      "Crosstalk"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 700.0,
+        "hi": 2800.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "decay",
+        "lo": 0.47,
+        "hi": 0.97
+      },
+      {
+        "macro": 4,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.6
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.2,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "life",
+        "lo": 0.0,
+        "hi": 0.059
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.2,
+        "hi": 1.8
+      },
+      {
+        "macro": 8,
+        "param": "edge_crosstalk",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [],
+    "morphogen": []
+  }
+}

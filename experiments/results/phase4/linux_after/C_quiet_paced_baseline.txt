@@ -1,0 +1,36 @@
+MORPHO-PHS morpho_cli bench  host=grok-bot-vm-509861073  cpu=Intel(R) Xeon(R) Processor  logical_cores=8  fs=48000  mode=0  potential=0  interp=0
+topology: source=sysfs logical=8 physical=8 perf_physical=8 hybrid=0  auto_threads(L32)=6
+tag=baseline  pin=none  mmcss=0  pool=caller  load_threads=0  barrier_spin_us=50  idle_spin_us=200  adaptive_spin=1  paced=1
+time=2026-10-30T21:09:33.747+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+baseline         64  16    3       3.449    220.7    408.7      775.2    1782.5   1333.3    0.307     1/3000     NEAR   pin=none mmcss=0 pool=caller+2
+baseline         64  16    4       2.810    179.9    302.8      554.9     805.5   1333.3    0.227     0/3000     PASS   pin=none mmcss=0 pool=caller+3
+baseline         64  16    5       3.075    196.8    287.2     2234.8   14243.5   1333.3    0.215     4/3000     FAIL   pin=none mmcss=0 pool=caller+4
+baseline         64  16    6       2.663    170.4    307.0      786.0    4078.7   1333.3    0.230     1/3000     NEAR   pin=none mmcss=0 pool=caller+5
+baseline         64  16    8       2.353    150.6   3678.9     5607.3   12895.5   1333.3    2.759   232/3000     FAIL   pin=none mmcss=0 pool=caller+7
+baseline         64  32    3      10.044    642.8    962.9     1380.7    1717.8   1333.3    0.722     3/3000     FAIL   pin=none mmcss=0 pool=caller+2
+baseline         64  32    4       8.644    553.2    850.4     1044.3    1100.7   1333.3    0.638     0/3000     PASS   pin=none mmcss=0 pool=caller+3
+baseline         64  32    5       7.296    467.0    825.9     2183.6   18808.1   1333.3    0.619     4/3000     FAIL   pin=none mmcss=0 pool=caller+4
+baseline         64  32    6       6.844    438.0    707.2     1351.0    1753.9   1333.3    0.530     3/3000     NEAR   pin=none mmcss=0 pool=caller+5
+baseline         64  32    8       5.829    373.1   4111.6     8280.3    8587.4   1333.3    3.084   120/3000     FAIL   pin=none mmcss=0 pool=caller+7
+baseline        128  16    3       3.620    463.4    928.5     2070.1    3078.2   2666.7    0.348     1/1500     NEAR   pin=none mmcss=0 pool=caller+2
+baseline        128  16    4       3.539    453.0   7172.2    11317.9   11790.0   2666.7    2.690    23/1500     FAIL   pin=none mmcss=0 pool=caller+3
+baseline        128  16    5       3.340    427.5   7740.8    15903.9   22270.9   2666.7    2.903    22/1500     FAIL   pin=none mmcss=0 pool=caller+4
+baseline        128  16    6       3.103    397.2    796.5     7209.2    8145.6   2666.7    0.299     3/1500     FAIL   pin=none mmcss=0 pool=caller+5
+baseline        128  16    8       2.891    370.0  10200.6    14095.9   14470.8   2666.7    3.825   107/1500     FAIL   pin=none mmcss=0 pool=caller+7
+baseline        128  32    3      10.591   1355.7   2507.5     4232.7    5731.5   2666.7    0.940    11/1500     FAIL*  pin=none mmcss=0 pool=caller+2
+baseline        128  32    4       8.854   1133.3   2024.0     2448.3    2482.7   2666.7    0.759     0/1500     FAIL*  pin=none mmcss=0 pool=caller+3
+baseline        128  32    5      10.101   1292.9   1731.9     6247.6    6297.8   2666.7    0.649     4/1500     FAIL*  pin=none mmcss=0 pool=caller+4
+baseline        128  32    6       6.682    855.3   1317.4     2501.8   29974.0   2666.7    0.494     1/1500     NEAR*  pin=none mmcss=0 pool=caller+5
+baseline        128  32    8       6.478    829.2  10492.7    14337.7   14507.3   2666.7    3.935    90/1500     FAIL*  pin=none mmcss=0 pool=caller+7
+baseline        512  16    3       4.447   2276.7   4016.9     6211.6    6211.6  10666.7    0.377     0/375      PASS   pin=none mmcss=0 pool=caller+2
+baseline        512  16    4       3.514   1799.4   3112.3     3593.9    3593.9  10666.7    0.292     0/375      PASS   pin=none mmcss=0 pool=caller+3
+baseline        512  16    5       3.778   1934.4   2993.3     3976.6    3976.6  10666.7    0.281     0/375      PASS   pin=none mmcss=0 pool=caller+4
+baseline        512  16    6       3.726   1907.9   3591.2    13726.4   13726.4  10666.7    0.337     1/375      FAIL   pin=none mmcss=0 pool=caller+5
+baseline        512  16    8       3.226   1651.6  25941.8    38195.3   38195.3  10666.7    2.432    19/375      FAIL   pin=none mmcss=0 pool=caller+7
+baseline        512  32    3      11.493   5884.7   9450.0    10130.2   10130.2  10666.7    0.886     0/375      FAIL   pin=none mmcss=0 pool=caller+2
+baseline        512  32    4       9.936   5087.1   7349.8     7519.3    7519.3  10666.7    0.689     0/375      PASS   pin=none mmcss=0 pool=caller+3
+baseline        512  32    5      11.381   5827.3   8426.6    15047.7   15047.7  10666.7    0.790     1/375      FAIL   pin=none mmcss=0 pool=caller+4
+baseline        512  32    6       9.435   4830.7   7446.3     9625.0    9625.0  10666.7    0.698     0/375      PASS   pin=none mmcss=0 pool=caller+5
+baseline        512  32    8       8.069   4131.4  23127.6    44559.2   44559.2  10666.7    2.168    15/375      FAIL   pin=none mmcss=0 pool=caller+7
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

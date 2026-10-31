@@ -1,0 +1,9 @@
+MORPHO-PHS morpho_cli bench  host=desktop-114514  cpu=13th Gen Intel(R) Core(TM) i9-13900H  logical_cores=20  fs=48000  mode=0  potential=0  interp=0
+topology: source=GetLogicalProcessorInformationEx logical=20 physical=14 perf_physical=6 hybrid=1  auto_threads(L32)=2
+tag=p5_dedicated_cpuset  pin=cpuset  mmcss=1  pool=dedicated  load_threads=0  barrier_spin_us=50  idle_spin_us=3500  adaptive_spin=0  caller_spin=0  paced=1
+variant=p5_dedicated_cpuset#r2  kernel=stencil  ersav=0  inblock_os_wait=0  ecoqos_off=1  caller_cpuset=0/0  caller_mmcss=0/0
+time=2026-10-31T15:22:24.960+08:00  seconds/config=10
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  clkGHz bOSw iOSw  rt
+p5_dedicated_cpuset   128  32    3       3.062    391.9   1092.5     3970.1    4044.8   2666.7    0.410    14/3750     FAIL*   4.84   80  1945  pin=cpuset mmcss=1 pool=dedicated3 cpus=[2,4,6,8,10] pinned=3/3 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=3/3 kernel=stencil barrier=spin ecoqos_off=3/3
+p5_dedicated_cpuset   128  32    4       2.880    368.7   3907.8     5168.2   10039.3   2666.7    1.465    58/3750     FAIL*   4.60  453  3504  pin=cpuset mmcss=1 pool=dedicated4 cpus=[2,4,6,8,10] pinned=4/4 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=4/4 kernel=stencil barrier=spin ecoqos_off=4/4
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

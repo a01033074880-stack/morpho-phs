@@ -1,0 +1,21 @@
+{
+ "trials": 10000,
+ "nonfinite": 0,
+ "max_step_passivity_excess_rel": -5.035504239920089e-08,
+ "max_cum_passivity_excess_rel": -1.1074100351577343e-06,
+ "enpu_calls": 320000,
+ "enpu_scaled": 89030,
+ "max_enpu_increase_rel": -3.5112447739754574e-08,
+ "max_bound_ratio": 0.0,
+ "max_E_over_E0": 5.36227835080801,
+ "scen": "modul",
+ "L": 8,
+ "T": 2048,
+ "ndof": 256,
+ "wall_s": 764.4518723487854,
+ "gamma": 0.24445320696857475,
+ "delta": 0.0026588881649156513,
+ "rho": 1.0053319533976162,
+ "E_cap": 1000000000.0,
+ "f_max_lin_Hz_at_m_min": 3734.9698793966236
+}

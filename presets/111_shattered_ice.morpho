@@ -1,0 +1,165 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Shattered Ice",
+  "category": "Defect Freezers",
+  "author": "MORPHO-PHS factory (Phase 6b)",
+  "description": "Scattered defects + HQ: a frozen field full of grainy, glinting partials.",
+  "description_zh": "散布缺陷加 HQ：充满颗粒与闪光泛音的冻结场。",
+  "tags": [
+    "freeze",
+    "grainy",
+    "hq"
+  ],
+  "cpu_class": "standard",
+  "params": {
+    "mode": "FX Defect Freezer",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "HQ (fast log-cosh)",
+    "interp": "1 sample",
+    "tone": 1800.1092,
+    "chirality": 0.6,
+    "nonlinear": 0.5,
+    "hq": 0.5,
+    "decay": 0.75,
+    "life": 0.0,
+    "morph": 0.2,
+    "tau": 0.4959,
+    "freeze": 0.5,
+    "wet": 0.8,
+    "dry": 0.4286,
+    "in_gain": 0.0,
+    "out_gain": -8.91,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.6,
+    "macro1": 0.6421,
+    "macro2": 0.8,
+    "macro3": 0.7143,
+    "macro4": 0.7273,
+    "macro5": 0.2,
+    "macro6": 0.5,
+    "macro7": 0.5,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "Width",
+      "Freeze"
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 720.0,
+        "hi": 3000.0
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.3,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 1.0,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.35,
+        "hi": 0.9
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 1.0,
+        "hi": 0.03
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 7,
+        "param": "spread",
+        "lo": 0.05,
+        "hi": 0.45
+      },
+      {
+        "macro": 7,
+        "param": "edge_width",
+        "lo": 0.0,
+        "hi": 2.0
+      },
+      {
+        "macro": 8,
+        "param": "freeze",
+        "lo": 0.0,
+        "hi": 1.0
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.5527,
+        0.3161
+      ],
+      [
+        0.3662,
+        0.8593
+      ],
+      [
+        0.3564,
+        0.7222
+      ],
+      [
+        0.5399,
+        0.6689
+      ],
+      [
+        0.8755,
+        0.5737
+      ],
+      [
+        0.8213,
+        0.6109
+      ],
+      [
+        0.6484,
+        0.6133
+      ],
+      [
+        0.3807,
+        0.514
+      ]
+    ],
+    "morphogen": []
+  }
+}

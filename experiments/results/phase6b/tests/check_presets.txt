@@ -1,0 +1,64 @@
+ok   001_gyro_bell.morpho               L16 pot 1->1 threads 1
+ok   002_counter_spin_bell.morpho       L16 pot 1->1 threads 1
+ok   003_glass_gong.morpho              L16 pot 1->1 threads 1
+ok   004_toy_carillon.morpho            L8  pot 0->0 threads 1
+ok   005_cathedral_gyro_32.morpho       L32 pot 1->1 threads 3
+ok   006_honeycomb_harp.morpho          L16 pot 0->0 threads 1
+ok   007_snowflake_koto.morpho          L16 pot 0->0 threads 1
+ok   008_felt_lattice.morpho            L16 pot 0->0 threads 1
+ok   009_bent_tine.morpho               L16 pot 1->1 threads 1
+ok   010_defect_kalimba.morpho          L16 pot 0->0 threads 1
+ok   011_low_mallets.morpho             L16 pot 0->0 threads 1
+ok   012_shard_clave.morpho             L16 pot 0->0 threads 1
+ok   013_ring_cavity_tom.morpho         L16 pot 0->0 threads 1
+ok   014_chiral_cello.morpho            L16 pot 0->0 threads 1
+ok   015_rusty_bow.morpho               L16 pot 0->0 threads 1
+ok   016_viola_gyre.morpho              L16 pot 0->0 threads 1
+ok   017_glass_harmonica.morpho         L16 pot 1->1 threads 1
+ok   018_sul_ponticello.morpho          L16 pot 0->0 threads 1
+ok   019_rim_rider.morpho               L16 pot 0->0 threads 1
+ok   020_mirror_rim.morpho              L16 pot 0->0 threads 1
+ok   021_edge_chime.morpho              L16 pot 0->0 threads 1
+ok   022_ember_field.morpho             L16 pot 0->0 threads 1
+ok   023_static_bloom.morpho            L16 pot 0->0 threads 1
+ok   024_slow_tide.morpho               L16 pot 0->0 threads 1
+ok   025_nerve_net.morpho               L16 pot 1->1 threads 1
+ok   026_spiral_drone.morpho            L16 pot 0->0 threads 1
+ok   027_low_orbit.morpho               L16 pot 0->0 threads 1
+ok   028_halo_choir.morpho              L16 pot 1->1 threads 1
+ok   029_big_spiral_32.morpho           L32 pot 1->1 threads 3
+ok   030_morphogen_tapestry.morpho      L16 pot 0->0 threads 1
+ok   031_turing_bells.morpho            L16 pot 0->0 threads 1
+ok   032_breathing_glass.morpho         L16 pot 0->0 threads 1
+ok   101_edge_shimmer.morpho            L16 pot 0->0 threads 1
+ok   102_low_edge_rumble.morpho         L16 pot 0->0 threads 1
+ok   103_glass_corridor.morpho          L16 pot 1->1 threads 1
+ok   104_grit_edge.morpho               L16 pot 0->0 threads 1
+ok   105_pinhole_edge.morpho            L16 pot 0->0 threads 1
+ok   106_tiny_edge_8.morpho             L8  pot 0->0 threads 1
+ok   107_long_edge_32.morpho            L32 pot 0->0 threads 2
+ok   108_freeze_halo.morpho             L16 pot 0->0 threads 1
+ok   109_crystal_cage.morpho            L16 pot 0->0 threads 1
+ok   110_soft_hold.morpho               L16 pot 0->0 threads 1
+ok   111_shattered_ice.morpho           L16 pot 1->1 threads 1
+ok   112_spiral_lock.morpho             L16 pot 0->0 threads 1
+ok   113_glacier_32.morpho              L32 pot 0->0 threads 2
+ok   114_bulk_smear.morpho              L16 pot 0->0 threads 1
+ok   115_honeycomb_room.morpho          L16 pot 0->0 threads 1
+ok   116_gyro_chamber.morpho            L16 pot 0->0 threads 1
+ok   117_dark_plate.morpho              L16 pot 0->0 threads 1
+ok   118_ember_echo.morpho              L16 pot 0->0 threads 1
+ok   119_static_gate.morpho             L16 pot 0->0 threads 1
+ok   120_living_edge.morpho             L16 pot 0->0 threads 1
+ok   121_spark_chamber.morpho           L16 pot 1->1 threads 1
+ok   122_breathing_edge.morpho          L16 pot 0->0 threads 1
+ok   123_tidal_freeze.morpho            L16 pot 0->0 threads 1
+ok   124_turing_smear.morpho            L16 pot 0->0 threads 1
+ok   125_chiral_drift.morpho            L16 pot 0->0 threads 1
+ok   synthetic L32 HQ exact mode 0      L32 pot 2->1 threads 3  (HQ exact -> HQ fast, warned)
+ok   synthetic L16 HQ exact mode 0      L16 pot 2->2 threads 2
+ok   synthetic L32 HQ exact mode 1      L32 pot 2->1 threads 3  (HQ exact -> HQ fast, warned)
+ok   synthetic L16 HQ exact mode 1      L16 pot 2->2 threads 2
+ok   synthetic L32 HQ exact mode 2      L32 pot 2->1 threads 3  (HQ exact -> HQ fast, warned)
+ok   synthetic L16 HQ exact mode 2      L16 pot 2->2 threads 2
+63 check(s) over 57 preset file(s), 0 failure(s)

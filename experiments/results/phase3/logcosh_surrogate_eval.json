@@ -1,0 +1,38 @@
+{
+ "form": "U_hat(s)=sum_k w_k s^2/(sqrt(c_k^2+s^2)+c_k), U_hat'(s)=sum_k w_k s/sqrt(c_k^2+s^2)",
+ "w": [
+  8.579902105918194,
+  4.224340409541995,
+  -11.804242515460189
+ ],
+ "c": [
+  2.3359531810335286,
+  1.569904461145531,
+  2.200722466602941
+ ],
+ "sum_w": 1.0,
+ "sum_w_over_c": 0.9999999999999991,
+ "sum_w_c2": 0.05900230573715248,
+ "asymptotic_offset_vs_logcosh": -0.0030515860503951275,
+ "grid": "s in [0,10] (1e5 pts) + geomspace(10,1e6,2e4); reference in long double",
+ "min_second_derivative_on_grid": 5.900230573079148e-20,
+ "convex_on_grid": true,
+ "f64": {
+  "max_abs_err_U_vs_logcosh_|s|<=10": 0.0012483043708384069,
+  "max_rel_err_U_vs_logcosh_|s|>=10": 8.705648614419706e-05,
+  "max_abs_err_U_vs_logcosh_all": 0.00305155924996825,
+  "max_abs_err_dU_vs_tanh": 0.001225093203601469,
+  "min_U": 0.0,
+  "U_nonnegative": true,
+  "max_rel_err_U_small_s(<1e-2)_vs_s2/2": 1.6107783527417006e-05
+ },
+ "f32": {
+  "max_abs_err_U_vs_logcosh_|s|<=10": 0.0012502567173071398,
+  "max_rel_err_U_vs_logcosh_|s|>=10": 8.897946093610221e-05,
+  "max_abs_err_U_vs_logcosh_all": 1.341827432466573,
+  "max_abs_err_dU_vs_tanh": 0.0012259413419153536,
+  "min_U": 0.0,
+  "U_nonnegative": true,
+  "max_rel_err_U_small_s(<1e-2)_vs_s2/2": 1.6749812843138215e-05
+ }
+}

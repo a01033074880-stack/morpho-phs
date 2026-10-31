@@ -1,0 +1,10 @@
+MORPHO-PHS morpho_cli bench  host=desktop-114514  cpu=13th Gen Intel(R) Core(TM) i9-13900H  logical_cores=20  fs=48000  mode=2  potential=0  interp=0
+topology: source=GetLogicalProcessorInformationEx logical=20 physical=14 perf_physical=6 hybrid=1  auto_threads(L32)=5
+tag=inst_pin_mmcss  pin=pcores  mmcss=1  pool=dedicated  load_threads=0  barrier_spin_us=50  idle_spin_us=200  adaptive_spin=1  caller_spin=0  paced=1
+time=2026-10-31T11:38:35.045+08:00  seconds/config=4
+tag            block  L  thr  us/smp(med)  med_us   p99_us    p999_us    max_us   budget  p99/bud  overruns     verdict  rt
+inst_pin_mmcss   128  32    3      25.722   3292.4   4245.3     4564.9    4573.0   2666.7    1.592  1112/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated3 cpus=[10,8,6] pinned=3/3 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=3/3
+inst_pin_mmcss   128  32    4      20.209   2586.7   3605.8     4786.0    6844.1   2666.7    1.352   589/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated4 cpus=[10,8,6,4] pinned=4/4 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=4/4
+inst_pin_mmcss   128  32    5      18.195   2328.9   3255.6     3624.2    4037.8   2666.7    1.221   205/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated5 cpus=[10,8,6,4,2] pinned=5/5 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=5/5
+inst_pin_mmcss   128  32    6      16.496   2111.5   3178.9     3597.2    4136.2   2666.7    1.192    84/1500     FAIL*  pin=pcores mmcss=1 pool=dedicated6 cpus=[10,8,6,4,2,0] pinned=6/6 topo=GetLogicalProcessorInformationEx P=6/14 hybrid=1 mmcss_ok=6/6
+verdict: PASS = 0 overruns and p99/budget < 0.7; NEAR = <= 0.1 % overruns and p99/budget < 0.7; '*' = Phase-4 criterion row (32x32, block 128)

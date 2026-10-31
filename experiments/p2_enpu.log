@@ -1,0 +1,9 @@
+glide_g_alpha  A_reproject  mrOwn 0.6666 hfOwn   0.01 zip   1.28 hf   0.01 mr 0.6666 rms   0.02 rem 2.013e-01 incons 9.15e-10/1.48e-08 scaled 0.00
+glide_g_alpha  B_keepstate  mrOwn 0.6666 hfOwn   0.01 zip   1.28 hf   0.01 mr 0.6666 rms   0.02 rem 0.000e+00 incons 6.32e+02/1.77e+04 scaled 0.00
+glide_g_alpha  C_selective  mrOwn 0.6666 hfOwn   0.01 zip   1.28 hf   0.01 mr 0.6666 rms   0.02 rem 2.013e-01 incons 9.15e-10/1.48e-08 scaled 0.00
+glide_mass     A_reproject  mrOwn 1.3857 hfOwn   0.86 zip  -0.33 hf   0.86 mr 1.3857 rms   0.00 rem 2.498e+01 incons 1.32e-09/1.21e-08 scaled 0.44
+glide_mass     B_keepstate  mrOwn 0.9623 hfOwn   0.48 zip  -0.78 hf   0.48 mr 0.9646 rms  -0.03 rem 1.847e+03 incons 8.49e+00/2.38e+02 scaled 0.44
+glide_mass     C_selective  mrOwn 1.3857 hfOwn   0.86 zip  -0.33 hf   0.86 mr 1.3857 rms   0.00 rem 2.498e+01 incons 1.32e-09/1.21e-08 scaled 0.44
+spiral         A_reproject  mrOwn 1.5432 hfOwn   8.34 zip   0.53 hf   8.35 mr 1.5442 rms   0.08 rem 1.765e+02 incons 7.12e-06/2.41e-03 scaled 0.00
+spiral         B_keepstate  mrOwn 1.5435 hfOwn   8.34 zip   0.47 hf   8.34 mr 1.5435 rms   0.08 rem 0.000e+00 incons 6.42e-01/1.27e+00 scaled 0.00
+spiral         C_selective  mrOwn 1.5435 hfOwn   8.34 zip   0.47 hf   8.34 mr 1.5435 rms   0.08 rem 0.000e+00 incons 6.42e-01/1.27e+00 scaled 0.00

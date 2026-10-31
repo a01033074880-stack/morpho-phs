@@ -1,0 +1,71 @@
+{
+ "params": {
+  "f_unit_Hz": 1500.0,
+  "k0_over_kc": 0.09999999999999999,
+  "Omega_over_wu": 0.6,
+  "m": 1.0,
+  "fs": 48000.0
+ },
+ "bands_Hz": [
+  [
+   203.834841531101,
+   448.29593242249774
+  ],
+  [
+   1103.8348415311004,
+   1500.0000000000016
+  ],
+  [
+   2229.085664923761,
+   2400.000000000001
+  ],
+  [
+   2794.4643059043437,
+   3129.0856649237626
+  ]
+ ],
+ "chern": [
+  1.0,
+  0.0,
+  0.0,
+  -1.0
+ ],
+ "gaps_Hz": [
+  {
+   "lo": 448.29593242249774,
+   "hi": 1103.8348415311004,
+   "width": 655.5389091086026,
+   "chern_sum_below": 1.0
+  },
+  {
+   "lo": 1500.0000000000016,
+   "hi": 2229.085664923761,
+   "width": 729.0856649237596,
+   "chern_sum_below": 1.0
+  },
+  {
+   "lo": 2400.000000000001,
+   "hi": 2794.4643059043437,
+   "width": 394.46430590434284,
+   "chern_sum_below": 1.0
+  }
+ ]
+}
+clean|Omega+|gap1 {'f_Hz': 776.07, 'E_right': 244748.19, 'E_left': 1.52, 'right_over_left_dB': 52.06}
+clean|Omega+|gap2 {'f_Hz': 1864.54, 'E_right': 452221.86, 'E_left': 1.41, 'right_over_left_dB': 55.05}
+clean|Omega+|bulk_band2 {'f_Hz': 1301.92, 'E_right': 11736.8, 'E_left': 24276.7, 'right_over_left_dB': -3.16}
+clean|Omega-|gap1 {'f_Hz': 776.07, 'E_right': 0.32, 'E_left': 198365.25, 'right_over_left_dB': -57.98}
+clean|Omega-|gap2 {'f_Hz': 1864.54, 'E_right': 0.59, 'E_left': 367452.72, 'right_over_left_dB': -57.91}
+clean|Omega-|bulk_band2 {'f_Hz': 1301.92, 'E_right': 5232.47, 'E_left': 65548.68, 'right_over_left_dB': -10.98}
+clean|Omega0|gap1 {'f_Hz': 776.07, 'E_right': 489.07, 'E_left': 1552.3, 'right_over_left_dB': -5.02}
+clean|Omega0|gap2 {'f_Hz': 1864.54, 'E_right': 9541.18, 'E_left': 13994.02, 'right_over_left_dB': -1.66}
+clean|Omega0|bulk_band2 {'f_Hz': 1301.92, 'E_right': 3743.9, 'E_left': 15157.97, 'right_over_left_dB': -6.07}
+defect|Omega+|gap1 {'f_Hz': 776.07, 'E_right': 244654.48, 'E_left': 1.59, 'right_over_left_dB': 51.88, 'transmission_vs_clean_dB': -0.0}
+defect|Omega+|gap2 {'f_Hz': 1864.54, 'E_right': 452513.31, 'E_left': 1.81, 'right_over_left_dB': 53.98, 'transmission_vs_clean_dB': 0.0}
+defect|Omega+|bulk_band2 {'f_Hz': 1301.92, 'E_right': 4759.89, 'E_left': 23976.66, 'right_over_left_dB': -7.02, 'transmission_vs_clean_dB': -3.92}
+defect|Omega-|gap1 {'f_Hz': 776.07, 'E_right': 0.02, 'E_left': 198365.31, 'right_over_left_dB': -70.84, 'transmission_vs_clean_dB': -12.87}
+defect|Omega-|gap2 {'f_Hz': 1864.54, 'E_right': 0.03, 'E_left': 367453.03, 'right_over_left_dB': -70.25, 'transmission_vs_clean_dB': -12.34}
+defect|Omega-|bulk_band2 {'f_Hz': 1301.92, 'E_right': 1055.56, 'E_left': 65480.43, 'right_over_left_dB': -17.93, 'transmission_vs_clean_dB': -6.95}
+defect|Omega0|gap1 {'f_Hz': 776.07, 'E_right': 242.84, 'E_left': 1504.05, 'right_over_left_dB': -7.92, 'transmission_vs_clean_dB': -3.04}
+defect|Omega0|gap2 {'f_Hz': 1864.54, 'E_right': 11019.16, 'E_left': 15225.42, 'right_over_left_dB': -1.4, 'transmission_vs_clean_dB': 0.63}
+defect|Omega0|bulk_band2 {'f_Hz': 1301.92, 'E_right': 843.23, 'E_left': 16205.74, 'right_over_left_dB': -12.84, 'transmission_vs_clean_dB': -6.47}

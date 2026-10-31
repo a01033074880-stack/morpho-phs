@@ -1,0 +1,182 @@
+{
+ "params": {
+  "f_unit_Hz": 1500.0,
+  "k0_over_kc": 0.09999999999999999,
+  "Omega_over_wu": 0.6,
+  "m": 1.0,
+  "fs": 48000.0
+ },
+ "bands_Hz": [
+  [
+   203.834841531101,
+   448.29593242249774
+  ],
+  [
+   1103.8348415311004,
+   1500.0000000000016
+  ],
+  [
+   2229.085664923761,
+   2400.000000000001
+  ],
+  [
+   2794.4643059043437,
+   3129.0856649237626
+  ]
+ ],
+ "chern": [
+  1.0,
+  0.0,
+  0.0,
+  -1.0
+ ],
+ "gaps_Hz": [
+  {
+   "lo": 448.29593242249774,
+   "hi": 1103.8348415311004,
+   "width": 655.5389091086026,
+   "chern_sum_below": 1.0
+  },
+  {
+   "lo": 1500.0000000000016,
+   "hi": 2229.085664923761,
+   "width": 729.0856649237596,
+   "chern_sum_below": 1.0
+  },
+  {
+   "lo": 2400.000000000001,
+   "hi": 2794.4643059043437,
+   "width": 394.46430590434284,
+   "chern_sum_below": 1.0
+  }
+ ],
+ "time_domain": {
+  "clean|Omega+|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 244748.1920293523,
+   "E_left": 1.5235292709113881,
+   "right_over_left_dB": 52.05868689774144
+  },
+  "clean|Omega+|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 452221.856383955,
+   "E_left": 1.4144152074018153,
+   "right_over_left_dB": 55.047746313421825
+  },
+  "clean|Omega+|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 11736.799721933243,
+   "E_left": 24276.70343232538,
+   "right_over_left_dB": -3.1564001915272133
+  },
+  "clean|Omega-|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 0.3161500779591703,
+   "E_left": 198365.24740963016,
+   "right_over_left_dB": -57.97572295039071
+  },
+  "clean|Omega-|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 0.594340262480148,
+   "E_left": 367452.71821013576,
+   "right_over_left_dB": -57.9116631266577
+  },
+  "clean|Omega-|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 5232.466018029154,
+   "E_left": 65548.67678687617,
+   "right_over_left_dB": -10.978575126136533
+  },
+  "clean|Omega0|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 489.0653005779251,
+   "E_left": 1552.3029537603209,
+   "right_over_left_dB": -5.016096333636558
+  },
+  "clean|Omega0|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 9541.178260373359,
+   "E_left": 13994.023408646104,
+   "right_over_left_dB": -1.663405860831288
+  },
+  "clean|Omega0|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 3743.9039658236006,
+   "E_left": 15157.969779921239,
+   "right_over_left_dB": -6.073163366853854
+  },
+  "defect|Omega+|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 244654.484009723,
+   "E_left": 1.5880509057510976,
+   "right_over_left_dB": 51.87688760049862,
+   "transmission_vs_clean_dB": -0.0016631243891762982
+  },
+  "defect|Omega+|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 452513.30789786234,
+   "E_left": 1.808414104912151,
+   "right_over_left_dB": 53.9833347013207,
+   "transmission_vs_clean_dB": 0.002798073814478618
+  },
+  "defect|Omega+|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 4759.889804652141,
+   "E_left": 23976.659201440656,
+   "right_over_left_dB": -7.021917717979884,
+   "transmission_vs_clean_dB": -3.9195279523229596
+  },
+  "defect|Omega-|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 0.01634228951166078,
+   "E_left": 198365.30794812206,
+   "right_over_left_dB": -70.84152820851276,
+   "transmission_vs_clean_dB": -12.865803932712005
+  },
+  "defect|Omega-|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 0.0347099403314999,
+   "E_left": 367453.02589357673,
+   "right_over_left_dB": -70.2474796095502,
+   "transmission_vs_clean_dB": -12.335812846365727
+  },
+  "defect|Omega-|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 1055.5633434387312,
+   "E_left": 65480.434219397466,
+   "right_over_left_dB": -17.926272506197392,
+   "transmission_vs_clean_dB": -6.952221164575465
+  },
+  "defect|Omega0|gap1": {
+   "f_Hz": 776.0653869767991,
+   "E_right": 242.83640565505982,
+   "E_left": 1504.0494020582028,
+   "right_over_left_dB": -7.91948305305991,
+   "transmission_vs_clean_dB": -3.0405305447327446
+  },
+  "defect|Omega0|gap2": {
+   "f_Hz": 1864.5428324618815,
+   "E_right": 11019.161644319487,
+   "E_left": 15225.416162884183,
+   "right_over_left_dB": -1.4042061828158983,
+   "transmission_vs_clean_dB": 0.6254654398029714
+  },
+  "defect|Omega0|bulk_band2": {
+   "f_Hz": 1301.917420765551,
+   "E_right": 843.2318887647597,
+   "E_left": 16205.744270953046,
+   "right_over_left_dB": -12.837219593642203,
+   "transmission_vs_clean_dB": -6.4737767817323455
+  }
+ },
+ "time_domain_setup": {
+  "Lx": 40,
+  "Ly": 14,
+  "steps": 6000,
+  "fs": 48000.0,
+  "burst_sigma_s": 0.004,
+  "removed_sites_defect": 10,
+  "detectors": "bottom-edge corridor (y<1.5), right: xmid+7<x<Lx-7, left: 6<x<xmid-9; source at xmid-4; defect notch at xmid+4; xmid=Lx/2",
+  "absorbing": "graded mu<0 on side and top frame"
+ }
+}

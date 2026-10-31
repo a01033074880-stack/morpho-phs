@@ -1,0 +1,7 @@
+MORPHO-PHS morpho_cli bench  host=grok-bot-vm-509861073  cpu=Intel(R) Xeon(R) Processor  logical_cores=8  fs=48000  mode=0  potential=0  interp=0
+time=2026-10-30T20:39:52.269+08:00  seconds/config=5
+block  L   thr   us/sample(med)  load%(med)  block_p99_us  block_max_us  budget_us  p99/budget  overruns
+  128  32    3          9.866        47.4        1899.5        2243.3     2666.7       0.712   0/1875
+  128  32    4          7.925        38.0        2032.4        6330.6     2666.7       0.762   8/1875
+  128  32    6          8.663        41.6      100706.9      462781.0     2666.7      37.765   344/1875
+  128  32    8         37.145       178.3      595986.1      695360.8     2666.7     223.495   1000/1875

@@ -1,0 +1,204 @@
+{
+ "glass_gong": {
+  "name": "Glass Gong",
+  "role": "Pluck / bell",
+  "lufs": -20.0,
+  "f_onsite_hz": 453.54161881794266,
+  "metrics": {
+   "quartic": {
+    "rms_db_before": -27.392194744828245,
+    "lufs_raw": -23.99867431235285,
+    "centroid_hz": 304.05954636837197,
+    "strongest_hz": 330.5669578533141,
+    "predicted_hz": 330.5669578533141,
+    "drift_cents": -0.29135079124878205,
+    "drift_level_db": -23.428170240936602,
+    "t60_s": 10.3901511229024,
+    "rms_diff_db": 0.0
+   },
+   "hqfast": {
+    "rms_db_before": -34.78958035432353,
+    "lufs_raw": -29.941146146602033,
+    "centroid_hz": 763.3340301423513,
+    "strongest_hz": 541.134302841691,
+    "predicted_hz": 561.2259024888237,
+    "drift_cents": 7.411056763886192,
+    "drift_level_db": -38.36715067119237,
+    "t60_s": 6.626301070966919,
+    "rms_diff_db": -7.397385609495288
+   },
+   "hqexact": {
+    "rms_db_before": -35.04956000347562,
+    "lufs_raw": -30.53217258536926,
+    "centroid_hz": 677.7896577215334,
+    "strongest_hz": 543.480689476851,
+    "predicted_hz": 561.2259024888237,
+    "drift_cents": 4.772996851201432,
+    "drift_level_db": -36.3886625425573,
+    "t60_s": 7.144217165728038,
+    "fast_vs_exact_mean_abs_db": 3.060681914909964,
+    "fast_vs_exact_null_db": 1.1995626144858604,
+    "rms_diff_db": -7.657365258647374
+   }
+  }
+ },
+ "glass_harmonica": {
+  "name": "Glass Harmonica",
+  "role": "Bowed / sustained",
+  "lufs": -20.0,
+  "f_onsite_hz": 660.02259,
+  "metrics": {
+   "quartic": {
+    "rms_db_before": -31.001876674832246,
+    "lufs_raw": -27.08690790285083,
+    "centroid_hz": 941.9777097398554,
+    "strongest_hz": 620.6827841424413,
+    "predicted_hz": 620.6827841424413,
+    "drift_cents": 35.70584361995537,
+    "drift_level_db": -20.314817569726646,
+    "t60_s": 3.1087460194438292,
+    "rms_diff_db": 0.0
+   },
+   "hqfast": {
+    "rms_db_before": -35.77613023067367,
+    "lufs_raw": -30.000912234959852,
+    "centroid_hz": 2272.3394028081498,
+    "strongest_hz": 935.1696777399816,
+    "predicted_hz": 906.0225923458645,
+    "drift_cents": -0.8862069005661032,
+    "drift_level_db": -19.817020383818768,
+    "t60_s": 4.690907509591888,
+    "rms_diff_db": -4.774253555841426
+   },
+   "hqexact": {
+    "rms_db_before": -35.964213008101034,
+    "lufs_raw": -30.19920306920002,
+    "centroid_hz": 2230.605274113044,
+    "strongest_hz": 901.5063304372919,
+    "predicted_hz": 906.0225923458645,
+    "drift_cents": 69.24490547761599,
+    "drift_level_db": -27.394032665875773,
+    "t60_s": 2.7689395281354403,
+    "fast_vs_exact_mean_abs_db": 1.7824542536564072,
+    "fast_vs_exact_null_db": 2.0178577301252085,
+    "rms_diff_db": -4.962336333268787
+   }
+  }
+ },
+ "spiral_drone": {
+  "name": "Spiral Drone",
+  "role": "Spiral / Barkley texture",
+  "lufs": -20.0,
+  "f_onsite_hz": 220.45407685048602,
+  "metrics": {
+   "quartic": {
+    "rms_db_before": -32.93707997923737,
+    "lufs_raw": -30.00062692502152,
+    "centroid_hz": 459.9392078409391,
+    "strongest_hz": 262.34160788364636,
+    "predicted_hz": 262.34160788364636,
+    "drift_cents": 38.14886028336613,
+    "drift_level_db": -11.922694092313655,
+    "t60_s": 3.4991151809236594,
+    "rms_diff_db": 0.0
+   },
+   "hqfast": {
+    "rms_db_before": -33.17577565024002,
+    "lufs_raw": -29.952032318159468,
+    "centroid_hz": 454.2220160281483,
+    "strongest_hz": 387.99754867874395,
+    "predicted_hz": 342.6705695372406,
+    "drift_cents": 39.90762569625735,
+    "drift_level_db": -16.22906274385965,
+    "t60_s": 3.326455183252203,
+    "rms_diff_db": -0.23869567100265243
+   },
+   "hqexact": {
+    "rms_db_before": -33.132554328586075,
+    "lufs_raw": -29.908712335002622,
+    "centroid_hz": 453.95490159619015,
+    "strongest_hz": 387.7950010969324,
+    "predicted_hz": 342.6705695372406,
+    "drift_cents": 11.401398397760317,
+    "drift_level_db": -15.84477669374317,
+    "t60_s": 3.4099163555469465,
+    "fast_vs_exact_mean_abs_db": 0.3215751472407862,
+    "fast_vs_exact_null_db": -15.82209612986372,
+    "rms_diff_db": -0.19547434934870722
+   }
+  }
+ },
+ "shattered_ice": {
+  "name": "Shattered Ice",
+  "role": "FX (Defect Freezer) on the drum + arpeggio loop",
+  "lufs": -20.0,
+  "f_onsite_hz": 569.2445109023573,
+  "metrics": {
+   "quartic": {
+    "rms_db_before": -39.47346431684224,
+    "lufs_raw": -35.449036296114386,
+    "centroid_hz": 887.7188081901533,
+    "strongest_hz": 438.7278041577895,
+    "predicted_hz": 438.7278041577895,
+    "drift_cents": -0.01260541813245586,
+    "drift_level_db": -12.26093431355742,
+    "t60_s": 3.3223929085756057,
+    "rms_diff_db": 0.0
+   },
+   "hqfast": {
+    "rms_db_before": -35.94973271000781,
+    "lufs_raw": -31.854862850138808,
+    "centroid_hz": 941.7184862624588,
+    "strongest_hz": 783.3017363810586,
+    "predicted_hz": 718.6942321554972,
+    "drift_cents": 0.27832520967639884,
+    "drift_level_db": -17.62011648404716,
+    "t60_s": 2.6996833969993097,
+    "rms_diff_db": 3.5237316068344313
+   },
+   "hqexact": {
+    "rms_db_before": -35.94802773093271,
+    "lufs_raw": -31.853324259569664,
+    "centroid_hz": 941.6130379792078,
+    "strongest_hz": 783.3017482752281,
+    "predicted_hz": 718.6942321554972,
+    "drift_cents": 0.27828007222291573,
+    "drift_level_db": -17.622632507425394,
+    "t60_s": 2.699475731909774,
+    "fast_vs_exact_mean_abs_db": 0.001531983186830838,
+    "fast_vs_exact_null_db": -63.67674807006408,
+    "rms_diff_db": 3.5254365859095316
+   }
+  }
+ },
+ "cathedral_gyro_32": {
+  "name": "Cathedral Gyro 32",
+  "role": "L32 pluck: quartic vs HQ fast (HQ exact is limited to 16x16)",
+  "lufs": -20.0,
+  "f_onsite_hz": 316.22776601683796,
+  "metrics": {
+   "quartic": {
+    "rms_db_before": -31.097651039677693,
+    "lufs_raw": -27.063432808280183,
+    "centroid_hz": 296.8916925927417,
+    "strongest_hz": 296.03971036492237,
+    "predicted_hz": 296.03971036492237,
+    "drift_cents": 34.86361473372722,
+    "drift_level_db": -27.972371821829846,
+    "t60_s": 10.284683255358368,
+    "rms_diff_db": 0.0
+   },
+   "hqfast": {
+    "rms_db_before": -34.15523401137625,
+    "lufs_raw": -29.94018204995552,
+    "centroid_hz": 414.6560701338529,
+    "strongest_hz": 424.6947175873736,
+    "predicted_hz": 433.17376434053244,
+    "drift_cents": 33.34766305668138,
+    "drift_level_db": -25.616573173387817,
+    "t60_s": 9.292147458272648,
+    "rms_diff_db": -3.057582971698558
+   }
+  }
+ }
+}

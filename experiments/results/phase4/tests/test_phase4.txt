@@ -1,0 +1,14 @@
++ ./build/p4/test_phase4
+[PASS] Q1 bit-exact f32 output+state vs 1 thread for 9 pool/pin/MMCSS variants (T 1..8, caller/dedicated, pcores/pset), 32x32, potential=quartic  [e.g. pin=pcores mmcss=1 pool=dedicated5 cpus=[7,6,5,4,3] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5]
+[PASS] Q1 bit-exact f32 output+state vs 1 thread for 9 pool/pin/MMCSS variants (T 1..8, caller/dedicated, pcores/pset), 32x32, potential=hq-fast  [e.g. pin=pcores mmcss=1 pool=dedicated5 cpus=[7,6,5,4,3] pinned=5/5 topo=sysfs P=8/8 hybrid=0 mmcss_ok=0/5]
+[PASS] Q2 bit-exact f64 (HQ exact): dedicated pinned pool (4 thr, MMCSS requested) vs 1 thread
+[PASS] Q3 zero heap allocations: 192000 samples, 4 threads, pin=pcores, dedicated pool (0 allocs)
+[PASS] Q3 zero heap allocations: 192000 samples, 4 threads, pin=pcores, caller computes (0 allocs)
+[PASS] Q4 topology (sysfs): 8 logical, 8 physical, 8 perf physical, hybrid=0; default threads L8/16/32 = 1/1/6
+[PASS] Q4b synthetic i9-13900H topology: P=6 of 14 physical, perf cpus = {0,2,4,6,8,10} (one per P-core, no SMT sibling), default L32 threads = 5
+[PASS] Q5 oversubscribed (8 busy threads + 8 workers on 8 CPUs): 200 blocks done, mean 108.07 ms, max 536.00 ms per 128-sample block, 19007 barrier waits fell back to the OS
+ALL PASSED: 0 failure(s)
+
+real	0m27.122s
+user	3m11.065s
+sys	0m0.336s

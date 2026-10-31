@@ -1,0 +1,255 @@
+{
+ "Gyro Bell": {
+  "out_gain": 10.28,
+  "cpu_class": "standard"
+ },
+ "Counter-Spin Bell": {
+  "out_gain": 6.39,
+  "cpu_class": "standard"
+ },
+ "Glass Gong": {
+  "out_gain": 5.53,
+  "cpu_class": "standard"
+ },
+ "Toy Carillon": {
+  "out_gain": -2.42,
+  "cpu_class": "eco"
+ },
+ "Cathedral Gyro 32": {
+  "out_gain": 10.91,
+  "cpu_class": "standard"
+ },
+ "Honeycomb Harp": {
+  "out_gain": 6.01,
+  "cpu_class": "eco"
+ },
+ "Snowflake Koto": {
+  "out_gain": 7.28,
+  "cpu_class": "eco"
+ },
+ "Felt Lattice": {
+  "out_gain": -3.78,
+  "cpu_class": "eco"
+ },
+ "Bent Tine": {
+  "out_gain": 14.33,
+  "cpu_class": "standard"
+ },
+ "Defect Kalimba": {
+  "out_gain": 10.57,
+  "cpu_class": "eco"
+ },
+ "Low Mallets": {
+  "out_gain": 9.71,
+  "cpu_class": "eco"
+ },
+ "Shard Clave": {
+  "out_gain": 14.57,
+  "cpu_class": "eco"
+ },
+ "Ring Cavity Tom": {
+  "out_gain": 6.5,
+  "cpu_class": "eco"
+ },
+ "Chiral Cello": {
+  "out_gain": -3.56,
+  "cpu_class": "eco"
+ },
+ "Rusty Bow": {
+  "out_gain": -8.47,
+  "cpu_class": "eco"
+ },
+ "Viola Gyre": {
+  "out_gain": -10.62,
+  "cpu_class": "eco"
+ },
+ "Glass Harmonica": {
+  "out_gain": -8.03,
+  "cpu_class": "standard"
+ },
+ "Sul Ponticello": {
+  "out_gain": -14.51,
+  "cpu_class": "eco"
+ },
+ "Rim Rider": {
+  "out_gain": -17.91,
+  "cpu_class": "eco"
+ },
+ "Mirror Rim": {
+  "out_gain": -14.44,
+  "cpu_class": "eco"
+ },
+ "Edge Chime": {
+  "out_gain": -1.61,
+  "cpu_class": "eco"
+ },
+ "Ember Field": {
+  "out_gain": -0.81,
+  "cpu_class": "eco"
+ },
+ "Static Bloom": {
+  "out_gain": 0.92,
+  "cpu_class": "eco"
+ },
+ "Slow Tide": {
+  "out_gain": -12.2,
+  "cpu_class": "eco"
+ },
+ "Nerve Net": {
+  "out_gain": -0.44,
+  "cpu_class": "standard"
+ },
+ "Spiral Drone": {
+  "out_gain": -10.72,
+  "cpu_class": "eco"
+ },
+ "Low Orbit": {
+  "out_gain": -10.72,
+  "cpu_class": "eco"
+ },
+ "Halo Choir": {
+  "out_gain": -14.48,
+  "cpu_class": "standard"
+ },
+ "Morphogen Tapestry": {
+  "out_gain": -10.15,
+  "cpu_class": "standard"
+ },
+ "Turing Bells": {
+  "out_gain": 3.82,
+  "cpu_class": "standard"
+ },
+ "Breathing Glass": {
+  "out_gain": -11.81,
+  "cpu_class": "eco"
+ },
+ "Edge Shimmer": {
+  "out_gain": 4.17,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.2219
+ },
+ "Low Edge Rumble": {
+  "out_gain": 5.34,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.2572
+ },
+ "Glass Corridor": {
+  "out_gain": 5.34,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.1964
+ },
+ "Grit Edge": {
+  "out_gain": 4.23,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.4054
+ },
+ "Pinhole Edge": {
+  "out_gain": 2.21,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.5107
+ },
+ "Tiny Edge 8": {
+  "out_gain": 2.78,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.3581
+ },
+ "Long Edge 32": {
+  "out_gain": -0.02,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.3428
+ },
+ "Freeze Halo": {
+  "out_gain": -4.48,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.025
+ },
+ "Crystal Cage": {
+  "out_gain": 1.21,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0722
+ },
+ "Soft Hold": {
+  "out_gain": -3.02,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0086
+ },
+ "Shattered Ice": {
+  "out_gain": -8.91,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.0089
+ },
+ "Spiral Lock": {
+  "out_gain": 3.65,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.2559
+ },
+ "Glacier 32": {
+  "out_gain": -6.41,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.005
+ },
+ "Bulk Smear": {
+  "out_gain": 1.65,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.214
+ },
+ "Honeycomb Room": {
+  "out_gain": -2.66,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.1754
+ },
+ "Gyro Chamber": {
+  "out_gain": -6.47,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.0
+ },
+ "Dark Plate": {
+  "out_gain": -6.37,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0001
+ },
+ "Ember Echo": {
+  "out_gain": -19.99,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.0
+ },
+ "Static Gate": {
+  "out_gain": -9.74,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.2275
+ },
+ "Living Edge": {
+  "out_gain": 4.53,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.3815
+ },
+ "Spark Chamber": {
+  "out_gain": -13.87,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0019
+ },
+ "Breathing Edge": {
+  "out_gain": 3.33,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.4644
+ },
+ "Tidal Freeze": {
+  "out_gain": -4.96,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0382
+ },
+ "Turing Smear": {
+  "out_gain": -6.67,
+  "cpu_class": "eco",
+  "seed_peak_ratio": 1.0
+ },
+ "Chiral Drift": {
+  "out_gain": 2.29,
+  "cpu_class": "standard",
+  "seed_peak_ratio": 1.3231
+ },
+ "Big Spiral": {
+  "out_gain": -8.31,
+  "cpu_class": "standard"
+ }
+}

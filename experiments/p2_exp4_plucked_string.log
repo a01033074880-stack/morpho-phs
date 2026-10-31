@@ -1,0 +1,46 @@
+/workspace/morpho-phs-workspace/python/scripts/phase2/p2_exp4_inverse.py:175: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  hist.append(float(L))
+[plucked_string/esav] it 0 loss 4.5813 t 3s
+[plucked_string/esav] it 10 loss 4.0849 t 40s
+[plucked_string/esav] it 20 loss 3.7756 t 78s
+[plucked_string/esav] it 30 loss 3.6479 t 114s
+[plucked_string/esav] it 40 loss 3.4118 t 150s
+[plucked_string/esav] it 50 loss 3.2180 t 187s
+[plucked_string/esav] it 60 loss 3.1346 t 223s
+[plucked_string/esav] it 70 loss 2.9960 t 259s
+[plucked_string/esav] it 80 loss 3.1260 t 294s
+[plucked_string/esav] it 90 loss 3.1979 t 331s
+[plucked_string/esav] it 100 loss 3.4604 t 370s
+[plucked_string/esav] it 110 loss 3.2279 t 410s
+[plucked_string/esav] it 120 loss 3.1161 t 447s
+[plucked_string/esav] it 130 loss 3.1690 t 484s
+[plucked_string/esav] it 140 loss 3.2733 t 523s
+[plucked_string/esav] it 150 loss 3.1507 t 560s
+[plucked_string/esav] it 160 loss 3.0570 t 598s
+[plucked_string/esav] it 170 loss 3.1440 t 635s
+[plucked_string/esav] it 180 loss 3.2056 t 674s
+[plucked_string/esav] it 190 loss 3.0954 t 713s
+[plucked_string/esav] it 199 loss 3.1678 t 747s
+[plucked_string/modal] it 0 loss 3.4264 t 0s
+[plucked_string/modal] it 10 loss 4.0477 t 0s
+[plucked_string/modal] it 20 loss 3.4954 t 0s
+[plucked_string/modal] it 30 loss 3.0286 t 0s
+[plucked_string/modal] it 40 loss 2.8557 t 0s
+[plucked_string/modal] it 50 loss 2.5311 t 0s
+[plucked_string/modal] it 60 loss 2.4059 t 1s
+[plucked_string/modal] it 70 loss 2.3976 t 1s
+[plucked_string/modal] it 80 loss 2.3787 t 1s
+[plucked_string/modal] it 90 loss 2.8418 t 1s
+[plucked_string/modal] it 100 loss 2.2728 t 1s
+[plucked_string/modal] it 110 loss 2.3270 t 1s
+[plucked_string/modal] it 120 loss 2.6416 t 1s
+[plucked_string/modal] it 130 loss 3.0093 t 1s
+[plucked_string/modal] it 140 loss 3.0260 t 1s
+[plucked_string/modal] it 150 loss 2.6470 t 1s
+[plucked_string/modal] it 160 loss 4.1041 t 2s
+[plucked_string/modal] it 170 loss 2.8623 t 2s
+[plucked_string/modal] it 180 loss 2.8420 t 2s
+[plucked_string/modal] it 190 loss 2.5030 t 2s
+[plucked_string/modal] it 199 loss 2.5896 t 2s
+{"plucked_string": {"esav": 2.955445162298692, "modal": 2.012008286941574, "silence": 5.345360076501062}}

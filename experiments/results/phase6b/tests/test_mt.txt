@@ -1,0 +1,15 @@
+[PASS] M1 bit-exact outputs and state for threads {1,2,3,4,6,8} vs 1, 32x32, 12000 samples, ENPU/64 + gate, potential=quartic
+[PASS] M1 bit-exact outputs and state for threads {1,2,3,4,6,8} vs 1, 32x32, 12000 samples, ENPU/64 + gate, potential=quartic+logcosh
+[PASS] M2 MT(4 thr) vs Phase-1 single-thread EsavLF, 4000 samples passive quartic: max |dy|/max|y| = 0.00e+00
+[PASS] M3 MT power balance: tracked (sum of h(u.y - vDv)) vs recomputed energy after each 64-block, max rel diff 8.42e-14
+[PASS] M4 zero heap allocations: 192000 samples, 4 threads, control layer + all three ENPU variants (0 allocs)
+[PASS] M5 40 live switches quartic<->quartic+logcosh: max rel energy increase -6.48e-03 (<= 0 up to round-off)
+[PASS] M6 ENPU variant B keep-state: g/mu/eta jumps leave q untouched and |dE|/E <= 0.0e+00; max rel increase over all 600 jumps (incl. alpha, mass) 0.00e+00; scaled 104, fallback-to-A 198
+[PASS] M6 ENPU variant C selective: g/mu/eta jumps leave q untouched and |dE|/E <= 0.0e+00; max rel increase over all 600 jumps (incl. alpha, mass) 0.00e+00; scaled 201, fallback-to-A 0
+[PASS] M7 tau knob: tau=1/12 s -> dt=0.016,S=1; tau=21 ms -> S=4, dt=0.01587; tau=0.5 s -> dt=0.00267
+[PASS] M8 MT gated self-oscillation 3 s, 32x32, spiral-modulated: max E~ = 1.004657e+06 <= max(E~0, rho*E~cap) = 1.007385e+06 (rho=1.00533), reached cap region
+ALL MT TESTS PASSED (0 failures)
+
+real	0m6.323s
+user	0m19.863s
+sys	0m0.020s

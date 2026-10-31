@@ -1,0 +1,120 @@
+{
+  "format": "morpho-phs-preset",
+  "version": 2,
+  "name": "Pinhole Edge",
+  "category": "FX Edge",
+  "author": "MORPHO-PHS factory",
+  "description": "A short defect line near the source scatters part of the edge current.",
+  "params": {
+    "mode": "FX Edge Disperser",
+    "lattice": "16x16",
+    "threads": "Auto",
+    "potential": "Quartic",
+    "interp": "1 sample",
+    "tone": 1600,
+    "chirality": 0.75,
+    "nonlinear": 0.25,
+    "hq": 0.3,
+    "decay": 0.65,
+    "life": 0.0,
+    "morph": 0.3,
+    "tau": 0.0833,
+    "freeze": 0.0,
+    "wet": 0.7,
+    "dry": 0.5,
+    "in_gain": 0.0,
+    "out_gain": 0.0,
+    "spread": 0.25,
+    "exciter": "Bow (saw)",
+    "defect_depth": 0.8,
+    "macro1": 0.6689,
+    "macro2": 0.875,
+    "macro3": 0.625,
+    "macro4": 0.6,
+    "macro5": 0.3333,
+    "macro6": 0.2778,
+    "macro7": 0.5,
+    "macro8": 0.5,
+    "edge_width": 1.0,
+    "edge_crosstalk": 0.0
+  },
+  "macros": {
+    "names": [
+      "Tone",
+      "Chirality",
+      "Edge Mix",
+      "Decay",
+      "Morphogen",
+      "Grit",
+      "",
+      ""
+    ],
+    "targets": [
+      {
+        "macro": 1,
+        "param": "tone",
+        "lo": 600,
+        "hi": 2600
+      },
+      {
+        "macro": 2,
+        "param": "chirality",
+        "lo": -1.0,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "wet",
+        "lo": 0.2,
+        "hi": 1.0
+      },
+      {
+        "macro": 3,
+        "param": "dry",
+        "lo": 0.8,
+        "hi": 0.2
+      },
+      {
+        "macro": 4,
+        "param": "decay",
+        "lo": 0.2,
+        "hi": 0.95
+      },
+      {
+        "macro": 5,
+        "param": "morph",
+        "lo": 0.0,
+        "hi": 0.9
+      },
+      {
+        "macro": 5,
+        "param": "tau",
+        "lo": 0.5,
+        "hi": 0.05
+      },
+      {
+        "macro": 6,
+        "param": "nonlinear",
+        "lo": 0.0,
+        "hi": 0.9
+      }
+    ]
+  },
+  "lattice_state": {
+    "defects": [
+      [
+        0.35,
+        0.12
+      ],
+      [
+        0.4,
+        0.16
+      ],
+      [
+        0.45,
+        0.2
+      ]
+    ],
+    "morphogen": []
+  }
+}

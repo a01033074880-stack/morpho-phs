@@ -1,0 +1,35 @@
+C benchmark, median (min-max) ns/sample, single pinned core (taskset -c 7), Xeon 2.4GHz, load avg ~0.6; gs = ns per RD step (amortised /64 per audio sample)
+b2_fast  L= 8 esav      NJ=0:      138.5 (136.4-139.4)  ->    0.665% core @48k  n=5
+b2_fast  L= 8 esav      NJ=15:      426.0 (419.4-427.7)  ->    2.045% core @48k  n=5
+b2_fast  L= 8 esav      NJ=4:      216.2 (215.4-219.9)  ->    1.038% core @48k  n=5
+b2_fast  L= 8 gs        NJ=None:       25.0 (25.0-26.0)  ->    0.002% core @48k  n=5
+b2_fast  L= 8 lit_dense NJ=0:     1771.4 (1770.5-1874.5)  ->    8.503% core @48k  n=3
+b2_fast  L= 8 rk4       NJ=0:      263.9 (262.8-266.2)  ->    1.267% core @48k  n=5
+b2_fast  L=16 esav      NJ=0:      501.7 (493.2-524.3)  ->    2.408% core @48k  n=5
+b2_fast  L=16 esav      NJ=15:     1263.8 (1256.6-1307.7)  ->    6.066% core @48k  n=5
+b2_fast  L=16 esav      NJ=4:      696.3 (679.8-697.3)  ->    3.342% core @48k  n=5
+b2_fast  L=16 gs        NJ=None:       95.2 (95.1-112.8)  ->    0.007% core @48k  n=5
+b2_fast  L=16 lit_dense NJ=0:    26662.6 (25579.7-27257.9)  ->  127.981% core @48k  n=3
+b2_fast  L=16 rk4       NJ=0:      851.0 (840.6-864.9)  ->    4.085% core @48k  n=5
+b2_fast  L=32 esav      NJ=0:     1801.5 (1795.7-1823.2)  ->    8.647% core @48k  n=5
+b2_fast  L=32 esav      NJ=15:     4692.1 (4682.8-4715.4)  ->   22.522% core @48k  n=5
+b2_fast  L=32 esav      NJ=4:     2572.7 (2558.6-2587.4)  ->   12.349% core @48k  n=5
+b2_fast  L=32 gs        NJ=None:      341.1 (333.2-381.5)  ->    0.026% core @48k  n=5
+b2_fast  L=32 rk4       NJ=0:     3789.2 (3667.0-4181.3)  ->   18.188% core @48k  n=5
+b2_libm  L= 8 esav      NJ=0:      255.6 (251.8-277.8)  ->    1.227% core @48k  n=5
+b2_libm  L= 8 esav      NJ=15:      543.5 (541.9-758.6)  ->    2.609% core @48k  n=5
+b2_libm  L= 8 esav      NJ=4:      339.7 (337.0-344.6)  ->    1.631% core @48k  n=5
+b2_libm  L= 8 gs        NJ=None:       24.9 (24.9-25.6)  ->    0.002% core @48k  n=5
+b2_libm  L= 8 lit_dense NJ=0:     1800.5 (1793.9-1807.3)  ->    8.642% core @48k  n=3
+b2_libm  L= 8 rk4       NJ=0:      423.1 (418.4-429.4)  ->    2.031% core @48k  n=5
+b2_libm  L=16 esav      NJ=0:      919.1 (911.5-949.4)  ->    4.412% core @48k  n=5
+b2_libm  L=16 esav      NJ=15:     1685.1 (1678.5-1713.7)  ->    8.088% core @48k  n=5
+b2_libm  L=16 esav      NJ=4:     1132.5 (1111.9-1156.2)  ->    5.436% core @48k  n=5
+b2_libm  L=16 gs        NJ=None:       95.4 (94.2-96.5)  ->    0.007% core @48k  n=5
+b2_libm  L=16 lit_dense NJ=0:    25549.9 (25463.1-27698.5)  ->  122.640% core @48k  n=3
+b2_libm  L=16 rk4       NJ=0:     1398.3 (1390.3-1411.4)  ->    6.712% core @48k  n=5
+b2_libm  L=32 esav      NJ=0:     3400.7 (3365.4-3443.4)  ->   16.323% core @48k  n=5
+b2_libm  L=32 esav      NJ=15:     6317.4 (6302.9-6361.6)  ->   30.324% core @48k  n=5
+b2_libm  L=32 esav      NJ=4:     4186.5 (4177.6-4311.5)  ->   20.095% core @48k  n=5
+b2_libm  L=32 gs        NJ=None:      349.0 (335.5-360.8)  ->    0.026% core @48k  n=5
+b2_libm  L=32 rk4       NJ=0:     5884.7 (5790.8-6028.3)  ->   28.247% core @48k  n=5

@@ -1,0 +1,9 @@
+fx min     960x600 @1x  hero render 455x274 px  paint median 1159 us  p95 1376 us  (rebuilds 14, last 2264 us)
+fx min     960x600 @2x  hero render 911x547 px  paint median 2062 us  p95 2529 us  (rebuilds 14, last 6699 us)
+fx default 1152x720 @1x  hero render 546x328 px  paint median 953 us  p95 1321 us  (rebuilds 0, last 2721 us)
+fx default 1152x720 @2x  hero render 1092x656 px  paint median 2391 us  p95 3131 us  (rebuilds 22, last 9316 us)
+fx max     1728x1080 @1x  hero render 819x492 px  paint median 1551 us  p95 2058 us  (rebuilds 0, last 5392 us)
+fx max     1728x1080 @2x  hero render 1638x984 px  paint median 4614 us  p95 5045 us  (rebuilds 36, last 20938 us)
+fx eco default @2x paint median 3586 us p95 8978 us fps 12
+fx browser: 25 factory presets, filter cat='Edge Dispersers' tag='edge'
+fx publish_hz hidden=0 closed=0
